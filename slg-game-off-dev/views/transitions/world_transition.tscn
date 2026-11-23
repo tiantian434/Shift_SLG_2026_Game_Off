@@ -1,18 +1,20 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://bk8sbteeo8m5r"]
 
-[ext_resource type="Script" path="res://views/transitions/world_transition.gd" id="1_transition"]
-[ext_resource type="Shader" path="res://views/transitions/world_transition.gdshader" id="2_shader"]
+[ext_resource type="Script" uid="uid://dhvnguaqlike5" path="res://views/transitions/world_transition.gd" id="1_transition"]
+[ext_resource type="Shader" uid="uid://crfyoc0o7ourj" path="res://views/transitions/world_transition.gdshader" id="2_shader"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_curtain"]
 resource_local_to_scene = true
 shader = ExtResource("2_shader")
+shader_parameter/progress = 0.0
+shader_parameter/curtain_color = Color(0.027, 0.035, 0.059, 1)
 
-[node name="WorldTransition" type="CanvasLayer"]
+[node name="WorldTransition" type="CanvasLayer" unique_id=481153273]
 process_mode = 3
 layer = 80
 script = ExtResource("1_transition")
 
-[node name="Overlay" type="Control" parent="."]
+[node name="Overlay" type="Control" parent="." unique_id=1459864025]
 visible = false
 layout_mode = 3
 anchors_preset = 15
@@ -20,9 +22,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 0
 
-[node name="Curtain" type="ColorRect" parent="Overlay"]
+[node name="Curtain" type="ColorRect" parent="Overlay" unique_id=665762571]
 material = SubResource("ShaderMaterial_curtain")
 layout_mode = 1
 anchors_preset = 15
@@ -31,4 +32,3 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-

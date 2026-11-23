@@ -1,0 +1,88 @@
+{
+  "id": "ch2_ritual_debrief",
+  "speaker_name": {
+    "zh_CN": "旁白"
+  },
+  "entry": "scene",
+  "speakers": {
+    "narrator": {
+      "name": {
+        "zh_CN": "旁白"
+      }
+    },
+    "automaton": {
+      "name": {
+        "zh_CN": "机械姬（人造人）"
+      },
+      "portraits": {
+        "inner": "res://assets/chapter2/mechanical_face.png"
+      }
+    }
+  },
+  "blocks": {
+    "scene": {
+      "lines": [
+        {
+          "speaker_id": "narrator",
+          "zh_CN": "随着最后一个符文亮起，法阵发出柔和的光芒。"
+        },
+        {
+          "speaker_id": "narrator",
+          "zh_CN": "窗外原本呼啸的风声渐渐平息。"
+        },
+        {
+          "speaker": "player",
+          "zh_CN": "成功了？"
+        },
+        {
+          "speaker_id": "automaton",
+          "zh_CN": "是的。术式已经正常启动。"
+        },
+        {
+          "speaker": "player",
+          "zh_CN": "这么说，这东西真的能控制天气？"
+        },
+        {
+          "speaker_id": "automaton",
+          "zh_CN": "改变局部天气是术式的常见用途之一。例如驱散雨云、引导降水，或者让某片区域的风暂时平息。"
+        },
+        {
+          "speaker": "player",
+          "zh_CN": "真不可思议。"
+        },
+        {
+          "speaker_id": "automaton",
+          "zh_CN": "您似乎对术式并不熟悉。"
+        },
+        {
+          "speaker": "player",
+          "zh_CN": "……算是吧。"
+        },
+        {
+          "speaker_id": "automaton",
+          "zh_CN": "那么建议您从简单的术式开始练习，以免操作失误。"
+        },
+        {
+          "speaker": "player",
+          "zh_CN": "好，我知道了。"
+        },
+        {
+          "speaker_id": "automaton",
+          "zh_CN": "如果还有其他问题，您可以随时询问。"
+        },
+        {
+          "speaker_id": "narrator",
+          "zh_CN": "主角看着她，迟疑了一会儿。"
+        },
+        {
+          "speaker": "player",
+          "zh_CN": "……谢谢。"
+        },
+        {
+          "speaker_id": "automaton",
+          "zh_CN": "不客气。"
+        }
+      ]
+    }
+  }
+}

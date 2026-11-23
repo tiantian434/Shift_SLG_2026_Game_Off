@@ -1,0 +1,152 @@
+{
+  "id": "ch2_return",
+  "speaker_name": {
+    "zh_CN": "旁白"
+  },
+  "entry": "scene",
+  "speakers": {
+    "narrator": {
+      "name": {
+        "zh_CN": "旁白"
+      }
+    },
+    "maiden": {
+      "name": {
+        "zh_CN": "机械姬"
+      },
+      "portraits": {
+        "surface": "res://assets/chapter2/mechanical_face.png"
+      }
+    }
+  },
+  "blocks": {
+    "scene": {
+      "lines": [
+        {
+          "speaker_id": "narrator",
+          "zh_CN": "黄昏时分，夕阳将整座飞空港染成金黄色。"
+        },
+        {
+          "speaker_id": "narrator",
+          "zh_CN": "巨大的飞空艇缓缓驶过云层，蒸汽从排气管中喷出，在空中拖出长长的白色尾迹。"
+        },
+        {
+          "speaker_id": "narrator",
+          "zh_CN": "主角回到表世界的空港站房。"
+        },
+        {
+          "speaker_id": "narrator",
+          "zh_CN": "机械姬正在整理桌上的文件。"
+        },
+        {
+          "speaker_id": "maiden",
+          "zh_CN": "欢迎回来，前辈。"
+        },
+        {
+          "speaker": "player",
+          "zh_CN": "嗯，我回来了。"
+        },
+        {
+          "speaker_id": "maiden",
+          "zh_CN": "您今天似乎比预计时间晚了一些。是否需要调整明日的工作安排？"
+        },
+        {
+          "speaker": "player",
+          "zh_CN": "不用了。只是遇到了一些意想不到的事情。"
+        },
+        {
+          "speaker_id": "maiden",
+          "zh_CN": "需要我记录吗？"
+        },
+        {
+          "speaker": "player",
+          "zh_CN": "……暂时不用。"
+        },
+        {
+          "speaker_id": "maiden",
+          "zh_CN": "明白。"
+        },
+        {
+          "speaker_id": "narrator",
+          "zh_CN": "主角坐在椅子上，看着窗外缓缓降落的飞空艇。"
+        },
+        {
+          "speaker": "player",
+          "zh_CN": "说起来，你觉得这座城市怎么样？"
+        },
+        {
+          "speaker_id": "maiden",
+          "zh_CN": "飞空港由大量相互协作的设施组成。运输、机械维护、食物供应与人员调度，共同维持着它的正常运转。"
+        },
+        {
+          "speaker": "player",
+          "zh_CN": "听你这么说，感觉整座城市就像一台大机器。"
+        },
+        {
+          "speaker_id": "maiden",
+          "zh_CN": "从系统结构上来看，这个比喻是成立的。"
+        },
+        {
+          "speaker": "player",
+          "zh_CN": "那我们是什么？机器上的齿轮？"
+        },
+        {
+          "speaker_id": "maiden",
+          "zh_CN": "如果按照您的比喻，可以这样理解。"
+        },
+        {
+          "speaker": "player",
+          "zh_CN": "哈哈，那我可得当个质量好一点的齿轮。"
+        },
+        {
+          "speaker_id": "maiden",
+          "zh_CN": "我认为您不需要过分担心。"
+        },
+        {
+          "speaker": "player",
+          "zh_CN": "为什么？"
+        },
+        {
+          "speaker_id": "maiden",
+          "zh_CN": "因为至少在今天，您已经成功完成了所有已登记的工作。"
+        },
+        {
+          "speaker": "player",
+          "zh_CN": "……这算是在夸我吗？"
+        },
+        {
+          "speaker_id": "maiden",
+          "zh_CN": "我只是在陈述事实。"
+        },
+        {
+          "speaker_id": "narrator",
+          "zh_CN": "主角笑了笑。"
+        },
+        {
+          "speaker_id": "narrator",
+          "zh_CN": "眼前的机械姬依然和往常一样。"
+        },
+        {
+          "speaker_id": "narrator",
+          "zh_CN": "她并不知道，自己在另一个世界还有一位几乎一模一样的对应者。"
+        },
+        {
+          "speaker_id": "narrator",
+          "zh_CN": "而那个人造人，同样不知道他的存在。"
+        },
+        {
+          "speaker_id": "narrator",
+          "zh_CN": "窗外，黄铜管道中的蒸汽仍在流动。"
+        },
+        {
+          "speaker_id": "narrator",
+          "zh_CN": "飞空港依旧运转着，仿佛什么都没有发生。"
+        },
+        {
+          "speaker_id": "narrator",
+          "zh_CN": "只是两个世界之间的界限，已经开始悄然改变。"
+        }
+      ]
+    }
+  }
+}

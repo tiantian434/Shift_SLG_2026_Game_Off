@@ -48,18 +48,44 @@ static func create_session(definition: Dictionary, world: int, facts: Dictionary
 	var portraits: Variant = _load_portraits(definition.get("portraits", {}), id)
 	if portraits == null:
 		return null
+	var speakers: Variant = _prepare_speakers(definition.get("speakers", {}), conditions, english, id)
+	if speakers == null:
+		return null
+	var parallel: Variant = definition.get("parallel_world_text", false)
+	if not parallel is bool:
+		push_error("%s.parallel_world_text must be a boolean." % id)
+		return null
 
 	var resolved_blocks := {}
 	for block_id: String in blocks:
 		var location := "%s.blocks.%s" % [id, block_id]
-		var block := _prepare_block(blocks[block_id], blocks, conditions, english, location)
+		var block := _prepare_block(blocks[block_id], blocks, conditions, english, location, speakers)
 		if block.is_empty():
 			return null
 		resolved_blocks[block_id] = block
-	return DialogueSession.new(speaker_name, portraits, resolved_blocks, entry)
+	return DialogueSession.new(speaker_name, portraits, resolved_blocks, entry, speakers, parallel)
 
 
-static func _prepare_block(block: Variant, blocks: Dictionary, conditions: Dictionary, english: bool, location: String) -> Dictionary:
+static func _prepare_speakers(value: Variant, conditions: Dictionary, english: bool, id: String) -> Variant:
+	if not value is Dictionary:
+		push_error("%s.speakers must be an object." % id)
+		return null
+	var speakers := {}
+	for key: String in value:
+		var profile: Variant = value[key]
+		var location := "%s.speakers.%s" % [id, key]
+		if not profile is Dictionary:
+			push_error("%s must be an object." % location)
+			return null
+		var display := _resolve_text(profile.get("name"), conditions, english, location + ".name")
+		var portraits: Variant = _load_portraits(profile.get("portraits", {}), location)
+		if display.is_empty() or portraits == null:
+			return null
+		speakers[key] = {"name": display, "portraits": portraits}
+	return speakers
+
+
+static func _prepare_block(block: Variant, blocks: Dictionary, conditions: Dictionary, english: bool, location: String, speakers: Dictionary) -> Dictionary:
 	if not block is Dictionary:
 		push_error("%s must be an object." % location)
 		return {}
@@ -85,7 +111,11 @@ static func _prepare_block(block: Variant, blocks: Dictionary, conditions: Dicti
 		if speaker not in ["npc", "player"]:
 			push_error("%s.speaker must be npc or player." % line_location)
 			return {}
-		lines.append({"text": text, "player": speaker == "player"})
+		var speaker_id: Variant = line.get("speaker_id", "")
+		if not speaker_id is String or (not speaker_id.is_empty() and not speakers.has(speaker_id)):
+			push_error("%s.speaker_id must name an existing speaker." % line_location)
+			return {}
+		lines.append({"text": text, "player": speaker == "player", "speaker_id": speaker_id})
 
 	var choices: Array[Dictionary] = []
 	for index in authored_choices.size():

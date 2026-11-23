@@ -1,0 +1,221 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://views/hud/game_hud.gd" id="1_hud"]
+[ext_resource type="Theme" path="res://views/hud/shift_theme.tres" id="2_theme"]
+[ext_resource type="Texture2D" path="res://assets/ui/day_dial.png" id="3_dial"]
+[ext_resource type="PackedScene" path="res://views/hud/task_drawer.tscn" id="4_tasks"]
+
+[sub_resource type="StyleBoxFlat" id="TaskDot"]
+bg_color = Color(0.98, 0.667, 0.288, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="GameHUD" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("2_theme")
+script = ExtResource("1_hud")
+
+[node name="DayDial" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 80.0
+offset_bottom = 80.0
+mouse_filter = 2
+texture = ExtResource("3_dial")
+expand_mode = 1
+
+[node name="Day" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 23.0
+offset_top = 45.0
+offset_right = 64.0
+offset_bottom = 62.0
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.2, 0.126, 0.08, 1)
+theme_override_font_sizes/font_size = 9
+text = "第 1 天"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Location" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_left = 77.0
+offset_top = 10.0
+offset_right = 219.0
+offset_bottom = 61.0
+mouse_filter = 2
+
+[node name="Lines" type="VBoxContainer" parent="Location"]
+layout_mode = 2
+mouse_filter = 2
+alignment = 1
+theme_override_constants/separation = 2
+
+[node name="Place" type="Label" parent="Location/Lines"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+theme_override_font_sizes/font_size = 17
+text = "空港聚落"
+
+[node name="Status" type="HBoxContainer" parent="Location/Lines"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 6
+
+[node name="World" type="Label" parent="Location/Lines/Status"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 1
+tooltip_text = "表世界"
+theme_override_colors/font_color = Color(0.94, 0.769, 0.459, 1)
+theme_override_font_sizes/font_size = 13
+text = "☀"
+vertical_alignment = 1
+
+[node name="Weather" type="Label" parent="Location/Lines/Status"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.87, 0.73, 0.53, 1)
+theme_override_font_sizes/font_size = 11
+text = "强风"
+vertical_alignment = 1
+
+[node name="ShiftButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 71.0
+offset_right = 70.0
+offset_bottom = 95.0
+mouse_default_cursor_shape = 2
+tooltip_text = "SHIFT切换世界"
+theme_override_font_sizes/font_size = 11
+text = "SHIFT"
+
+[node name="GoldPlate" type="PanelContainer" parent="."]
+layout_mode = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -110.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = 37.0
+mouse_filter = 2
+
+[node name="Gold" type="Label" parent="GoldPlate"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+theme_override_font_sizes/font_size = 12
+text = "金币  0"
+horizontal_alignment = 1
+
+[node name="QuestToggle" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -110.0
+offset_top = 47.0
+offset_right = -10.0
+offset_bottom = 72.0
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 12
+text = "任务班表"
+tooltip_text = "查看必做事项"
+
+[node name="TaskDot" type="Panel" parent="QuestToggle"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -13.0
+offset_top = 7.0
+offset_right = -6.0
+offset_bottom = 14.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("TaskDot")
+
+[node name="QuestDrawer" parent="." instance=ExtResource("4_tasks")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -211.0
+offset_top = 45.0
+offset_right = -10.0
+offset_bottom = 311.0
+
+[node name="PauseButton" type="Button" parent="."]
+layout_mode = 1
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -35.0
+offset_right = 75.0
+offset_bottom = -10.0
+mouse_default_cursor_shape = 2
+tooltip_text = "暂停菜单（Esc）"
+theme_override_font_sizes/font_size = 12
+text = "菜单"
+
+[node name="BackButton" type="Button" parent="."]
+visible = false
+layout_mode = 1
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -110.0
+offset_top = -35.0
+offset_right = -10.0
+offset_bottom = -10.0
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 12
+text = "返回地图"
+
+[node name="EndDay" type="Button" parent="."]
+layout_mode = 1
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -110.0
+offset_top = -35.0
+offset_right = -10.0
+offset_bottom = -10.0
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 12
+text = "结束当天"
+
+[node name="Feedback" type="Button" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -94.0
+offset_top = 10.0
+offset_right = 198.0
+offset_bottom = 38.0
+focus_mode = 0
+theme_override_font_sizes/font_size = 12
+autowrap_mode = 3
+
+[node name="FeedbackTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+one_shot = true

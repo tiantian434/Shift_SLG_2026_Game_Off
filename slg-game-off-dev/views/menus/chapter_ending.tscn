@@ -1,0 +1,138 @@
+[gd_scene format=3]
+
+[ext_resource type="Theme" path="res://views/hud/shift_theme.tres" id="1_theme"]
+[ext_resource type="Script" path="res://views/menus/chapter_ending.gd" id="2_script"]
+
+[sub_resource type="StyleBoxFlat" id="SurfaceCard"]
+content_margin_left = 14.0
+content_margin_top = 8.0
+content_margin_right = 14.0
+content_margin_bottom = 8.0
+bg_color = Color(0.216, 0.146, 0.095, 1)
+border_width_top = 2
+border_color = Color(0.717, 0.49, 0.273, 1)
+
+[sub_resource type="StyleBoxFlat" id="InnerCard"]
+content_margin_left = 14.0
+content_margin_top = 8.0
+content_margin_right = 14.0
+content_margin_bottom = 8.0
+bg_color = Color(0.151, 0.134, 0.215, 1)
+border_width_top = 2
+border_color = Color(0.573, 0.491, 0.711, 1)
+
+[node name="ChapterEnding" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_theme")
+script = ExtResource("2_script")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(0.102, 0.079, 0.068, 1)
+
+[node name="Center" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="Frame" type="PanelContainer" parent="Center"]
+custom_minimum_size = Vector2(530, 0)
+layout_mode = 2
+
+[node name="Contents" type="VBoxContainer" parent="Center/Frame"]
+layout_mode = 2
+theme_override_constants/separation = 11
+
+[node name="Finished" type="Label" parent="Center/Frame/Contents"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.78, 0.607, 0.406, 1)
+text = "第二章完 · 游戏结束"
+horizontal_alignment = 1
+
+[node name="Title" type="Label" parent="Center/Frame/Contents"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 29
+text = "城市依旧运转"
+horizontal_alignment = 1
+
+[node name="Outcomes" type="HBoxContainer" parent="Center/Frame/Contents"]
+layout_mode = 2
+theme_override_constants/separation = 9
+
+[node name="Surface" type="PanelContainer" parent="Center/Frame/Contents/Outcomes"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("SurfaceCard")
+
+[node name="SurfaceText" type="Label" parent="Center/Frame/Contents/Outcomes/Surface"]
+layout_mode = 2
+text = "表世界\n通风设备恢复，船员用过了午餐。"
+
+[node name="Inner" type="PanelContainer" parent="Center/Frame/Contents/Outcomes"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("InnerCard")
+
+[node name="InnerText" type="Label" parent="Center/Frame/Contents/Outcomes/Inner"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.879, 0.818, 0.954, 1)
+text = "里世界\n工坊的风平息了，叶片重新显出绿色。"
+
+[node name="Epilogue" type="Label" parent="Center/Frame/Contents"]
+layout_mode = 2
+text = "飞空港依旧运转着，仿佛什么都没有发生。\n只是两个世界之间的界限，已经开始悄然改变。"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="SaveStatus" type="Label" parent="Center/Frame/Contents"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.78, 0.607, 0.406, 1)
+theme_override_font_sizes/font_size = 11
+horizontal_alignment = 1
+
+[node name="Buttons" type="HBoxContainer" parent="Center/Frame/Contents"]
+layout_mode = 2
+theme_override_constants/separation = 9
+alignment = 1
+
+[node name="RetrySave" type="Button" parent="Center/Frame/Contents/Buttons"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(100, 30)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "重试保存"
+
+[node name="ReturnHome" type="Button" parent="Center/Frame/Contents/Buttons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 30)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "返回首页"
+
+[node name="Quit" type="Button" parent="Center/Frame/Contents/Buttons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 30)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "退出游戏"
+
+[node name="Fade" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(0.059, 0.046, 0.038, 1)

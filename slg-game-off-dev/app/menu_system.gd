@@ -2,6 +2,8 @@ extends Node
 
 const PAUSE_MENU := preload("res://views/menus/pause_menu.tscn")
 const SETTINGS_MENU := preload("res://views/menus/settings_menu.tscn")
+const DAY_TITLE := preload("res://views/menus/day_title.tscn")
+const SHIFT_THEME := preload("res://views/hud/shift_theme.tres")
 const GameSettings := preload("res://app/game_settings.gd")
 const SettingsMenu := preload("res://views/menus/settings_menu.gd")
 
@@ -11,6 +13,8 @@ var _menu_before_settings: Control
 var _focus_before_pause: Control
 var _focus_before_settings: Control
 var _returning_home := false
+var _day_title: Control
+var _day_end_confirmation: ConfirmationDialog
 var _settings := GameSettings.new()
 
 
@@ -33,12 +37,54 @@ func open_settings(source_menu: Control) -> void:
 	_settings_menu.setup(_settings)
 
 
+func open_pause() -> void:
+	if _pause_menu != null or _settings_menu != null:
+		return
+	if not get_tree().paused and SceneRouter.is_in_game() and not SceneRouter.is_changing_scene():
+		_open_pause_menu()
+
+
+func open_day_end() -> void:
+	if get_tree().paused or UIManager.has_modal() or SceneRouter.is_changing_scene() or not SceneRouter.is_in_game():
+		return
+	if GameSession.training_stage() != &"return":
+		GameSession.show_feedback("今天的站务还没有全部收尾。请先安排妥当，再结束今天吧。", true)
+		return
+
+	if _day_end_confirmation == null:
+		_day_end_confirmation = ConfirmationDialog.new()
+		_day_end_confirmation.name = "DayEndConfirmation"
+		_day_end_confirmation.title = "结束当天"
+		_day_end_confirmation.theme = SHIFT_THEME
+		_day_end_confirmation.dialog_text = "确定要结束今天吗？\n确认后回空港站房复命。"
+		_day_end_confirmation.ok_button_text = "回站房复命"
+		_day_end_confirmation.cancel_button_text = "返回处理"
+		_day_end_confirmation.confirmed.connect(GameSession.open_task.bind(&"ch2_return"))
+		add_child(_day_end_confirmation)
+	_day_end_confirmation.popup_centered(Vector2i(310, 116))
+
+
+func show_day_titles(titles: Array[String]) -> void:
+	_day_title = DAY_TITLE.instantiate() as Control
+	UIManager.mount_modal(_day_title, func(_event: InputEvent) -> bool: return true)
+	var heading: Label = _day_title.get_node("%DayHeading")
+	for title in titles:
+		heading.text = title
+		await get_tree().create_timer(0.95).timeout
+	UIManager.unmount_modal(_day_title)
+	_day_title.queue_free()
+	_day_title = null
+
+
 func _input(event: InputEvent) -> void:
 	if not event.is_action_pressed(&"ui_cancel"):
 		return
 
-	if _returning_home or SceneRouter.is_changing_scene():
+	if _returning_home or SceneRouter.is_changing_scene() or _day_title != null:
 		get_viewport().set_input_as_handled()
+	elif is_instance_valid(_day_end_confirmation) and _day_end_confirmation.visible:
+		get_viewport().set_input_as_handled()
+		_day_end_confirmation.hide()
 	elif _settings_menu != null:
 		get_viewport().set_input_as_handled()
 		_close_settings()
@@ -53,7 +99,7 @@ func _input(event: InputEvent) -> void:
 		_resume_game()
 	elif not get_tree().paused and SceneRouter.is_in_game():
 		get_viewport().set_input_as_handled()
-		_open_pause_menu()
+		open_pause()
 
 
 func _open_pause_menu() -> void:
@@ -90,6 +136,10 @@ func _save_game() -> void:
 func _load_game() -> void:
 	var result := GameSession.load_game(_pause_menu)
 	if result["ok"]:
+		if result["game_complete"]:
+			_close_pause_menu()
+			_focus_before_pause = null
+			return
 		_show_save_status("已读取备份存档" if result["used_backup"] else "已读取进度")
 		return
 
@@ -125,7 +175,7 @@ func _close_pause_menu() -> void:
 func _request_return_home() -> void:
 	if _returning_home:
 		return
-	if GameSession.has_save():
+	if GameSession.is_current_progress_saved():
 		_return_to_home()
 	else:
 		var confirm_home: ConfirmationDialog = _pause_menu.get_node("%ConfirmHome")

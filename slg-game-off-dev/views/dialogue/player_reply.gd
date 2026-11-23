@@ -21,10 +21,13 @@ func present(line: String) -> void:
 	_face.position = spot + approach
 	_face.rotation = deg_to_rad(swing * 25.0)
 	_face.modulate.a = 0.0
-	_bubble.position = spot + Vector2(68.0, -24.0)
 	var font := _text.get_theme_font(&"font")
 	var width := font.get_string_size(line, HORIZONTAL_ALIGNMENT_LEFT, -1, _text.get_theme_font_size(&"font_size")).x
 	_bubble.size.x = clampf(width + 28.0, 88.0, 216.0)
+	_text.size.x = _bubble.size.x - 24.0
+	_bubble.size.y = clampf(_text.get_minimum_size().y + 12.0, 46.0, 108.0)
+	var bubble_top := minf(spot.y - 24.0, -_bubble.size.y - 12.0)
+	_bubble.position = Vector2(spot.x + 68.0, bubble_top)
 	_bubble.rotation = deg_to_rad(swing * 3.0)
 	_bubble.scale = Vector2(0.64, 0.64)
 	_bubble.modulate.a = 0.0

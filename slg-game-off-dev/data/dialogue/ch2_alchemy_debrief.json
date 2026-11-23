@@ -1,0 +1,88 @@
+{
+  "id": "ch2_alchemy_debrief",
+  "speaker_name": {
+    "zh_CN": "旁白"
+  },
+  "entry": "scene",
+  "speakers": {
+    "narrator": {
+      "name": {
+        "zh_CN": "旁白"
+      }
+    },
+    "automaton": {
+      "name": {
+        "zh_CN": "机械姬（人造人）"
+      },
+      "portraits": {
+        "inner": "res://assets/chapter2/mechanical_face.png"
+      }
+    }
+  },
+  "blocks": {
+    "scene": {
+      "lines": [
+        {
+          "speaker_id": "narrator",
+          "zh_CN": "主角将药剂倒入容器，药液逐渐变得澄澈。"
+        },
+        {
+          "speaker_id": "narrator",
+          "zh_CN": "原本带有铁锈的植物开始缓缓舒展，叶片重新显露出绿色。"
+        },
+        {
+          "speaker_id": "automaton",
+          "zh_CN": "调和完成。异常症状已经消失。"
+        },
+        {
+          "speaker": "player",
+          "zh_CN": "还真成功了。"
+        },
+        {
+          "speaker_id": "automaton",
+          "zh_CN": "是的。不过，还需要观察一段时间，才能判断异常是否会再次出现。"
+        },
+        {
+          "speaker": "player",
+          "zh_CN": "原来如此。"
+        },
+        {
+          "speaker_id": "automaton",
+          "zh_CN": "如果能够进一步确定那些异常物质的来源，或许可以得到更稳定的调和结果。"
+        },
+        {
+          "speaker": "player",
+          "zh_CN": "……来源吗？"
+        },
+        {
+          "speaker_id": "narrator",
+          "zh_CN": "主角看着工作台上那份熟悉的金属样本，陷入了沉思。"
+        },
+        {
+          "speaker_id": "narrator",
+          "zh_CN": "那是来自表世界的东西。"
+        },
+        {
+          "speaker_id": "narrator",
+          "zh_CN": "然而，眼前的人造人似乎并不知道这一点。"
+        },
+        {
+          "speaker_id": "automaton",
+          "zh_CN": "您发现什么了吗？"
+        },
+        {
+          "speaker": "player",
+          "zh_CN": "没什么，只是想到了一些事情。"
+        },
+        {
+          "speaker_id": "automaton",
+          "zh_CN": "明白。如果有新的发现，欢迎您再次来到工坊。"
+        },
+        {
+          "speaker": "player",
+          "zh_CN": "好的，谢谢你。"
+        }
+      ]
+    }
+  }
+}

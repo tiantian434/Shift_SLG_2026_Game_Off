@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" path="res://assets/map/surface_map.png" id="4_surface_map"]
 [ext_resource type="Texture2D" path="res://assets/map/inner_map.png" id="5_inner_map"]
 [ext_resource type="Texture2D" path="res://assets/map/inner_buildings.png" id="6_inner_buildings"]
+[ext_resource type="PackedScene" path="res://views/hud/game_hud.tscn" id="7_hud"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_station"]
 atlas = ExtResource("3_buildings")
@@ -78,41 +79,6 @@ mouse_filter = 2
 texture = ExtResource("4_surface_map")
 expand_mode = 1
 
-[node name="MapTitle" type="Label" parent="MapView"]
-layout_mode = 0
-offset_left = 24.0
-offset_top = 17.0
-theme_override_colors/font_color = Color(1, 0.9, 0.66, 1)
-theme_override_font_sizes/font_size = 21
-text = "表世界 · 空港聚落"
-
-[node name="ShiftHint" type="Label" parent="MapView"]
-layout_mode = 0
-offset_left = 488.0
-offset_top = 330.0
-offset_right = 616.0
-offset_bottom = 352.0
-mouse_filter = 2
-theme_override_colors/font_color = Color(0.94, 0.93, 0.81, 1)
-theme_override_colors/font_outline_color = Color(0.08, 0.13, 0.18, 1)
-theme_override_constants/outline_size = 4
-theme_override_font_sizes/font_size = 14
-text = "Shift 切换世界"
-horizontal_alignment = 2
-
-[node name="WeatherStatus" type="Label" parent="MapView"]
-unique_name_in_owner = true
-layout_mode = 0
-offset_left = 24.0
-offset_top = 48.0
-offset_right = 180.0
-offset_bottom = 68.0
-mouse_filter = 2
-theme_override_colors/font_color = Color(0.98, 0.93, 0.78, 1)
-theme_override_colors/font_outline_color = Color(0.08, 0.13, 0.18, 1)
-theme_override_constants/outline_size = 4
-theme_override_font_sizes/font_size = 13
-
 [node name="Facilities" type="Control" parent="MapView"]
 layout_mode = 1
 anchors_preset = 15
@@ -129,7 +95,7 @@ offset_bottom = 197.0
 texture = SubResource("AtlasTexture_station")
 facility_id = &"hub"
 display_name = "空港站房"
-inner_display_name = "法阵中枢"
+inner_display_name = "驿站"
 inner_texture = SubResource("AtlasTexture_inner_station")
 
 [node name="Workshop" parent="MapView/Facilities" instance=ExtResource("2_hotspot")]
@@ -165,8 +131,11 @@ offset_bottom = 340.0
 texture = SubResource("AtlasTexture_shop")
 facility_id = &"shop"
 display_name = "商店"
-inner_display_name = "奇物商店"
+inner_display_name = "炼药工房"
 inner_texture = SubResource("AtlasTexture_inner_shop")
+
+[node name="GameHUD" parent="MapView" instance=ExtResource("7_hud")]
+layout_mode = 1
 
 [connection signal="facility_selected" from="MapView/Facilities/Station" to="MapView" method="_on_facility_selected"]
 [connection signal="facility_selected" from="MapView/Facilities/Workshop" to="MapView" method="_on_facility_selected"]

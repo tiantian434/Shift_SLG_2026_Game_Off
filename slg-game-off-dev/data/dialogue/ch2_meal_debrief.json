@@ -1,0 +1,84 @@
+{
+  "id": "ch2_meal_debrief",
+  "speaker_name": {
+    "zh_CN": "旁白"
+  },
+  "entry": "scene",
+  "speakers": {
+    "narrator": {
+      "name": {
+        "zh_CN": "旁白"
+      }
+    },
+    "sailor": {
+      "name": {
+        "zh_CN": "船员"
+      },
+      "portraits": {
+        "surface": "res://assets/chapter2/sailor_face.png"
+      }
+    },
+    "maiden": {
+      "name": {
+        "zh_CN": "机械姬"
+      },
+      "portraits": {
+        "surface": "res://assets/chapter2/mechanical_face.png"
+      }
+    }
+  },
+  "blocks": {
+    "scene": {
+      "lines": [
+        {
+          "speaker_id": "narrator",
+          "zh_CN": "船员接过端上来的热汤，喝下一口，满意地舒了口气。"
+        },
+        {
+          "speaker_id": "sailor",
+          "zh_CN": "啊……就是这个。多谢你们了。"
+        },
+        {
+          "speaker": "player",
+          "zh_CN": "看来做饭和修机器也没什么两样嘛，找对问题，再找对办法。"
+        },
+        {
+          "speaker_id": "maiden",
+          "zh_CN": "从任务流程来看，两者确实具有一定相似性。"
+        },
+        {
+          "speaker": "player",
+          "zh_CN": "那你会做饭吗？"
+        },
+        {
+          "speaker_id": "maiden",
+          "zh_CN": "我的数据库储存了三千六百四十二种常见菜品的制作方法。"
+        },
+        {
+          "speaker": "player",
+          "zh_CN": "听起来很厉害。"
+        },
+        {
+          "speaker_id": "maiden",
+          "zh_CN": "但我无法品尝食物，因此无法保证最终成品符合人类的主观口味。"
+        },
+        {
+          "speaker": "player",
+          "zh_CN": "……那还是算了。"
+        },
+        {
+          "speaker_id": "maiden",
+          "zh_CN": "您似乎对我的烹饪能力缺乏信心。"
+        },
+        {
+          "speaker": "player",
+          "zh_CN": "我可没这么说。"
+        },
+        {
+          "speaker_id": "maiden",
+          "zh_CN": "已记录。"
+        }
+      ]
+    }
+  }
+}

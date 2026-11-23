@@ -1,0 +1,88 @@
+{
+  "id": "ch2_meal_intro",
+  "speaker_name": {
+    "zh_CN": "旁白"
+  },
+  "entry": "scene",
+  "speakers": {
+    "narrator": {
+      "name": {
+        "zh_CN": "旁白"
+      }
+    },
+    "maiden": {
+      "name": {
+        "zh_CN": "机械姬"
+      },
+      "portraits": {
+        "surface": "res://assets/chapter2/mechanical_face.png"
+      }
+    },
+    "sailor": {
+      "name": {
+        "zh_CN": "船员"
+      },
+      "portraits": {
+        "surface": "res://assets/chapter2/sailor_face.png"
+      }
+    }
+  },
+  "blocks": {
+    "scene": {
+      "lines": [
+        {
+          "speaker_id": "narrator",
+          "zh_CN": "临近中午，港口的汽笛声渐渐稀疏。"
+        },
+        {
+          "speaker_id": "narrator",
+          "zh_CN": "飞空艇需要煤炭和水才能持续运行，人也同样需要食物才能继续工作。"
+        },
+        {
+          "speaker_id": "narrator",
+          "zh_CN": "餐馆坐落在飞空港的商业区内。忙碌了一上午的工人、旅客与船员聚集在这里，享受短暂的休息。"
+        },
+        {
+          "speaker": "player",
+          "zh_CN": "总算到吃饭的时间了。"
+        },
+        {
+          "speaker_id": "maiden",
+          "zh_CN": "前辈，餐馆目前正在接待午间客人。店员似乎需要帮助。"
+        },
+        {
+          "speaker": "player",
+          "zh_CN": "我们连餐馆的工作都要负责吗？"
+        },
+        {
+          "speaker_id": "maiden",
+          "zh_CN": "飞空港的日常运转不仅包括机械设备，也包括工作人员的基本生活需求。"
+        },
+        {
+          "speaker": "player",
+          "zh_CN": "你说得倒也没错。"
+        },
+        {
+          "speaker_id": "narrator",
+          "zh_CN": "一位刚结束工作的船员坐在柜台前，疲惫地摘下帽子。"
+        },
+        {
+          "speaker_id": "sailor",
+          "zh_CN": "唉，今天可真够累的。船上颠了一路，胃里难受得很。有没有什么热乎又清淡的东西？"
+        },
+        {
+          "speaker_id": "maiden",
+          "zh_CN": "您听到了他的要求吗？"
+        },
+        {
+          "speaker": "player",
+          "zh_CN": "热乎一点，清淡一点？"
+        },
+        {
+          "speaker_id": "maiden",
+          "zh_CN": "正确。请根据客人的需求选择合适的餐食。"
+        }
+      ]
+    }
+  }
+}

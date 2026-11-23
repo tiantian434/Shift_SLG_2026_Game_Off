@@ -1,8 +1,8 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://b1l1hc5iynheo"]
 
-[ext_resource type="Script" path="res://views/interactions/sprite_hotspot.gd" id="1_hotspot"]
+[ext_resource type="Script" uid="uid://5erbd4ypn1ni" path="res://views/interactions/sprite_hotspot.gd" id="1_hotspot"]
 
-[node name="FacilityActor" type="TextureRect"]
+[node name="FacilityActor" type="TextureRect" unique_id=723605869]
 texture_filter = 1
 offset_right = 48.0
 offset_bottom = 48.0
@@ -11,26 +11,26 @@ mouse_default_cursor_shape = 2
 expand_mode = 1
 script = ExtResource("1_hotspot")
 
-[node name="Outline" type="TextureRect" parent="."]
+[node name="Outline" type="TextureRect" parent="." unique_id=1853596332]
 visible = false
-show_behind_parent = true
 self_modulate = Color(1, 0.86, 0.54, 1)
+show_behind_parent = true
 layout_mode = 0
 mouse_filter = 2
 expand_mode = 1
 
-[node name="NameTag" type="Label" parent="."]
+[node name="NameTag" type="Label" parent="." unique_id=736655321]
 visible = false
 z_index = 1
 layout_mode = 1
+anchors_preset = 10
 anchor_right = 1.0
 offset_left = -60.0
 offset_top = -22.0
 offset_right = 60.0
 offset_bottom = -3.0
-mouse_filter = 2
 theme_override_colors/font_color = Color(1, 0.94, 0.79, 1)
-theme_override_colors/font_outline_color = Color(0.07, 0.08, 0.10, 1)
+theme_override_colors/font_outline_color = Color(0.07, 0.08, 0.1, 1)
 theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 13
 horizontal_alignment = 1

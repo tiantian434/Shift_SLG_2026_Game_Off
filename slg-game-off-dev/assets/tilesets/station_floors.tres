@@ -1,6 +1,6 @@
-[gd_resource type="TileSet" format=3]
+[gd_resource type="TileSet" format=3 uid="uid://bb113jxrcywgq"]
 
-[ext_resource type="Texture2D" path="res://assets/third_party/ninja_adventure/TilesetInteriorFloor.png" id="1_n6kfc"]
+[ext_resource type="Texture2D" uid="uid://btdskaexfr2f8" path="res://assets/third_party/ninja_adventure/TilesetInteriorFloor.png" id="1_n6kfc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h4rn1"]
 texture = ExtResource("1_n6kfc")

@@ -1,0 +1,56 @@
+{
+  "id": "ch2_repair_debrief",
+  "speaker_name": {
+    "zh_CN": "旁白"
+  },
+  "entry": "scene",
+  "speakers": {
+    "narrator": {
+      "name": {
+        "zh_CN": "旁白"
+      }
+    },
+    "maiden": {
+      "name": {
+        "zh_CN": "机械姬"
+      },
+      "portraits": {
+        "surface": "res://assets/chapter2/mechanical_face.png"
+      }
+    }
+  },
+  "blocks": {
+    "scene": {
+      "lines": [
+        {
+          "speaker": "player",
+          "zh_CN": "好了，试试看吧。"
+        },
+        {
+          "speaker_id": "narrator",
+          "zh_CN": "随着一声轻响，通风机的扇叶重新转动起来。白色蒸汽从排气口缓缓涌出。"
+        },
+        {
+          "speaker_id": "maiden",
+          "zh_CN": "维修完成，设备运行状态已恢复正常。"
+        },
+        {
+          "speaker": "player",
+          "zh_CN": "看来我还没把以前学的东西忘光。"
+        },
+        {
+          "speaker_id": "maiden",
+          "zh_CN": "事实上，您刚才的操作耗时比专业维修工的平均水平多出了百分之四十二。"
+        },
+        {
+          "speaker": "player",
+          "zh_CN": "……这种事情就不用告诉我了。"
+        },
+        {
+          "speaker_id": "maiden",
+          "zh_CN": "明白。以后将不主动报告此类数据。"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,140 @@
+{
+  "id": "ch2_alchemy_intro",
+  "speaker_name": {
+    "zh_CN": "旁白"
+  },
+  "entry": "scene",
+  "speakers": {
+    "narrator": {
+      "name": {
+        "zh_CN": "旁白"
+      }
+    },
+    "automaton": {
+      "name": {
+        "zh_CN": "机械姬（人造人）"
+      },
+      "portraits": {
+        "inner": "res://assets/chapter2/mechanical_face.png"
+      }
+    }
+  },
+  "blocks": {
+    "scene": {
+      "lines": [
+        {
+          "speaker_id": "narrator",
+          "zh_CN": "随着双界交融逐渐加剧，一些本不属于里世界的东西开始出现在这里。"
+        },
+        {
+          "speaker_id": "narrator",
+          "zh_CN": "铁锈爬上树叶，蒸汽与煤烟的气味渗入森林。"
+        },
+        {
+          "speaker_id": "narrator",
+          "zh_CN": "来自另一个世界的物质，正在缓慢改变这里原本的模样。"
+        },
+        {
+          "speaker_id": "narrator",
+          "zh_CN": "炼药工房中的人们尝试用药材与特殊的调和方法，令这些失衡之物重新恢复正常。"
+        },
+        {
+          "speaker_id": "narrator",
+          "zh_CN": "主角走进炼药工房。"
+        },
+        {
+          "speaker_id": "narrator",
+          "zh_CN": "工作台上摆放着装有各种药草和异物样本的瓶罐。空气中弥漫着浓郁的草药气味。"
+        },
+        {
+          "speaker": "player",
+          "zh_CN": "这些都是药材？"
+        },
+        {
+          "speaker_id": "automaton",
+          "zh_CN": "是的。不过其中也有一些无法准确辨认的外来物质。"
+        },
+        {
+          "speaker": "player",
+          "zh_CN": "外来物质？"
+        },
+        {
+          "speaker_id": "automaton",
+          "zh_CN": "近期出现了许多性质异常的物品。有些植物的叶片会逐渐金属化，也有一些水源出现了无法解释的变化。"
+        },
+        {
+          "speaker": "player",
+          "zh_CN": "这种事情经常发生吗？"
+        },
+        {
+          "speaker_id": "automaton",
+          "zh_CN": "根据目前的记录，类似现象正在逐渐增多。"
+        },
+        {
+          "speaker": "player",
+          "zh_CN": "……这样啊。"
+        },
+        {
+          "speaker_id": "automaton",
+          "zh_CN": "工坊尝试通过药剂调和这些异常物质，使受到影响的生灵或环境恢复正常。"
+        },
+        {
+          "speaker": "player",
+          "zh_CN": "要怎么做？"
+        },
+        {
+          "speaker_id": "automaton",
+          "zh_CN": "首先，根据需要处理的症状选择合适的药材作为基底。"
+        },
+        {
+          "speaker": "player",
+          "zh_CN": "然后呢？"
+        },
+        {
+          "speaker_id": "automaton",
+          "zh_CN": "根据异常物质的性质加入对应材料，再使用辅料调整药剂的平衡。"
+        },
+        {
+          "speaker": "player",
+          "zh_CN": "所以，就是把这些东西混在一起？"
+        },
+        {
+          "speaker_id": "automaton",
+          "zh_CN": "不完全正确。不同材料具有不同的性质，随意混合无法保证得到预期结果。"
+        },
+        {
+          "speaker": "player",
+          "zh_CN": "……看来还是得认真一点。"
+        },
+        {
+          "speaker": "player",
+          "zh_CN": "这个光点是什么意思？"
+        },
+        {
+          "speaker_id": "automaton",
+          "zh_CN": "它表示药剂当前的调和状态。不同材料会使它向不同的方向移动。"
+        },
+        {
+          "speaker": "player",
+          "zh_CN": "那我要把它移到哪里？"
+        },
+        {
+          "speaker_id": "automaton",
+          "zh_CN": "需要根据症状与材料性质进行判断。"
+        },
+        {
+          "speaker": "player",
+          "zh_CN": "没有一个标准答案吗？"
+        },
+        {
+          "speaker_id": "automaton",
+          "zh_CN": "有些症状可以通过多种材料组合解决。至于哪一种最合适，还需要进一步确认。"
+        },
+        {
+          "speaker": "player",
+          "zh_CN": "好吧，那就边试边看。"
+        }
+      ]
+    }
+  }
+}

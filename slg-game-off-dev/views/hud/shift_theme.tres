@@ -1,0 +1,173 @@
+[gd_resource type="Theme" format=3]
+
+[sub_resource type="StyleBoxFlat" id="BrassPanel"]
+content_margin_left = 10.0
+content_margin_top = 8.0
+content_margin_right = 10.0
+content_margin_bottom = 8.0
+bg_color = Color(0.149, 0.11, 0.09, 0.98)
+border_width_left = 1
+border_width_top = 2
+border_width_right = 1
+border_width_bottom = 2
+border_color = Color(0.655, 0.475, 0.304, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_color = Color(0.088, 0.052, 0.036, 0.58)
+shadow_size = 3
+shadow_offset = Vector2(0, 2)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="BrassButton"]
+content_margin_left = 9.0
+content_margin_top = 3.0
+content_margin_right = 9.0
+content_margin_bottom = 4.0
+bg_color = Color(0.243, 0.176, 0.13, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 2
+border_color = Color(0.675, 0.494, 0.316, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="ButtonHover"]
+bg_color = Color(0.359, 0.254, 0.162, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 2
+border_color = Color(0.96, 0.71, 0.412, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="ButtonPressed"]
+bg_color = Color(0.51, 0.354, 0.207, 1)
+border_width_left = 1
+border_width_top = 2
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.91, 0.664, 0.38, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="ButtonDisabled"]
+bg_color = Color(0.176, 0.14, 0.117, 1)
+border_width_bottom = 1
+border_color = Color(0.4, 0.313, 0.237, 1)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="ButtonFocus"]
+draw_center = false
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.848, 0.61, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="Paper"]
+content_margin_left = 10.0
+content_margin_top = 8.0
+content_margin_right = 10.0
+content_margin_bottom = 8.0
+bg_color = Color(0.902, 0.815, 0.647, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 3
+border_color = Color(0.514, 0.365, 0.23, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_color = Color(0.088, 0.052, 0.036, 0.56)
+shadow_size = 2
+shadow_offset = Vector2(0, 2)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="PaperButton"]
+content_margin_left = 9.0
+content_margin_top = 3.0
+content_margin_right = 9.0
+content_margin_bottom = 4.0
+bg_color = Color(0.851, 0.74, 0.557, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 2
+border_color = Color(0.509, 0.349, 0.197, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="ScrollTrack"]
+content_margin_left = 2.0
+content_margin_right = 2.0
+bg_color = Color(0.47, 0.32, 0.2, 0.26)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="ScrollHandle"]
+content_margin_left = 2.0
+content_margin_right = 2.0
+bg_color = Color(0.55, 0.361, 0.202, 1)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="ScrollHandleHover"]
+content_margin_left = 2.0
+content_margin_right = 2.0
+bg_color = Color(0.69, 0.477, 0.268, 1)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxLine" id="PaperRule"]
+color = Color(0.509, 0.349, 0.197, 0.64)
+thickness = 1
+
+[resource]
+default_font_size = 13
+Button/colors/font_color = Color(0.99, 0.897, 0.723, 1)
+Button/colors/font_disabled_color = Color(0.61, 0.533, 0.438, 1)
+Button/colors/font_focus_color = Color(1, 0.92, 0.786, 1)
+Button/colors/font_hover_color = Color(1, 0.936, 0.793, 1)
+Button/colors/font_pressed_color = Color(1, 0.95, 0.846, 1)
+Button/styles/disabled = SubResource("ButtonDisabled")
+Button/styles/focus = SubResource("ButtonFocus")
+Button/styles/hover = SubResource("ButtonHover")
+Button/styles/normal = SubResource("BrassButton")
+Button/styles/pressed = SubResource("ButtonPressed")
+Label/colors/font_color = Color(0.976, 0.896, 0.742, 1)
+Panel/styles/panel = SubResource("BrassPanel")
+PanelContainer/styles/panel = SubResource("BrassPanel")
+PaperPanel/base_type = &"PanelContainer"
+PaperPanel/styles/panel = SubResource("Paper")
+InkLabel/base_type = &"Label"
+InkLabel/colors/font_color = Color(0.228, 0.147, 0.084, 1)
+PaperButton/base_type = &"Button"
+PaperButton/colors/font_color = Color(0.228, 0.147, 0.084, 1)
+PaperButton/colors/font_focus_color = Color(0.278, 0.166, 0.088, 1)
+PaperButton/styles/normal = SubResource("PaperButton")
+VScrollBar/styles/scroll = SubResource("ScrollTrack")
+VScrollBar/styles/grabber = SubResource("ScrollHandle")
+VScrollBar/styles/grabber_highlight = SubResource("ScrollHandleHover")
+VScrollBar/styles/grabber_pressed = SubResource("ScrollHandleHover")
+HSeparator/styles/separator = SubResource("PaperRule")
+VBoxContainer/constants/separation = 6
+HBoxContainer/constants/separation = 6

@@ -44,6 +44,7 @@ func open(quest_id: StringName, issuer_id: StringName, facility_id: StringName, 
 	_world = world
 	_previous_focus = UIManager.get_viewport().gui_get_focus_owner()
 	UIManager.mount_modal(self, _handle_input)
+	get_tree().current_scene.tree_exiting.connect(_close, CONNECT_ONE_SHOT)
 
 
 func _ready() -> void:
@@ -107,6 +108,8 @@ func _handle_input(event: InputEvent) -> bool:
 
 
 func _close() -> void:
+	if not is_inside_tree():
+		return
 	UIManager.unmount_modal(self)
 	if is_instance_valid(_previous_focus) and _previous_focus.is_visible_in_tree():
 		_previous_focus.grab_focus()

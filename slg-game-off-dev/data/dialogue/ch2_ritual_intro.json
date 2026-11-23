@@ -1,0 +1,128 @@
+{
+  "id": "ch2_ritual_intro",
+  "speaker_name": {
+    "zh_CN": "旁白"
+  },
+  "entry": "scene",
+  "speakers": {
+    "narrator": {
+      "name": {
+        "zh_CN": "旁白"
+      }
+    },
+    "automaton": {
+      "name": {
+        "zh_CN": "机械姬（人造人）"
+      },
+      "portraits": {
+        "inner": "res://assets/chapter2/mechanical_face.png"
+      }
+    }
+  },
+  "blocks": {
+    "scene": {
+      "lines": [
+        {
+          "speaker_id": "narrator",
+          "zh_CN": "与表世界的蒸汽机不同，里世界的城市并不依靠煤炭与机械驱动。"
+        },
+        {
+          "speaker_id": "narrator",
+          "zh_CN": "魔法流淌在这个世界的土地与空气之间。"
+        },
+        {
+          "speaker_id": "narrator",
+          "zh_CN": "术式工坊中的法阵，就像是另一种形式的机械。人们按照既定的规律排列符文、引导魔力，以此改变周围的环境。"
+        },
+        {
+          "speaker_id": "narrator",
+          "zh_CN": "主角来到一座术式工坊。"
+        },
+        {
+          "speaker_id": "narrator",
+          "zh_CN": "地面上刻着巨大的环形法阵，符文沿圆环缓缓亮起。"
+        },
+        {
+          "speaker_id": "narrator",
+          "zh_CN": "站在法阵旁的，是一位主角十分熟悉，却又完全陌生的少女。"
+        },
+        {
+          "speaker_id": "narrator",
+          "zh_CN": "她的容貌与表世界的机械姬极为相似。"
+        },
+        {
+          "speaker": "player",
+          "zh_CN": "……是你？"
+        },
+        {
+          "speaker_id": "automaton",
+          "zh_CN": "您好。请问有什么需要帮助的吗？"
+        },
+        {
+          "speaker": "player",
+          "zh_CN": "呃……没什么。"
+        },
+        {
+          "speaker_id": "automaton",
+          "zh_CN": "如果您希望使用这里的术式设施，我可以为您提供必要的操作说明。"
+        },
+        {
+          "speaker": "player",
+          "zh_CN": "你在这里工作？"
+        },
+        {
+          "speaker_id": "automaton",
+          "zh_CN": "我负责协助处理工坊的部分事务，以及向使用者说明设施的基本操作方法。"
+        },
+        {
+          "speaker": "player",
+          "zh_CN": "原来如此。"
+        },
+        {
+          "speaker_id": "narrator",
+          "zh_CN": "主角再次打量眼前的少女。"
+        },
+        {
+          "speaker_id": "narrator",
+          "zh_CN": "虽然外貌几乎一致，但她显然不认识自己。"
+        },
+        {
+          "speaker_id": "automaton",
+          "zh_CN": "请问有什么问题吗？"
+        },
+        {
+          "speaker": "player",
+          "zh_CN": "……没什么。可以教我怎么使用这个法阵吗？"
+        },
+        {
+          "speaker_id": "automaton",
+          "zh_CN": "当然可以。"
+        },
+        {
+          "speaker_id": "narrator",
+          "zh_CN": "两人走到法阵中央。"
+        },
+        {
+          "speaker_id": "automaton",
+          "zh_CN": "术式的运行需要按照一定的顺序引导魔力。请观察环形符文的排列。"
+        },
+        {
+          "speaker": "player",
+          "zh_CN": "这些符文会动？"
+        },
+        {
+          "speaker_id": "automaton",
+          "zh_CN": "是的。光标会沿着法阵移动，当它经过符文节点时，需要在适当的时机进行引导。"
+        },
+        {
+          "speaker": "player",
+          "zh_CN": "也就是说，要按照节奏来？"
+        },
+        {
+          "speaker_id": "automaton",
+          "zh_CN": "可以这样理解。您可以先尝试完成一个简单的术式。"
+        }
+      ]
+    }
+  }
+}

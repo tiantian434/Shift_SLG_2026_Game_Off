@@ -9,12 +9,17 @@ extends Node2D
 func _ready() -> void:
 	_hud.set_inner_world(world == SceneRouter.World.INNER)
 	_hud.back_requested.connect(_return_to_map)
+	_hud.shift_requested.connect(_shift_world)
 
 
 func _unhandled_key_input(event: InputEvent) -> void:
 	if event.is_action_pressed(&"shift_world"):
 		get_viewport().set_input_as_handled()
-		SceneRouter.shift_facility(facility_id, world)
+		_shift_world()
+
+
+func _shift_world() -> void:
+	SceneRouter.shift_facility(facility_id, world)
 
 
 func _return_to_map() -> void:

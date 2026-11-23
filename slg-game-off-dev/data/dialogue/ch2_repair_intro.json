@@ -1,0 +1,88 @@
+{
+  "id": "ch2_repair_intro",
+  "speaker_name": {
+    "zh_CN": "旁白"
+  },
+  "entry": "scene",
+  "speakers": {
+    "narrator": {
+      "name": {
+        "zh_CN": "旁白"
+      }
+    },
+    "maiden": {
+      "name": {
+        "zh_CN": "机械姬"
+      },
+      "portraits": {
+        "surface": "res://assets/chapter2/mechanical_face.png"
+      }
+    }
+  },
+  "blocks": {
+    "scene": {
+      "lines": [
+        {
+          "speaker_id": "narrator",
+          "zh_CN": "两人沿着钢铁廊桥来到机修所。"
+        },
+        {
+          "speaker_id": "narrator",
+          "zh_CN": "这里充斥着金属敲击声与蒸汽的嘶鸣。齿轮、轴承和各种机械零件堆积在工作台上，巨大的蒸汽管道横穿屋顶。"
+        },
+        {
+          "speaker_id": "maiden",
+          "zh_CN": "这里是机修所，负责飞空港内各种机械设备的检查与维修。"
+        },
+        {
+          "speaker": "player",
+          "zh_CN": "这地方我倒是熟悉，不过平时好像不太需要我亲自动手。"
+        },
+        {
+          "speaker_id": "maiden",
+          "zh_CN": "是的。但今日有一台通风设备出现故障，维修人员暂时无法抽身。"
+        },
+        {
+          "speaker": "player",
+          "zh_CN": "所以？"
+        },
+        {
+          "speaker_id": "maiden",
+          "zh_CN": "所以需要您亲自处理。"
+        },
+        {
+          "speaker": "player",
+          "zh_CN": "……我只是个管理员。"
+        },
+        {
+          "speaker_id": "maiden",
+          "zh_CN": "您的工作职责包括保证空港设施正常运转。"
+        },
+        {
+          "speaker": "player",
+          "zh_CN": "好吧，好吧。东西在哪？"
+        },
+        {
+          "speaker_id": "narrator",
+          "zh_CN": "机械姬带着主角来到一台停止运转的通风机前。"
+        },
+        {
+          "speaker_id": "narrator",
+          "zh_CN": "设备的扇叶有明显的凹痕，转动时不断发出刺耳的金属撞击声。"
+        },
+        {
+          "speaker_id": "maiden",
+          "zh_CN": "您可以先观察设备的故障症状。"
+        },
+        {
+          "speaker": "player",
+          "zh_CN": "扇叶好像有些变形，转起来还会发出怪声。"
+        },
+        {
+          "speaker_id": "maiden",
+          "zh_CN": "判断合理。现在请尝试选择适当的替换零件与维修工具。"
+        }
+      ]
+    }
+  }
+}

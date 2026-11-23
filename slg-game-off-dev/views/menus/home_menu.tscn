@@ -1,7 +1,69 @@
 [gd_scene format=3]
 
-[ext_resource type="Theme" path="res://views/menus/menu_theme.tres" id="1_theme"]
+[ext_resource type="Theme" path="res://views/hud/shift_theme.tres" id="1_theme"]
 [ext_resource type="Script" path="res://views/menus/home_menu.gd" id="2_script"]
+[ext_resource type="Texture2D" path="res://assets/ui/day_dial.png" id="3_dial"]
+[ext_resource type="Texture2D" path="res://assets/map/surface_map.png" id="4_surface"]
+[ext_resource type="Texture2D" path="res://assets/map/inner_map.png" id="5_inner"]
+[ext_resource type="Texture2D" path="res://assets/third_party/ninja_adventure/tileset_house.png" id="6_buildings"]
+[ext_resource type="Texture2D" path="res://assets/map/inner_buildings.png" id="7_inner_buildings"]
+
+[sub_resource type="StyleBoxFlat" id="MenuFrame"]
+bg_color = Color(0.18, 0.126, 0.093, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.44, 0.316, 0.205, 1)
+
+[sub_resource type="StyleBoxFlat" id="MapFrame"]
+bg_color = Color(0.14, 0.099, 0.078, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.67, 0.487, 0.285, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_left = 3
+corner_radius_bottom_right = 3
+shadow_color = Color(0.076, 0.051, 0.039, 0.75)
+shadow_size = 4
+shadow_offset = Vector2(0, 3)
+
+[sub_resource type="AtlasTexture" id="SurfaceMapHalf"]
+atlas = ExtResource("4_surface")
+region = Rect2(0, 0, 320, 360)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="InnerMapHalf"]
+atlas = ExtResource("5_inner")
+region = Rect2(320, 0, 320, 360)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Station"]
+atlas = ExtResource("6_buildings")
+region = Rect2(416, 0, 48, 48)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Restaurant"]
+atlas = ExtResource("6_buildings")
+region = Rect2(192, 0, 64, 48)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Workshop"]
+atlas = ExtResource("7_inner_buildings")
+region = Rect2(48, 0, 48, 48)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="Shop"]
+atlas = ExtResource("7_inner_buildings")
+region = Rect2(160, 0, 64, 48)
+filter_clip = true
+
+[sub_resource type="SystemFont" id="TitleFont"]
+font_names = PackedStringArray("Cinzel", "Noto Serif", "Georgia")
+font_weight = 700
 
 [node name="HomeMenu" type="Control"]
 layout_mode = 3
@@ -21,76 +83,218 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-color = Color(0.057, 0.091, 0.109, 1)
+color = Color(0.112, 0.084, 0.071, 1)
 
-[node name="RightBackground" type="ColorRect" parent="."]
+[node name="Layout" type="Control" parent="."]
 layout_mode = 1
-anchor_left = 0.54
-anchor_right = 1.0
-anchor_bottom = 1.0
-mouse_filter = 2
-color = Color(0.102, 0.149, 0.171, 1)
-
-[node name="TitleBlock" type="VBoxContainer" parent="."]
-layout_mode = 1
-anchor_left = 0.085
+anchors_preset = 8
+anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_top = -47.0
-offset_bottom = 47.0
+offset_left = -320.0
+offset_top = -180.0
+offset_right = 320.0
+offset_bottom = 180.0
 mouse_filter = 2
-theme_override_constants/separation = 10
 
-[node name="Title" type="Label" parent="TitleBlock"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.967, 0.86, 0.675, 1)
-theme_override_font_sizes/font_size = 64
+[node name="MenuFrame" type="Panel" parent="Layout"]
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 236.0
+offset_bottom = 344.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("MenuFrame")
+
+[node name="Dial" type="TextureRect" parent="Layout/MenuFrame"]
+texture_filter = 1
+offset_left = 12.0
+offset_top = 7.0
+offset_right = 88.0
+offset_bottom = 83.0
+mouse_filter = 2
+texture = ExtResource("3_dial")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Title" type="Label" parent="Layout/MenuFrame"]
+offset_left = 17.0
+offset_top = 68.0
+offset_right = 203.0
+offset_bottom = 134.0
+theme_override_colors/font_color = Color(0.995, 0.884, 0.629, 1)
+theme_override_colors/font_shadow_color = Color(0.07, 0.049, 0.03, 1)
+theme_override_constants/shadow_offset_y = 3
+theme_override_fonts/font = SubResource("TitleFont")
+theme_override_font_sizes/font_size = 53
 text = "SHIFT"
+vertical_alignment = 1
 
-[node name="TitleRule" type="ColorRect" parent="TitleBlock"]
-custom_minimum_size = Vector2(64, 3)
-layout_mode = 2
-size_flags_horizontal = 0
+[node name="Rule" type="ColorRect" parent="Layout/MenuFrame"]
+offset_left = 18.0
+offset_top = 143.0
+offset_right = 202.0
+offset_bottom = 144.0
 mouse_filter = 2
-color = Color(0.766, 0.571, 0.331, 1)
+color = Color(0.59, 0.415, 0.263, 1)
 
-[node name="Buttons" type="VBoxContainer" parent="."]
-layout_mode = 1
-anchor_left = 0.625
-anchor_top = 0.5
-anchor_right = 0.915
-anchor_bottom = 0.5
-offset_top = -73.0
-offset_bottom = 73.0
-theme_override_constants/separation = 10
+[node name="Buttons" type="VBoxContainer" parent="Layout/MenuFrame"]
+offset_left = 18.0
+offset_top = 162.0
+offset_right = 202.0
+offset_bottom = 301.0
+theme_override_constants/separation = 8
 
-[node name="NewGame" type="Button" parent="Buttons"]
+[node name="NewGame" type="Button" parent="Layout/MenuFrame/Buttons"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 42)
+custom_minimum_size = Vector2(0, 37)
 layout_mode = 2
 mouse_default_cursor_shape = 2
 text = "新游戏"
 
-[node name="ContinueGame" type="Button" parent="Buttons"]
+[node name="ContinueGame" type="Button" parent="Layout/MenuFrame/Buttons"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 42)
+custom_minimum_size = Vector2(0, 37)
 layout_mode = 2
 mouse_default_cursor_shape = 2
 text = "继续游戏"
 
-[node name="Settings" type="Button" parent="Buttons"]
+[node name="Settings" type="Button" parent="Layout/MenuFrame/Buttons"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 42)
+custom_minimum_size = Vector2(0, 37)
 layout_mode = 2
 mouse_default_cursor_shape = 2
 text = "设置"
 
-[node name="LoadStatus" type="Label" parent="Buttons"]
+[node name="LoadStatus" type="Label" parent="Layout/MenuFrame"]
 unique_name_in_owner = true
-layout_mode = 2
+offset_left = 18.0
+offset_top = 295.0
+offset_right = 202.0
+offset_bottom = 321.0
+theme_override_colors/font_color = Color(0.98, 0.755, 0.55, 1)
 theme_override_font_sizes/font_size = 12
 autowrap_mode = 3
+
+[node name="WorldPreview" type="Panel" parent="Layout"]
+texture_filter = 1
+offset_left = 248.0
+offset_top = 50.0
+offset_right = 624.0
+offset_bottom = 306.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("MapFrame")
+
+[node name="Surface" type="TextureRect" parent="Layout/WorldPreview"]
+offset_left = 8.0
+offset_top = 28.0
+offset_right = 188.0
+offset_bottom = 231.0
+mouse_filter = 2
+texture = SubResource("SurfaceMapHalf")
+expand_mode = 1
+
+[node name="Station" type="TextureRect" parent="Layout/WorldPreview/Surface"]
+offset_left = 69.0
+offset_top = 57.0
+offset_right = 123.0
+offset_bottom = 111.0
+mouse_filter = 2
+texture = SubResource("Station")
+expand_mode = 1
+
+[node name="Restaurant" type="TextureRect" parent="Layout/WorldPreview/Surface"]
+offset_left = 60.0
+offset_top = 137.0
+offset_right = 132.0
+offset_bottom = 191.0
+mouse_filter = 2
+texture = SubResource("Restaurant")
+expand_mode = 1
+
+[node name="Inner" type="TextureRect" parent="Layout/WorldPreview"]
+offset_left = 188.0
+offset_top = 28.0
+offset_right = 368.0
+offset_bottom = 231.0
+mouse_filter = 2
+texture = SubResource("InnerMapHalf")
+expand_mode = 1
+
+[node name="Workshop" type="TextureRect" parent="Layout/WorldPreview/Inner"]
+offset_left = 54.0
+offset_top = 57.0
+offset_right = 108.0
+offset_bottom = 111.0
+mouse_filter = 2
+texture = SubResource("Workshop")
+expand_mode = 1
+
+[node name="Shop" type="TextureRect" parent="Layout/WorldPreview/Inner"]
+offset_left = 45.0
+offset_top = 137.0
+offset_right = 117.0
+offset_bottom = 191.0
+mouse_filter = 2
+texture = SubResource("Shop")
+expand_mode = 1
+
+[node name="Divider" type="ColorRect" parent="Layout/WorldPreview"]
+offset_left = 187.0
+offset_top = 28.0
+offset_right = 189.0
+offset_bottom = 231.0
+mouse_filter = 2
+color = Color(0.73, 0.553, 0.338, 1)
+
+[node name="TopRule" type="ColorRect" parent="Layout/WorldPreview"]
+offset_left = 8.0
+offset_top = 27.0
+offset_right = 368.0
+offset_bottom = 28.0
+mouse_filter = 2
+color = Color(0.56, 0.4, 0.25, 1)
+
+[node name="BottomRule" type="ColorRect" parent="Layout/WorldPreview"]
+offset_left = 8.0
+offset_top = 231.0
+offset_right = 368.0
+offset_bottom = 232.0
+mouse_filter = 2
+color = Color(0.56, 0.4, 0.25, 1)
+
+[node name="Location" type="Label" parent="Layout/WorldPreview"]
+offset_left = 9.0
+offset_top = 3.0
+offset_right = 367.0
+offset_bottom = 25.0
+theme_override_colors/font_color = Color(0.918, 0.783, 0.548, 1)
+theme_override_font_sizes/font_size = 13
+text = "空港聚落"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SurfaceLabel" type="Label" parent="Layout/WorldPreview"]
+offset_left = 8.0
+offset_top = 232.0
+offset_right = 188.0
+offset_bottom = 253.0
+theme_override_colors/font_color = Color(0.938, 0.776, 0.527, 1)
+theme_override_font_sizes/font_size = 12
+text = "表世界"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="InnerLabel" type="Label" parent="Layout/WorldPreview"]
+offset_left = 188.0
+offset_top = 232.0
+offset_right = 368.0
+offset_bottom = 253.0
+theme_override_colors/font_color = Color(0.773, 0.743, 0.943, 1)
+theme_override_font_sizes/font_size = 12
+text = "里世界"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="ReplaceSave" type="ConfirmationDialog" parent="."]
 unique_name_in_owner = true
@@ -99,5 +303,5 @@ size = Vector2i(324, 110)
 exclusive = true
 theme = ExtResource("1_theme")
 ok_button_text = "开始新游戏"
-dialog_text = "开始新游戏后，下次保存会覆盖原有存档。"
+dialog_text = "新游戏的手动存档和章节存档会覆盖原有进度。"
 cancel_button_text = "取消"

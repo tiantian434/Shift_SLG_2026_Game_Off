@@ -1,13 +1,17 @@
 [gd_scene format=3]
 
-[ext_resource type="Script" path="res://views/facilities/facility_room.gd" id="1_room"]
+[ext_resource type="Script" path="res://views/facilities/training_room.gd" id="1_room"]
 [ext_resource type="PackedScene" path="res://views/facilities/facility_hud.tscn" id="3_hud"]
+[ext_resource type="PackedScene" path="res://views/facilities/facility_actor.tscn" id="4_actor"]
+[ext_resource type="Texture2D" path="res://assets/chapter2/mechanical_sprite.tres" id="5_maiden"]
+[ext_resource type="PackedScene" path="res://views/facilities/training_device.tscn" id="6_device"]
 
 [node name="InnerShop" type="Node2D"]
 texture_filter = 1
 script = ExtResource("1_room")
 facility_id = &"shop"
 world = 1
+training_stage = &"alchemy"
 
 [node name="NightBackdrop" type="ColorRect" parent="."]
 offset_left = 0
@@ -632,8 +636,80 @@ color = Color(0.9608, 0.8314, 0.9882, 1.0000)
 
 [node name="Interface" type="CanvasLayer" parent="."]
 
+[node name="TrainingDevice" parent="Interface" instance=ExtResource("6_device")]
+unique_name_in_owner = true
+visible = false
+offset_left = 338.0
+offset_top = 218.0
+offset_right = 433.0
+offset_bottom = 277.0
+tooltip_text = "调和样本的炼药台"
+
+[node name="Workbench" type="Node2D" parent="Interface/TrainingDevice"]
+position = Vector2(8, 3)
+
+[node name="Shadow" type="Polygon2D" parent="Interface/TrainingDevice/Workbench"]
+color = Color(0.139, 0.12, 0.218, 0.84)
+polygon = PackedVector2Array(4, 24, 71, 24, 79, 31, 73, 46, 3, 46, -4, 38)
+
+[node name="BenchLegs" type="Polygon2D" parent="Interface/TrainingDevice/Workbench"]
+color = Color(0.204, 0.163, 0.273, 1)
+polygon = PackedVector2Array(2, 26, 75, 26, 75, 45, 66, 45, 66, 38, 11, 38, 11, 45, 2, 45)
+
+[node name="Worktop" type="Polygon2D" parent="Interface/TrainingDevice/Workbench"]
+color = Color(0.49, 0.404, 0.497, 1)
+polygon = PackedVector2Array(6, 15, 71, 15, 77, 21, 77, 34, 2, 34, 2, 21)
+
+[node name="WorktopLight" type="Polygon2D" parent="Interface/TrainingDevice/Workbench"]
+color = Color(0.7, 0.587, 0.623, 1)
+polygon = PackedVector2Array(8, 16, 70, 16, 73, 20, 70, 25, 8, 25, 5, 21)
+
+[node name="RustPot" type="Polygon2D" parent="Interface/TrainingDevice/Workbench"]
+color = Color(0.67, 0.388, 0.273, 1)
+polygon = PackedVector2Array(11, 14, 29, 14, 26, 24, 14, 24)
+
+[node name="Stem" type="Polygon2D" parent="Interface/TrainingDevice/Workbench"]
+color = Color(0.32, 0.48, 0.35, 1)
+polygon = PackedVector2Array(19, 16, 19, 6, 20, 1, 23, 2, 22, 8, 22, 16)
+
+[node name="RustLeaves" type="Polygon2D" parent="Interface/TrainingDevice/Workbench"]
+color = Color(0.631, 0.417, 0.26, 1)
+polygon = PackedVector2Array(20, 8, 12, 7, 9, 3, 15, 2, 20, 5, 25, 0, 31, 0, 29, 5, 23, 8)
+
+[node name="Flask" type="Polygon2D" parent="Interface/TrainingDevice/Workbench"]
+color = Color(0.694, 0.779, 0.788, 1)
+polygon = PackedVector2Array(39, 4, 46, 4, 46, 12, 51, 17, 51, 23, 47, 26, 37, 26, 33, 22, 34, 17, 39, 12)
+
+[node name="Solution" type="Polygon2D" parent="Interface/TrainingDevice/Workbench"]
+color = Color(0.272, 0.617, 0.568, 1)
+polygon = PackedVector2Array(35, 18, 49, 18, 49, 22, 46, 24, 38, 24, 35, 21)
+
+[node name="Mottle" type="Polygon2D" parent="Interface/TrainingDevice/Workbench"]
+color = Color(0.41, 0.426, 0.509, 1)
+polygon = PackedVector2Array(58, 20, 60, 13, 66, 10, 71, 13, 72, 20, 68, 24, 61, 24)
+
+[node name="MetalCore" type="Polygon2D" parent="Interface/TrainingDevice/Workbench"]
+color = Color(0.74, 0.614, 0.539, 1)
+polygon = PackedVector2Array(61, 16, 65, 13, 68, 15, 68, 19, 64, 21, 61, 19)
+
+[node name="TrainingActors" type="Control" parent="Interface"]
+visible = false
+offset_right = 640.0
+offset_bottom = 360.0
+mouse_filter = 2
+
+[node name="Automaton" parent="Interface/TrainingActors" instance=ExtResource("4_actor")]
+unique_name_in_owner = true
+modulate = Color(0.84, 0.88, 1, 1)
+offset_left = 437.0
+offset_top = 174.0
+offset_right = 485.0
+offset_bottom = 222.0
+texture = ExtResource("5_maiden")
+display_name = "机械姬（人造人）"
+
 [node name="FacilityHUD" parent="Interface" instance=ExtResource("3_hud")]
-facility_title = "奇物商店"
+facility_title = "炼药工房"
 title_color = Color(0.9059, 0.7961, 0.9922, 1.0000)
 detail_color = Color(0.7608, 0.6902, 0.8588, 1.0000)
 

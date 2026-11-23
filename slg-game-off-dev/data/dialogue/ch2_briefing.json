@@ -1,0 +1,80 @@
+{
+  "id": "ch2_briefing",
+  "speaker_name": {
+    "zh_CN": "旁白"
+  },
+  "entry": "scene",
+  "speakers": {
+    "narrator": {
+      "name": {
+        "zh_CN": "旁白"
+      }
+    },
+    "maiden": {
+      "name": {
+        "zh_CN": "机械姬"
+      },
+      "portraits": {
+        "surface": "res://assets/chapter2/mechanical_face.png"
+      }
+    }
+  },
+  "blocks": {
+    "scene": {
+      "lines": [
+        {
+          "speaker_id": "narrator",
+          "zh_CN": "太阳从地平线上缓缓升起，晨光落在飞空港的铜制穹顶上。"
+        },
+        {
+          "speaker_id": "narrator",
+          "zh_CN": "随着第一声汽笛响起，沉睡了一夜的巨型机械重新开始运转。煤炭与水在锅炉中化为滚烫的蒸汽，沿着黄铜管道输送到飞空港的各个角落。"
+        },
+        {
+          "speaker_id": "narrator",
+          "zh_CN": "整座城市仿佛一头刚刚苏醒的巨兽。"
+        },
+        {
+          "speaker_id": "narrator",
+          "zh_CN": "主角来到空港站房，机械姬已经整理好了今日的工作记录。"
+        },
+        {
+          "speaker_id": "maiden",
+          "zh_CN": "早上好，前辈。"
+        },
+        {
+          "speaker": "player",
+          "zh_CN": "早上好。今天有什么事情吗？"
+        },
+        {
+          "speaker_id": "maiden",
+          "zh_CN": "今日共有三项待处理事务、两份设备维护报告，以及一份尚未签收的货运清单。"
+        },
+        {
+          "speaker": "player",
+          "zh_CN": "……看来今天也闲不下来了。"
+        },
+        {
+          "speaker_id": "maiden",
+          "zh_CN": "根据过去三十日的工作记录，您的平均工作时长为九小时四十七分钟。今日的预计工作量处于正常范围内。"
+        },
+        {
+          "speaker": "player",
+          "zh_CN": "你就不能说点让我高兴的话吗？"
+        },
+        {
+          "speaker_id": "maiden",
+          "zh_CN": "可以。今日天气晴朗，飞空艇起降条件良好，预计不会发生大规模航班延误。"
+        },
+        {
+          "speaker": "player",
+          "zh_CN": "……算了，先去工作吧。"
+        },
+        {
+          "speaker_id": "maiden",
+          "zh_CN": "明白。请跟我来。"
+        }
+      ]
+    }
+  }
+}

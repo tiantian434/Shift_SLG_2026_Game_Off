@@ -1,60 +1,60 @@
 {
   "id": "mechanic",
   "speaker_name": {
-    "zh_CN": "机修师",
-    "en": ""
+	"zh_CN": "机修师",
+	"en": ""
   },
   "portraits": {
-    "surface": "res://views/dialogue/mechanic_portrait.tres",
-    "inner": "res://views/dialogue/mechanic_portrait.tres"
+	"surface": "res://views/dialogue/mechanic_portrait.tres",
+	"inner": "res://views/dialogue/mechanic_portrait.tres"
   },
   "entry": "opening",
   "blocks": {
-    "opening": {
-      "lines": [
-        {
-          "speaker": "npc",
-          "zh_CN": "好了，销子扣回去了。你听听，稳流器还响吗？",
-          "en": "",
-          "variants": [
-            {
-              "when": {
-                "regulator_repaired": true
-              },
-              "zh_CN": "稳流器今天安静得很。怎么，又听见怪声了？",
-              "en": ""
-            }
-          ]
-        },
-        {
-          "speaker": "player",
-          "zh_CN": "还响啊。咚、咚、咚……",
-          "en": "",
-          "variants": [
-            {
-              "when": {
-                "regulator_repaired": true
-              },
-              "zh_CN": "这回我可没拿扳手。",
-              "en": ""
-            }
-          ]
-        },
-        {
-          "speaker": "npc",
-          "zh_CN": "那是你手里的扳手。松一松，你都紧张得敲上桌了。",
-          "en": "",
-          "variants": [
-            {
-              "when": {
-                "regulator_repaired": true
-              },
-              "zh_CN": "我知道。午饭铃响了，走吧。",
-              "en": ""
-            }
-          ]
-        }
-      ]
-    }
+	"opening": {
+	  "lines": [
+		{
+		  "speaker": "npc",
+		  "zh_CN": "好了，销子扣回去了。你听听，稳流器还响吗？",
+		  "en": "",
+		  "variants": [
+			{
+			  "when": {
+				"regulator_repaired": true
+			  },
+			  "zh_CN": "稳流器今天安静得很。怎么，又听见怪声了？",
+			  "en": ""
+			}
+		  ]
+		},
+		{
+		  "speaker": "player",
+		  "zh_CN": "还响啊。咚、咚、咚……",
+		  "en": "",
+		  "variants": [
+			{
+			  "when": {
+				"regulator_repaired": true
+			  },
+			  "zh_CN": "这回我可没拿扳手。",
+			  "en": ""
+			}
+		  ]
+		},
+		{
+		  "speaker": "npc",
+		  "zh_CN": "那是你手里的扳手。松一松，你都紧张得敲上桌了。",
+		  "en": "",
+		  "variants": [
+			{
+			  "when": {
+				"regulator_repaired": true
+			  },
+			  "zh_CN": "我知道。午饭铃响了，走吧。",
+			  "en": ""
+			}
+		  ]
+		}
+	  ]
+	}
   }
 }

@@ -1,35 +1,18 @@
 [gd_scene format=3]
 
-[ext_resource type="Script" path="res://views/facilities/workshop/ritual_room.gd" id="1_room"]
+[ext_resource type="Script" path="res://views/facilities/training_room.gd" id="1_room"]
 [ext_resource type="PackedScene" path="res://views/facilities/facility_hud.tscn" id="3_hud"]
-
-[sub_resource type="StyleBoxFlat" id="RitualPanel"]
-content_margin_left = 12.0
-content_margin_top = 7.0
-content_margin_right = 8.0
-content_margin_bottom = 7.0
-bg_color = Color(0.096, 0.09, 0.16, 0.97)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0.47, 0.38, 0.58, 1)
-
-[sub_resource type="StyleBoxFlat" id="RitualButton"]
-content_margin_left = 8.0
-content_margin_right = 8.0
-bg_color = Color(0.24, 0.18, 0.35, 1)
-
-[sub_resource type="StyleBoxFlat" id="RitualButtonHover"]
-content_margin_left = 8.0
-content_margin_right = 8.0
-bg_color = Color(0.34, 0.26, 0.46, 1)
+[ext_resource type="Theme" path="res://views/hud/shift_theme.tres" id="4_theme"]
+[ext_resource type="PackedScene" path="res://views/facilities/facility_actor.tscn" id="5_actor"]
+[ext_resource type="Texture2D" path="res://assets/chapter2/mechanical_sprite.tres" id="6_maiden"]
+[ext_resource type="PackedScene" path="res://views/facilities/training_device.tscn" id="7_device"]
 
 [node name="InnerWorkshop" type="Node2D"]
 texture_filter = 1
 script = ExtResource("1_room")
 facility_id = &"workshop"
 world = 1
+training_stage = &"ritual"
 
 [node name="Backdrop" type="ColorRect" parent="."]
 offset_left = 0.0
@@ -708,19 +691,51 @@ mouse_filter = 2
 
 [node name="Interface" type="CanvasLayer" parent="."]
 
+[node name="TrainingDevice" parent="Interface" instance=ExtResource("7_device")]
+unique_name_in_owner = true
+visible = false
+offset_left = 146.0
+offset_top = 127.0
+offset_right = 303.0
+offset_bottom = 262.0
+tooltip_text = "环形法阵"
+
+[node name="CalmRune" type="Polygon2D" parent="Interface/TrainingDevice"]
+visible = false
+position = Vector2(79, 69)
+color = Color(0.68, 0.9, 0.77, 0.8)
+polygon = PackedVector2Array(0, -15, 4, -4, 14, 0, 4, 4, 0, 15, -4, 4, -14, 0, -4, -4)
+
+[node name="TrainingActors" type="Control" parent="Interface"]
+visible = false
+offset_right = 640.0
+offset_bottom = 360.0
+mouse_filter = 2
+
+[node name="Automaton" parent="Interface/TrainingActors" instance=ExtResource("5_actor")]
+unique_name_in_owner = true
+modulate = Color(0.84, 0.88, 1, 1)
+offset_left = 343.0
+offset_top = 204.0
+offset_right = 391.0
+offset_bottom = 252.0
+texture = ExtResource("6_maiden")
+display_name = "机械姬（人造人）"
+
 [node name="FacilityHUD" parent="Interface" instance=ExtResource("3_hud")]
 facility_title = "术式工坊"
 title_color = Color(0.88235, 0.81569, 1.00000, 1.00000)
 detail_color = Color(0.66275, 0.62745, 0.80000, 1.00000)
 
 [node name="RitualControls" type="PanelContainer" parent="Interface"]
+visible = false
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 24.0
-offset_top = -59.0
-offset_right = 294.0
-offset_bottom = -14.0
-theme_override_styles/panel = SubResource("RitualPanel")
+offset_left = 87.0
+offset_top = -53.0
+offset_right = 353.0
+offset_bottom = -10.0
+theme = ExtResource("4_theme")
 
 [node name="Row" type="HBoxContainer" parent="Interface/RitualControls"]
 layout_mode = 2
@@ -730,7 +745,6 @@ theme_override_constants/separation = 12
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_colors/font_color = Color(0.82, 0.77, 0.94, 1)
 theme_override_font_sizes/font_size = 13
 text = "表世界空港 · 强风"
 
@@ -740,9 +754,5 @@ custom_minimum_size = Vector2(88, 28)
 layout_mode = 2
 size_flags_vertical = 4
 mouse_default_cursor_shape = 2
-theme_override_colors/font_color = Color(0.91, 0.86, 1, 1)
 theme_override_font_sizes/font_size = 13
-theme_override_styles/normal = SubResource("RitualButton")
-theme_override_styles/hover = SubResource("RitualButtonHover")
-theme_override_styles/pressed = SubResource("RitualButtonHover")
 text = "施术放晴"

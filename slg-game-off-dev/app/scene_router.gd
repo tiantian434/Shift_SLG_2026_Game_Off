@@ -6,6 +6,7 @@ enum World { SURFACE, INNER }
 
 const MAP_SCENE := "res://app/main.tscn"
 const HOME_SCENE := "res://views/menus/home_menu.tscn"
+const CHAPTER_ENDING_SCENE := "res://views/menus/chapter_ending.tscn"
 const WORLD_TRANSITION := preload("res://views/transitions/world_transition.tscn")
 const FACILITY_SCENES := {
 	&"hub": {
@@ -36,8 +37,9 @@ func _ready() -> void:
 	add_child(_transition)
 
 
-func open_facility(facility_id: StringName) -> void:
-	_open_facility_in_world(facility_id, current_world)
+func open_facility(facility_id: StringName, world := -1) -> void:
+	var target := current_world if world == -1 else world
+	await _open_facility_in_world(facility_id, target, target != current_world)
 
 
 func shift_map_world() -> void:
@@ -50,11 +52,20 @@ func shift_facility(facility_id: StringName, source_world: int) -> void:
 
 
 func return_to_map(world: int) -> void:
-	_change_scene("" if is_on_map() else MAP_SCENE, world)
+	await _change_scene("" if is_on_map() else MAP_SCENE, world)
 
 
 func open_home() -> bool:
 	return await _change_scene(HOME_SCENE, current_world)
+
+
+func open_chapter_ending(world: int) -> bool:
+	return await _change_scene(CHAPTER_ENDING_SCENE, world)
+
+
+func is_on_chapter_ending() -> bool:
+	var scene := get_tree().current_scene
+	return scene != null and scene.scene_file_path == CHAPTER_ENDING_SCENE
 
 
 func is_on_home() -> bool:

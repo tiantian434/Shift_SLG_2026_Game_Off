@@ -1,0 +1,76 @@
+[gd_scene format=3]
+
+[sub_resource type="StyleBoxFlat" id="Card"]
+content_margin_left = 7.0
+content_margin_top = 5.0
+content_margin_right = 7.0
+content_margin_bottom = 6.0
+bg_color = Color(0.949, 0.865, 0.702, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.69, 0.539, 0.365, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+anti_aliasing = false
+
+[sub_resource type="StyleBoxEmpty" id="HitNormal"]
+
+[sub_resource type="StyleBoxFlat" id="HitHover"]
+bg_color = Color(0.76, 0.43, 0.16, 0.16)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="HitFocus"]
+draw_center = false
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.58, 0.331, 0.138, 1)
+anti_aliasing = false
+
+[node name="TaskDrawerEntry" type="PanelContainer"]
+mouse_filter = 2
+theme_override_styles/panel = SubResource("Card")
+
+[node name="Lines" type="VBoxContainer" parent="."]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 3
+
+[node name="EntryTitle" type="Label" parent="Lines"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+theme_type_variation = &"InkLabel"
+theme_override_font_sizes/font_size = 13
+autowrap_mode = 3
+
+[node name="EntryNote" type="Label" parent="Lines"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+theme_type_variation = &"InkLabel"
+theme_override_colors/font_color = Color(0.439, 0.285, 0.148, 1)
+theme_override_font_sizes/font_size = 11
+autowrap_mode = 3
+
+[node name="EntrySummary" type="Label" parent="Lines"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+theme_type_variation = &"InkLabel"
+theme_override_font_sizes/font_size = 11
+autowrap_mode = 3
+
+[node name="EntryHit" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = SubResource("HitNormal")
+theme_override_styles/hover = SubResource("HitHover")
+theme_override_styles/pressed = SubResource("HitHover")
+theme_override_styles/focus = SubResource("HitFocus")

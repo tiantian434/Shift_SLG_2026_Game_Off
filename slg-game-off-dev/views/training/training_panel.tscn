@@ -1,0 +1,146 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://views/training/training_panel.gd" id="1_script"]
+[ext_resource type="Theme" path="res://views/hud/shift_theme.tres" id="2_theme"]
+[ext_resource type="Script" path="res://views/training/training_instrument.gd" id="3_instrument"]
+
+[node name="TrainingPanel" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_theme")
+script = ExtResource("1_script")
+
+[node name="Scrim" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(0.072, 0.046, 0.057, 0.74)
+
+[node name="Frame" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 23.0
+offset_top = 17.0
+offset_right = -23.0
+offset_bottom = -17.0
+
+[node name="Body" type="VBoxContainer" parent="Frame"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Header" type="HBoxContainer" parent="Frame/Body"]
+layout_mode = 2
+
+[node name="TrainingTitle" type="Label" parent="Frame/Body/Header"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 23
+text = "设施教学"
+
+[node name="ExitTraining" type="Button" parent="Frame/Body/Header"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(78, 27)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "暂离"
+tooltip_text = "返回设施。保留当前的选择与已点亮的符文。"
+
+[node name="TopRule" type="HSeparator" parent="Frame/Body"]
+layout_mode = 2
+
+[node name="Panels" type="HBoxContainer" parent="Frame/Body"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+
+[node name="Case" type="PanelContainer" parent="Frame/Body/Panels"]
+custom_minimum_size = Vector2(236, 0)
+layout_mode = 2
+theme_type_variation = &"PaperPanel"
+
+[node name="Dossier" type="VBoxContainer" parent="Frame/Body/Panels/Case"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="CaseTitle" type="Label" parent="Frame/Body/Panels/Case/Dossier"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"InkLabel"
+theme_override_font_sizes/font_size = 16
+
+[node name="CaseText" type="Label" parent="Frame/Body/Panels/Case/Dossier"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"InkLabel"
+autowrap_mode = 3
+
+[node name="Instrument" type="Control" parent="Frame/Body/Panels/Case/Dossier"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 116)
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+script = ExtResource("3_instrument")
+
+[node name="Bench" type="PanelContainer" parent="Frame/Body/Panels"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="BenchBody" type="VBoxContainer" parent="Frame/Body/Panels/Bench"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="Inspect" type="Button" parent="Frame/Body/Panels/Bench/BenchBody"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(0, 29)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "观察风机"
+
+[node name="Choices" type="VBoxContainer" parent="Frame/Body/Panels/Bench/BenchBody"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Guide" type="Label" parent="Frame/Body/Panels/Bench/BenchBody"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.81, 0.715, 0.592, 1)
+theme_override_font_sizes/font_size = 12
+vertical_alignment = 2
+autowrap_mode = 3
+
+[node name="BottomRule" type="HSeparator" parent="Frame/Body"]
+layout_mode = 2
+
+[node name="Footer" type="HBoxContainer" parent="Frame/Body"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="TrainingFeedback" type="Label" parent="Frame/Body/Footer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="PrimaryAction" type="Button" parent="Frame/Body/Footer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(132, 34)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_type_variation = &"PaperButton"
+theme_override_font_sizes/font_size = 15
+text = "开始"
