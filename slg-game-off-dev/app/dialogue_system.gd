@@ -64,7 +64,7 @@ func close() -> void:
 	box.queue_free()
 
 
-func _show_line() -> void:
+func _show_line(refresh_current := false) -> void:
 	_box.set_speaker(_session.current_speaker_name())
 	_box.set_portrait(_session.portrait_for(_world))
 	_box.show_line(
@@ -73,7 +73,7 @@ func _show_line() -> void:
 		_session.option_labels(),
 		_session.has_next_line(),
 		[],
-		not _session.is_narration(),
+		refresh_current,
 	)
 
 
@@ -94,6 +94,9 @@ func _choose(index: int) -> void:
 
 func _handle_modal_input(event: InputEvent) -> bool:
 	if event.is_action_pressed(&"ui_accept"):
+		var focus := _box.get_viewport().gui_get_focus_owner()
+		if focus is BaseButton and _box.is_ancestor_of(focus) and not focus.disabled:
+			return false
 		return _box.request_advance()
 	if not event.is_action(&"shift_world"):
 		return false
@@ -124,6 +127,6 @@ func _refresh_world(world: int) -> void:
 		if next != null:
 			next.resume_at(_session)
 			_session = next
-			_show_line()
+			_show_line(true)
 			return
 	_box.set_portrait(_session.portrait_for(world))
