@@ -14,7 +14,7 @@ var _focus_before_overlay: Control
 var _typing: Tween
 var _player_line := false
 var _has_choices := false
-var _record_npc_line := true
+var _recorded_line_variants: Array[String] = []
 
 @onready var _speaker: Label = %Speaker
 @onready var _portrait: TextureRect = %Portrait
@@ -75,13 +75,14 @@ func show_line(
 	choices: Array[String],
 	_has_next: bool,
 	refusal_indices: Array[int] = [],
-	record_npc_line := true,
+	refresh_current := false,
 ) -> void:
 	if _typing != null:
 		_typing.kill()
 	_player_line = player_line
 	_has_choices = not choices.is_empty()
-	_record_npc_line = record_npc_line
+	if not refresh_current:
+		_recorded_line_variants.clear()
 	_speaker.text = "我" if player_line else _npc_name
 	_player_reply.dismiss()
 	_line.text = text
@@ -132,8 +133,9 @@ func _complete_typewriter() -> void:
 	_line.visible_characters = -1
 	if _player_line:
 		_player_reply.present(_line.text)
-	elif _record_npc_line:
+	if _line.text not in _recorded_line_variants:
 		_append_history(_speaker.text, _line.text)
+		_recorded_line_variants.append(_line.text)
 	_action_scroll.show()
 	if not _overlay_open():
 		_focus_first_action()
@@ -168,6 +170,7 @@ func _confirm_world_shift() -> void:
 
 func _show_history() -> void:
 	_begin_overlay()
+	%EmptyHistory.visible = _history_log.get_total_character_count() == 0
 	_history_panel.show()
 	_history_log.scroll_to_line.call_deferred(maxi(0, _history_log.get_line_count() - 1))
 	_history_close.grab_focus()

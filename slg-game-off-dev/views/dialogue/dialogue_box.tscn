@@ -202,6 +202,16 @@ theme_override_constants/line_separation = 4
 autowrap_mode = 3
 selection_enabled = true
 
+[node name="EmptyHistory" type="Label" parent="HistoryPanel/HistoryBook/Pages/HistoryLog"]
+unique_name_in_owner = true
+layout_mode = 1
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+text = "暂无已读对话"
+
 [node name="ShiftPrompt" type="ColorRect" parent="."]
 unique_name_in_owner = true
 visible = false
