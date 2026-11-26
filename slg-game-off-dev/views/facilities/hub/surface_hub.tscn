@@ -1,22 +1,20 @@
 [gd_scene format=3]
 
 [ext_resource type="Script" path="res://views/facilities/hub/hub_room.gd" id="1_room"]
-[ext_resource type="TileSet" path="res://assets/tilesets/station_floors.tres" id="2_floors"]
 [ext_resource type="PackedScene" path="res://views/facilities/facility_hud.tscn" id="3_hud"]
 [ext_resource type="PackedScene" path="res://views/facilities/facility_actor.tscn" id="4_actor"]
-[ext_resource type="Texture2D" path="res://assets/chapter1/operator_sprite.png" id="5_researcher"]
-[ext_resource type="Texture2D" path="res://assets/chapter1/police_sprite.png" id="6_escort"]
-[ext_resource type="Texture2D" path="res://assets/chapter2/mechanical_sprite.tres" id="7_maiden"]
-
-[sub_resource type="AtlasTexture" id="ResearcherIdle"]
-atlas = ExtResource("5_researcher")
-region = Rect2(0, 0, 16, 16)
-filter_clip = true
-
-[sub_resource type="AtlasTexture" id="EscortIdle"]
-atlas = ExtResource("6_escort")
-region = Rect2(0, 0, 16, 16)
-filter_clip = true
+[ext_resource type="PackedScene" path="res://views/facilities/art/room_art_hotspot.tscn" id="hotspot"]
+[ext_resource type="Texture2D" path="res://assets/chapter2/mechanical_sprite.tres" id="maiden"]
+[ext_resource type="Texture2D" path="res://assets/chapter1/operator_sprite.tres" id="researcher"]
+[ext_resource type="Texture2D" path="res://assets/chapter1/police_sprite.tres" id="escort"]
+[ext_resource type="Script" path="res://views/facilities/art/tower_bell.gd" id="bell_script"]
+[ext_resource type="SpriteFrames" path="res://assets/art/rooms/tower/ring.tres" id="ring"]
+[ext_resource type="Texture2D" path="res://assets/art/rooms/tower/base.png" id="art_base"]
+[ext_resource type="Texture2D" path="res://assets/art/rooms/tower/gears.png" id="art_gears"]
+[ext_resource type="Texture2D" path="res://assets/art/rooms/tower/railings.png" id="art_railings"]
+[ext_resource type="Texture2D" path="res://assets/art/rooms/tower/bell.png" id="art_bell"]
+[ext_resource type="Texture2D" path="res://assets/art/rooms/tower/rope.png" id="art_rope"]
+[ext_resource type="Material" path="res://views/facilities/art/room_backdrop.tres" id="backdrop"]
 
 [node name="SurfaceHub" type="Node2D"]
 texture_filter = 1
@@ -24,891 +22,90 @@ script = ExtResource("1_room")
 facility_id = &"hub"
 
 [node name="Backdrop" type="ColorRect" parent="."]
-offset_left = 0.0
-offset_top = 0.0
+material = ExtResource("backdrop")
 offset_right = 640.0
 offset_bottom = 360.0
 mouse_filter = 2
-color = Color(0.09412, 0.11765, 0.15686, 1)
-
-[node name="InteriorShadow" type="ColorRect" parent="."]
-offset_left = 77.0
-offset_top = 105.0
-offset_right = 563.0
-offset_bottom = 333.0
-mouse_filter = 2
-color = Color(0.06275, 0.08235, 0.12157, 1)
-
-[node name="Floor" type="TileMapLayer" parent="."]
-position = Vector2(80, 106)
-scale = Vector2(2, 2)
-tile_set = ExtResource("2_floors")
-tile_map_data = PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 11, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 12, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 12, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 12, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 12, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 12, 0, 0, 0, 0, 0, 6, 0, 0, 0, 0, 0, 12, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 12, 0, 0, 0, 0, 0, 8, 0, 0, 0, 0, 0, 12, 0, 0, 0, 0, 0, 9, 0, 0, 0, 0, 0, 12, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 12, 0, 0, 0, 0, 0, 11, 0, 0, 0, 0, 0, 12, 0, 0, 0, 0, 0, 12, 0, 0, 0, 0, 0, 12, 0, 0, 0, 0, 0, 13, 0, 0, 0, 0, 0, 12, 0, 0, 0, 0, 0, 14, 0, 0, 0, 0, 0, 13, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 11, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 12, 0, 1, 0, 0, 0, 2, 0, 1, 0, 0, 0, 12, 0, 1, 0, 0, 0, 3, 0, 1, 0, 0, 0, 12, 0, 1, 0, 0, 0, 4, 0, 1, 0, 0, 0, 12, 0, 1, 0, 0, 0, 5, 0, 1, 0, 0, 0, 12, 0, 1, 0, 0, 0, 6, 0, 1, 0, 0, 0, 12, 0, 1, 0, 0, 0, 7, 0, 1, 0, 0, 0, 12, 0, 1, 0, 0, 0, 8, 0, 1, 0, 0, 0, 12, 0, 1, 0, 0, 0, 9, 0, 1, 0, 0, 0, 12, 0, 1, 0, 0, 0, 10, 0, 1, 0, 0, 0, 12, 0, 1, 0, 0, 0, 11, 0, 1, 0, 0, 0, 12, 0, 1, 0, 0, 0, 12, 0, 1, 0, 0, 0, 12, 0, 1, 0, 0, 0, 13, 0, 1, 0, 0, 0, 12, 0, 1, 0, 0, 0, 14, 0, 1, 0, 0, 0, 13, 0, 1, 0, 0, 0, 0, 0, 2, 0, 0, 0, 11, 0, 1, 0, 0, 0, 1, 0, 2, 0, 0, 0, 12, 0, 1, 0, 0, 0, 2, 0, 2, 0, 0, 0, 12, 0, 1, 0, 0, 0, 3, 0, 2, 0, 0, 0, 12, 0, 1, 0, 0, 0, 4, 0, 2, 0, 0, 0, 12, 0, 1, 0, 0, 0, 5, 0, 2, 0, 0, 0, 12, 0, 1, 0, 0, 0, 6, 0, 2, 0, 0, 0, 12, 0, 1, 0, 0, 0, 7, 0, 2, 0, 0, 0, 12, 0, 1, 0, 0, 0, 8, 0, 2, 0, 0, 0, 12, 0, 1, 0, 0, 0, 9, 0, 2, 0, 0, 0, 12, 0, 1, 0, 0, 0, 10, 0, 2, 0, 0, 0, 12, 0, 1, 0, 0, 0, 11, 0, 2, 0, 0, 0, 12, 0, 1, 0, 0, 0, 12, 0, 2, 0, 0, 0, 12, 0, 1, 0, 0, 0, 13, 0, 2, 0, 0, 0, 12, 0, 1, 0, 0, 0, 14, 0, 2, 0, 0, 0, 13, 0, 1, 0, 0, 0, 0, 0, 3, 0, 0, 0, 11, 0, 1, 0, 0, 0, 1, 0, 3, 0, 0, 0, 12, 0, 1, 0, 0, 0, 2, 0, 3, 0, 0, 0, 12, 0, 1, 0, 0, 0, 3, 0, 3, 0, 0, 0, 12, 0, 1, 0, 0, 0, 4, 0, 3, 0, 0, 0, 12, 0, 1, 0, 0, 0, 5, 0, 3, 0, 0, 0, 12, 0, 1, 0, 0, 0, 6, 0, 3, 0, 0, 0, 12, 0, 1, 0, 0, 0, 7, 0, 3, 0, 0, 0, 12, 0, 1, 0, 0, 0, 8, 0, 3, 0, 0, 0, 12, 0, 1, 0, 0, 0, 9, 0, 3, 0, 0, 0, 12, 0, 1, 0, 0, 0, 10, 0, 3, 0, 0, 0, 12, 0, 1, 0, 0, 0, 11, 0, 3, 0, 0, 0, 12, 0, 1, 0, 0, 0, 12, 0, 3, 0, 0, 0, 12, 0, 1, 0, 0, 0, 13, 0, 3, 0, 0, 0, 12, 0, 1, 0, 0, 0, 14, 0, 3, 0, 0, 0, 13, 0, 1, 0, 0, 0, 0, 0, 4, 0, 0, 0, 11, 0, 1, 0, 0, 0, 1, 0, 4, 0, 0, 0, 12, 0, 1, 0, 0, 0, 2, 0, 4, 0, 0, 0, 12, 0, 1, 0, 0, 0, 3, 0, 4, 0, 0, 0, 12, 0, 1, 0, 0, 0, 4, 0, 4, 0, 0, 0, 12, 0, 1, 0, 0, 0, 5, 0, 4, 0, 0, 0, 12, 0, 1, 0, 0, 0, 6, 0, 4, 0, 0, 0, 12, 0, 1, 0, 0, 0, 7, 0, 4, 0, 0, 0, 12, 0, 1, 0, 0, 0, 8, 0, 4, 0, 0, 0, 12, 0, 1, 0, 0, 0, 9, 0, 4, 0, 0, 0, 12, 0, 1, 0, 0, 0, 10, 0, 4, 0, 0, 0, 12, 0, 1, 0, 0, 0, 11, 0, 4, 0, 0, 0, 12, 0, 1, 0, 0, 0, 12, 0, 4, 0, 0, 0, 12, 0, 1, 0, 0, 0, 13, 0, 4, 0, 0, 0, 12, 0, 1, 0, 0, 0, 14, 0, 4, 0, 0, 0, 13, 0, 1, 0, 0, 0, 0, 0, 5, 0, 0, 0, 11, 0, 1, 0, 0, 0, 1, 0, 5, 0, 0, 0, 12, 0, 1, 0, 0, 0, 2, 0, 5, 0, 0, 0, 12, 0, 1, 0, 0, 0, 3, 0, 5, 0, 0, 0, 12, 0, 1, 0, 0, 0, 4, 0, 5, 0, 0, 0, 12, 0, 1, 0, 0, 0, 5, 0, 5, 0, 0, 0, 12, 0, 1, 0, 0, 0, 6, 0, 5, 0, 0, 0, 12, 0, 1, 0, 0, 0, 7, 0, 5, 0, 0, 0, 12, 0, 1, 0, 0, 0, 8, 0, 5, 0, 0, 0, 12, 0, 1, 0, 0, 0, 9, 0, 5, 0, 0, 0, 12, 0, 1, 0, 0, 0, 10, 0, 5, 0, 0, 0, 12, 0, 1, 0, 0, 0, 11, 0, 5, 0, 0, 0, 12, 0, 1, 0, 0, 0, 12, 0, 5, 0, 0, 0, 12, 0, 1, 0, 0, 0, 13, 0, 5, 0, 0, 0, 12, 0, 1, 0, 0, 0, 14, 0, 5, 0, 0, 0, 13, 0, 1, 0, 0, 0, 0, 0, 6, 0, 0, 0, 11, 0, 2, 0, 0, 0, 1, 0, 6, 0, 0, 0, 12, 0, 2, 0, 0, 0, 2, 0, 6, 0, 0, 0, 12, 0, 2, 0, 0, 0, 3, 0, 6, 0, 0, 0, 12, 0, 2, 0, 0, 0, 4, 0, 6, 0, 0, 0, 12, 0, 2, 0, 0, 0, 5, 0, 6, 0, 0, 0, 12, 0, 2, 0, 0, 0, 6, 0, 6, 0, 0, 0, 12, 0, 2, 0, 0, 0, 7, 0, 6, 0, 0, 0, 12, 0, 2, 0, 0, 0, 8, 0, 6, 0, 0, 0, 12, 0, 2, 0, 0, 0, 9, 0, 6, 0, 0, 0, 12, 0, 2, 0, 0, 0, 10, 0, 6, 0, 0, 0, 12, 0, 2, 0, 0, 0, 11, 0, 6, 0, 0, 0, 12, 0, 2, 0, 0, 0, 12, 0, 6, 0, 0, 0, 12, 0, 2, 0, 0, 0, 13, 0, 6, 0, 0, 0, 12, 0, 2, 0, 0, 0, 14, 0, 6, 0, 0, 0, 13, 0, 2, 0, 0, 0)
-
-[node name="BackWall" type="Node2D" parent="."]
-
-[node name="Base" type="ColorRect" parent="BackWall"]
-offset_left = 80.0
-offset_top = 77.0
-offset_right = 560.0
-offset_bottom = 107.0
-mouse_filter = 2
-color = Color(0.25882, 0.20000, 0.17255, 1)
-
-[node name="UpperStone" type="ColorRect" parent="BackWall"]
-offset_left = 80.0
-offset_top = 77.0
-offset_right = 560.0
-offset_bottom = 95.0
-mouse_filter = 2
-color = Color(0.20392, 0.24314, 0.28627, 1)
-
-[node name="Rail" type="ColorRect" parent="BackWall"]
-offset_left = 80.0
-offset_top = 94.0
-offset_right = 560.0
-offset_bottom = 97.0
-mouse_filter = 2
-color = Color(0.68627, 0.51765, 0.35686, 1)
-
-[node name="LowerTrim" type="ColorRect" parent="BackWall"]
-offset_left = 80.0
-offset_top = 103.0
-offset_right = 560.0
-offset_bottom = 107.0
-mouse_filter = 2
-color = Color(0.41176, 0.30588, 0.23137, 1)
-
-[node name="TopEdge" type="ColorRect" parent="BackWall"]
-offset_left = 80.0
-offset_top = 76.0
-offset_right = 560.0
-offset_bottom = 78.0
-mouse_filter = 2
-color = Color(0.06667, 0.09804, 0.14118, 1)
-
-[node name="PillarWest" type="ColorRect" parent="BackWall"]
-offset_left = 80.0
-offset_top = 73.0
-offset_right = 90.0
-offset_bottom = 107.0
-mouse_filter = 2
-color = Color(0.36471, 0.31765, 0.27843, 1)
-
-[node name="PillarEast" type="ColorRect" parent="BackWall"]
-offset_left = 550.0
-offset_top = 73.0
-offset_right = 560.0
-offset_bottom = 107.0
-mouse_filter = 2
-color = Color(0.36471, 0.31765, 0.27843, 1)
-
-[node name="WestWindow" type="Node2D" parent="BackWall"]
-position = Vector2(111, 58)
-
-[node name="Frame" type="Polygon2D" parent="BackWall/WestWindow"]
-color = Color(0.50196, 0.40392, 0.31373, 1)
-polygon = PackedVector2Array(0, 48, 0, 15, 4, 15, 4, 8, 12, 8, 12, 4, 22, 4, 22, 0, 56, 0, 56, 4, 66, 4, 66, 8, 74, 8, 74, 15, 78, 15, 78, 48)
-
-[node name="Glass" type="Polygon2D" parent="BackWall/WestWindow"]
-color = Color(0.27843, 0.38039, 0.43137, 1)
-polygon = PackedVector2Array(5, 43, 5, 18, 9, 18, 9, 12, 17, 12, 17, 8, 26, 8, 26, 5, 52, 5, 52, 8, 61, 8, 61, 12, 69, 12, 69, 18, 73, 18, 73, 43)
-
-[node name="PortSilhouette" type="Polygon2D" parent="BackWall/WestWindow"]
-color = Color(0.16078, 0.22745, 0.28235, 1)
-polygon = PackedVector2Array(5, 43, 5, 34, 13, 34, 13, 28, 23, 28, 23, 24, 28, 24, 28, 30, 35, 30, 35, 25, 42, 25, 42, 34, 49, 34, 49, 29, 56, 29, 56, 26, 65, 26, 65, 33, 73, 33, 73, 43)
-
-[node name="Mullion" type="ColorRect" parent="BackWall/WestWindow"]
-offset_left = 37.0
-offset_top = 5.0
-offset_right = 41.0
-offset_bottom = 44.0
-mouse_filter = 2
-color = Color(0.62745, 0.51765, 0.37647, 1)
-
-[node name="Crossbar" type="ColorRect" parent="BackWall/WestWindow"]
-offset_left = 5.0
-offset_top = 22.0
-offset_right = 73.0
-offset_bottom = 25.0
-mouse_filter = 2
-color = Color(0.55686, 0.45490, 0.34118, 1)
-
-[node name="Sill" type="ColorRect" parent="BackWall/WestWindow"]
-offset_left = -3.0
-offset_top = 43.0
-offset_right = 81.0
-offset_bottom = 48.0
-mouse_filter = 2
-color = Color(0.61961, 0.50196, 0.35686, 1)
-
-[node name="Shadow" type="ColorRect" parent="BackWall/WestWindow"]
-offset_left = -3.0
-offset_top = 48.0
-offset_right = 81.0
-offset_bottom = 50.0
-mouse_filter = 2
-color = Color(0.14118, 0.11765, 0.11765, 1)
-
-[node name="MiddleWindow" type="Node2D" parent="BackWall"]
-position = Vector2(281, 58)
-
-[node name="Frame" type="Polygon2D" parent="BackWall/MiddleWindow"]
-color = Color(0.50196, 0.40392, 0.31373, 1)
-polygon = PackedVector2Array(0, 48, 0, 15, 4, 15, 4, 8, 12, 8, 12, 4, 22, 4, 22, 0, 56, 0, 56, 4, 66, 4, 66, 8, 74, 8, 74, 15, 78, 15, 78, 48)
-
-[node name="Glass" type="Polygon2D" parent="BackWall/MiddleWindow"]
-color = Color(0.27843, 0.38039, 0.43137, 1)
-polygon = PackedVector2Array(5, 43, 5, 18, 9, 18, 9, 12, 17, 12, 17, 8, 26, 8, 26, 5, 52, 5, 52, 8, 61, 8, 61, 12, 69, 12, 69, 18, 73, 18, 73, 43)
-
-[node name="PortSilhouette" type="Polygon2D" parent="BackWall/MiddleWindow"]
-color = Color(0.16078, 0.22745, 0.28235, 1)
-polygon = PackedVector2Array(5, 43, 5, 34, 13, 34, 13, 28, 23, 28, 23, 24, 28, 24, 28, 30, 35, 30, 35, 25, 42, 25, 42, 34, 49, 34, 49, 29, 56, 29, 56, 26, 65, 26, 65, 33, 73, 33, 73, 43)
-
-[node name="Mullion" type="ColorRect" parent="BackWall/MiddleWindow"]
-offset_left = 37.0
-offset_top = 5.0
-offset_right = 41.0
-offset_bottom = 44.0
-mouse_filter = 2
-color = Color(0.62745, 0.51765, 0.37647, 1)
-
-[node name="Crossbar" type="ColorRect" parent="BackWall/MiddleWindow"]
-offset_left = 5.0
-offset_top = 22.0
-offset_right = 73.0
-offset_bottom = 25.0
-mouse_filter = 2
-color = Color(0.55686, 0.45490, 0.34118, 1)
-
-[node name="Sill" type="ColorRect" parent="BackWall/MiddleWindow"]
-offset_left = -3.0
-offset_top = 43.0
-offset_right = 81.0
-offset_bottom = 48.0
-mouse_filter = 2
-color = Color(0.61961, 0.50196, 0.35686, 1)
-
-[node name="Shadow" type="ColorRect" parent="BackWall/MiddleWindow"]
-offset_left = -3.0
-offset_top = 48.0
-offset_right = 81.0
-offset_bottom = 50.0
-mouse_filter = 2
-color = Color(0.14118, 0.11765, 0.11765, 1)
-
-[node name="EastWindow" type="Node2D" parent="BackWall"]
-position = Vector2(451, 58)
-
-[node name="Frame" type="Polygon2D" parent="BackWall/EastWindow"]
-color = Color(0.50196, 0.40392, 0.31373, 1)
-polygon = PackedVector2Array(0, 48, 0, 15, 4, 15, 4, 8, 12, 8, 12, 4, 22, 4, 22, 0, 56, 0, 56, 4, 66, 4, 66, 8, 74, 8, 74, 15, 78, 15, 78, 48)
-
-[node name="Glass" type="Polygon2D" parent="BackWall/EastWindow"]
-color = Color(0.27843, 0.38039, 0.43137, 1)
-polygon = PackedVector2Array(5, 43, 5, 18, 9, 18, 9, 12, 17, 12, 17, 8, 26, 8, 26, 5, 52, 5, 52, 8, 61, 8, 61, 12, 69, 12, 69, 18, 73, 18, 73, 43)
-
-[node name="PortSilhouette" type="Polygon2D" parent="BackWall/EastWindow"]
-color = Color(0.16078, 0.22745, 0.28235, 1)
-polygon = PackedVector2Array(5, 43, 5, 34, 13, 34, 13, 28, 23, 28, 23, 24, 28, 24, 28, 30, 35, 30, 35, 25, 42, 25, 42, 34, 49, 34, 49, 29, 56, 29, 56, 26, 65, 26, 65, 33, 73, 33, 73, 43)
-
-[node name="Mullion" type="ColorRect" parent="BackWall/EastWindow"]
-offset_left = 37.0
-offset_top = 5.0
-offset_right = 41.0
-offset_bottom = 44.0
-mouse_filter = 2
-color = Color(0.62745, 0.51765, 0.37647, 1)
-
-[node name="Crossbar" type="ColorRect" parent="BackWall/EastWindow"]
-offset_left = 5.0
-offset_top = 22.0
-offset_right = 73.0
-offset_bottom = 25.0
-mouse_filter = 2
-color = Color(0.55686, 0.45490, 0.34118, 1)
-
-[node name="Sill" type="ColorRect" parent="BackWall/EastWindow"]
-offset_left = -3.0
-offset_top = 43.0
-offset_right = 81.0
-offset_bottom = 48.0
-mouse_filter = 2
-color = Color(0.61961, 0.50196, 0.35686, 1)
-
-[node name="Shadow" type="ColorRect" parent="BackWall/EastWindow"]
-offset_left = -3.0
-offset_top = 48.0
-offset_right = 81.0
-offset_bottom = 50.0
-mouse_filter = 2
-color = Color(0.14118, 0.11765, 0.11765, 1)
-
-[node name="WallTimetable" type="Node2D" parent="BackWall"]
-position = Vector2(213, 82)
-
-[node name="Frame" type="ColorRect" parent="BackWall/WallTimetable"]
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 46.0
-offset_bottom = 20.0
-mouse_filter = 2
-color = Color(0.58431, 0.44314, 0.28627, 1)
-
-[node name="Board" type="ColorRect" parent="BackWall/WallTimetable"]
-offset_left = 2.0
-offset_top = 2.0
-offset_right = 44.0
-offset_bottom = 17.0
-mouse_filter = 2
-color = Color(0.17255, 0.16078, 0.17255, 1)
-
-[node name="TitleRule" type="ColorRect" parent="BackWall/WallTimetable"]
-offset_left = 7.0
-offset_top = 5.0
-offset_right = 39.0
-offset_bottom = 7.0
-mouse_filter = 2
-color = Color(0.70588, 0.60392, 0.42745, 1)
-
-[node name="Line1" type="ColorRect" parent="BackWall/WallTimetable"]
-offset_left = 7.0
-offset_top = 9.0
-offset_right = 32.0
-offset_bottom = 10.0
-mouse_filter = 2
-color = Color(0.44706, 0.36863, 0.30588, 1)
-
-[node name="Line2" type="ColorRect" parent="BackWall/WallTimetable"]
-offset_left = 7.0
-offset_top = 12.0
-offset_right = 37.0
-offset_bottom = 13.0
-mouse_filter = 2
-color = Color(0.44706, 0.36863, 0.30588, 1)
-
-[node name="StationClock" type="Node2D" parent="BackWall"]
-position = Vector2(392, 82)
-
-[node name="Rim" type="Polygon2D" parent="BackWall/StationClock"]
-color = Color(0.61961, 0.47451, 0.31373, 1)
-polygon = PackedVector2Array(0, 5, 3, 5, 3, 2, 7, 2, 7, 0, 15, 0, 15, 2, 19, 2, 19, 5, 22, 5, 22, 17, 19, 17, 19, 20, 3, 20, 3, 17, 0, 17)
-
-[node name="Clockface" type="Polygon2D" parent="BackWall/StationClock"]
-color = Color(0.87059, 0.76471, 0.58039, 1)
-polygon = PackedVector2Array(3, 7, 6, 7, 6, 4, 16, 4, 16, 7, 19, 7, 19, 15, 16, 15, 16, 17, 6, 17, 6, 15, 3, 15)
-
-[node name="HandHour" type="ColorRect" parent="BackWall/StationClock"]
-offset_left = 10.0
-offset_top = 6.0
-offset_right = 12.0
-offset_bottom = 12.0
-mouse_filter = 2
-color = Color(0.32157, 0.25882, 0.23529, 1)
-
-[node name="HandMinute" type="ColorRect" parent="BackWall/StationClock"]
-offset_left = 10.0
-offset_top = 11.0
-offset_right = 16.0
-offset_bottom = 13.0
-mouse_filter = 2
-color = Color(0.32157, 0.25882, 0.23529, 1)
-
-[node name="Runner" type="Node2D" parent="."]
-position = Vector2(286, 119)
-
-[node name="Shadow" type="ColorRect" parent="Runner"]
-offset_left = -2.0
-offset_top = 1.0
-offset_right = 70.0
-offset_bottom = 211.0
-mouse_filter = 2
-color = Color(0.44314, 0.29020, 0.23922, 0.45)
-
-[node name="WovenRed" type="ColorRect" parent="Runner"]
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 68.0
-offset_bottom = 210.0
-mouse_filter = 2
-color = Color(0.32941, 0.20000, 0.20000, 1)
-
-[node name="StripeLeft" type="ColorRect" parent="Runner"]
-offset_left = 4.0
-offset_top = 0.0
-offset_right = 6.0
-offset_bottom = 210.0
-mouse_filter = 2
-color = Color(0.69412, 0.54118, 0.37647, 1)
-
-[node name="StripeRight" type="ColorRect" parent="Runner"]
-offset_left = 62.0
-offset_top = 0.0
-offset_right = 64.0
-offset_bottom = 210.0
-mouse_filter = 2
-color = Color(0.69412, 0.54118, 0.37647, 1)
-
-[node name="Center" type="ColorRect" parent="Runner"]
-offset_left = 9.0
-offset_top = 0.0
-offset_right = 59.0
-offset_bottom = 210.0
-mouse_filter = 2
-color = Color(0.45098, 0.25882, 0.25490, 1)
-
-[node name="NearA" type="ColorRect" parent="Runner"]
-offset_left = 9.0
-offset_top = 7.0
-offset_right = 59.0
-offset_bottom = 9.0
-mouse_filter = 2
-color = Color(0.60392, 0.40000, 0.32549, 1)
-
-[node name="NearB" type="ColorRect" parent="Runner"]
-offset_left = 9.0
-offset_top = 15.0
-offset_right = 59.0
-offset_bottom = 17.0
-mouse_filter = 2
-color = Color(0.60392, 0.40000, 0.32549, 1)
-
-[node name="FarA" type="ColorRect" parent="Runner"]
-offset_left = 9.0
-offset_top = 192.0
-offset_right = 59.0
-offset_bottom = 194.0
-mouse_filter = 2
-color = Color(0.60392, 0.40000, 0.32549, 1)
-
-[node name="FarB" type="ColorRect" parent="Runner"]
-offset_left = 9.0
-offset_top = 200.0
-offset_right = 59.0
-offset_bottom = 202.0
-mouse_filter = 2
-color = Color(0.60392, 0.40000, 0.32549, 1)
-
-[node name="Reception" type="Node2D" parent="."]
-position = Vector2(129, 145)
-
-[node name="CounterShadow" type="ColorRect" parent="Reception"]
-offset_left = -2.0
-offset_top = 12.0
-offset_right = 131.0
-offset_bottom = 54.0
-mouse_filter = 2
-color = Color(0.38431, 0.30196, 0.23922, 0.4)
-
-[node name="CounterFace" type="ColorRect" parent="Reception"]
-offset_left = 0.0
-offset_top = 11.0
-offset_right = 128.0
-offset_bottom = 48.0
-mouse_filter = 2
-color = Color(0.40784, 0.28235, 0.21961, 1)
-
-[node name="CounterKick" type="ColorRect" parent="Reception"]
-offset_left = 0.0
-offset_top = 44.0
-offset_right = 128.0
-offset_bottom = 48.0
-mouse_filter = 2
-color = Color(0.25098, 0.18039, 0.17255, 1)
-
-[node name="CounterTop" type="ColorRect" parent="Reception"]
-offset_left = -3.0
-offset_top = 0.0
-offset_right = 131.0
-offset_bottom = 18.0
-mouse_filter = 2
-color = Color(0.69020, 0.51373, 0.32941, 1)
-
-[node name="CounterLip" type="ColorRect" parent="Reception"]
-offset_left = -3.0
-offset_top = 15.0
-offset_right = 131.0
-offset_bottom = 19.0
-mouse_filter = 2
-color = Color(0.55686, 0.39608, 0.24314, 1)
-
-[node name="CounterHighlight" type="ColorRect" parent="Reception"]
-offset_left = -3.0
-offset_top = 0.0
-offset_right = 131.0
-offset_bottom = 2.0
-mouse_filter = 2
-color = Color(0.82745, 0.63137, 0.42353, 1)
-
-[node name="WestPanel" type="Node2D" parent="Reception"]
-position = Vector2(8, 21)
-
-[node name="Recess" type="ColorRect" parent="Reception/WestPanel"]
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 32.0
-offset_bottom = 19.0
-mouse_filter = 2
-color = Color(0.30588, 0.21961, 0.19608, 1)
-
-[node name="Inset" type="ColorRect" parent="Reception/WestPanel"]
-offset_left = 2.0
-offset_top = 2.0
-offset_right = 30.0
-offset_bottom = 16.0
-mouse_filter = 2
-color = Color(0.47059, 0.32549, 0.23529, 1)
-
-[node name="PanelEdge" type="ColorRect" parent="Reception/WestPanel"]
-offset_left = 2.0
-offset_top = 2.0
-offset_right = 30.0
-offset_bottom = 3.0
-mouse_filter = 2
-color = Color(0.58824, 0.43137, 0.30196, 1)
-
-[node name="CenterPanel" type="Node2D" parent="Reception"]
-position = Vector2(48, 21)
-
-[node name="Recess" type="ColorRect" parent="Reception/CenterPanel"]
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 32.0
-offset_bottom = 19.0
-mouse_filter = 2
-color = Color(0.30588, 0.21961, 0.19608, 1)
-
-[node name="Inset" type="ColorRect" parent="Reception/CenterPanel"]
-offset_left = 2.0
-offset_top = 2.0
-offset_right = 30.0
-offset_bottom = 16.0
-mouse_filter = 2
-color = Color(0.47059, 0.32549, 0.23529, 1)
-
-[node name="PanelEdge" type="ColorRect" parent="Reception/CenterPanel"]
-offset_left = 2.0
-offset_top = 2.0
-offset_right = 30.0
-offset_bottom = 3.0
-mouse_filter = 2
-color = Color(0.58824, 0.43137, 0.30196, 1)
-
-[node name="EastPanel" type="Node2D" parent="Reception"]
-position = Vector2(88, 21)
-
-[node name="Recess" type="ColorRect" parent="Reception/EastPanel"]
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 32.0
-offset_bottom = 19.0
-mouse_filter = 2
-color = Color(0.30588, 0.21961, 0.19608, 1)
-
-[node name="Inset" type="ColorRect" parent="Reception/EastPanel"]
-offset_left = 2.0
-offset_top = 2.0
-offset_right = 30.0
-offset_bottom = 16.0
-mouse_filter = 2
-color = Color(0.47059, 0.32549, 0.23529, 1)
-
-[node name="PanelEdge" type="ColorRect" parent="Reception/EastPanel"]
-offset_left = 2.0
-offset_top = 2.0
-offset_right = 30.0
-offset_bottom = 3.0
-mouse_filter = 2
-color = Color(0.58824, 0.43137, 0.30196, 1)
-
-[node name="Register" type="Node2D" parent="Reception"]
-position = Vector2(14, 3)
-
-[node name="Case" type="ColorRect" parent="Reception/Register"]
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 19.0
-offset_bottom = 9.0
-mouse_filter = 2
-color = Color(0.28627, 0.26667, 0.28627, 1)
-
-[node name="Lid" type="ColorRect" parent="Reception/Register"]
-offset_left = 1.0
-offset_top = 0.0
-offset_right = 18.0
-offset_bottom = 2.0
-mouse_filter = 2
-color = Color(0.70588, 0.59608, 0.46667, 1)
-
-[node name="Drawer" type="ColorRect" parent="Reception/Register"]
-offset_left = 4.0
-offset_top = 5.0
-offset_right = 16.0
-offset_bottom = 6.0
-mouse_filter = 2
-color = Color(0.59216, 0.48627, 0.36863, 1)
-
-[node name="Ledger" type="Node2D" parent="Reception"]
-position = Vector2(88, 3)
-
-[node name="Cover" type="ColorRect" parent="Reception/Ledger"]
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 20.0
-offset_bottom = 9.0
-mouse_filter = 2
-color = Color(0.39608, 0.26275, 0.29020, 1)
-
-[node name="Pages" type="ColorRect" parent="Reception/Ledger"]
-offset_left = 1.0
-offset_top = 1.0
-offset_right = 19.0
-offset_bottom = 7.0
-mouse_filter = 2
-color = Color(0.87451, 0.77255, 0.58824, 1)
-
-[node name="Spine" type="ColorRect" parent="Reception/Ledger"]
-offset_left = 9.0
-offset_top = 1.0
-offset_right = 11.0
-offset_bottom = 7.0
-mouse_filter = 2
-color = Color(0.67059, 0.54902, 0.44706, 1)
-
-[node name="WaitingArea" type="Node2D" parent="."]
-
-[node name="WindowBench" type="Node2D" parent="WaitingArea"]
-position = Vector2(394, 150)
-
-[node name="Shadow" type="ColorRect" parent="WaitingArea/WindowBench"]
-offset_left = 2.0
-offset_top = 10.0
-offset_right = 112.0
-offset_bottom = 48.0
-mouse_filter = 2
-color = Color(0.38431, 0.30196, 0.23922, 0.35)
-
-[node name="SeatFrame" type="ColorRect" parent="WaitingArea/WindowBench"]
-offset_left = 0.0
-offset_top = 3.0
-offset_right = 108.0
-offset_bottom = 36.0
-mouse_filter = 2
-color = Color(0.32157, 0.22353, 0.18431, 1)
-
-[node name="TopRail" type="ColorRect" parent="WaitingArea/WindowBench"]
-offset_left = 0.0
-offset_top = 3.0
-offset_right = 108.0
-offset_bottom = 8.0
-mouse_filter = 2
-color = Color(0.56471, 0.40392, 0.25490, 1)
-
-[node name="SeatBase" type="ColorRect" parent="WaitingArea/WindowBench"]
-offset_left = 0.0
-offset_top = 18.0
-offset_right = 108.0
-offset_bottom = 34.0
-mouse_filter = 2
-color = Color(0.40000, 0.32941, 0.27843, 1)
-
-[node name="SeatCushion" type="ColorRect" parent="WaitingArea/WindowBench"]
-offset_left = 6.0
-offset_top = 19.0
-offset_right = 102.0
-offset_bottom = 31.0
-mouse_filter = 2
-color = Color(0.29412, 0.36863, 0.38824, 1)
-
-[node name="SeatHighlight" type="ColorRect" parent="WaitingArea/WindowBench"]
-offset_left = 7.0
-offset_top = 19.0
-offset_right = 101.0
-offset_bottom = 21.0
-mouse_filter = 2
-color = Color(0.43137, 0.49020, 0.49412, 1)
-
-[node name="LegWest" type="ColorRect" parent="WaitingArea/WindowBench"]
-offset_left = 4.0
-offset_top = 33.0
-offset_right = 9.0
-offset_bottom = 44.0
-mouse_filter = 2
-color = Color(0.28627, 0.20000, 0.19216, 1)
-
-[node name="LegEast" type="ColorRect" parent="WaitingArea/WindowBench"]
-offset_left = 99.0
-offset_top = 33.0
-offset_right = 104.0
-offset_bottom = 44.0
-mouse_filter = 2
-color = Color(0.28627, 0.20000, 0.19216, 1)
-
-[node name="DividerWest" type="ColorRect" parent="WaitingArea/WindowBench"]
-offset_left = 36.0
-offset_top = 8.0
-offset_right = 38.0
-offset_bottom = 31.0
-mouse_filter = 2
-color = Color(0.38431, 0.29412, 0.24314, 1)
-
-[node name="DividerEast" type="ColorRect" parent="WaitingArea/WindowBench"]
-offset_left = 70.0
-offset_top = 8.0
-offset_right = 72.0
-offset_bottom = 31.0
-mouse_filter = 2
-color = Color(0.38431, 0.29412, 0.24314, 1)
-
-[node name="AisleBench" type="Node2D" parent="WaitingArea"]
-position = Vector2(394, 227)
-
-[node name="Shadow" type="ColorRect" parent="WaitingArea/AisleBench"]
-offset_left = 2.0
-offset_top = 10.0
-offset_right = 112.0
-offset_bottom = 48.0
-mouse_filter = 2
-color = Color(0.38431, 0.30196, 0.23922, 0.35)
-
-[node name="SeatFrame" type="ColorRect" parent="WaitingArea/AisleBench"]
-offset_left = 0.0
-offset_top = 3.0
-offset_right = 108.0
-offset_bottom = 36.0
-mouse_filter = 2
-color = Color(0.32157, 0.22353, 0.18431, 1)
-
-[node name="TopRail" type="ColorRect" parent="WaitingArea/AisleBench"]
-offset_left = 0.0
-offset_top = 3.0
-offset_right = 108.0
-offset_bottom = 8.0
-mouse_filter = 2
-color = Color(0.56471, 0.40392, 0.25490, 1)
-
-[node name="SeatBase" type="ColorRect" parent="WaitingArea/AisleBench"]
-offset_left = 0.0
-offset_top = 18.0
-offset_right = 108.0
-offset_bottom = 34.0
-mouse_filter = 2
-color = Color(0.40000, 0.32941, 0.27843, 1)
-
-[node name="SeatCushion" type="ColorRect" parent="WaitingArea/AisleBench"]
-offset_left = 6.0
-offset_top = 19.0
-offset_right = 102.0
-offset_bottom = 31.0
-mouse_filter = 2
-color = Color(0.29412, 0.36863, 0.38824, 1)
-
-[node name="SeatHighlight" type="ColorRect" parent="WaitingArea/AisleBench"]
-offset_left = 7.0
-offset_top = 19.0
-offset_right = 101.0
-offset_bottom = 21.0
-mouse_filter = 2
-color = Color(0.43137, 0.49020, 0.49412, 1)
-
-[node name="LegWest" type="ColorRect" parent="WaitingArea/AisleBench"]
-offset_left = 4.0
-offset_top = 33.0
-offset_right = 9.0
-offset_bottom = 44.0
-mouse_filter = 2
-color = Color(0.28627, 0.20000, 0.19216, 1)
-
-[node name="LegEast" type="ColorRect" parent="WaitingArea/AisleBench"]
-offset_left = 99.0
-offset_top = 33.0
-offset_right = 104.0
-offset_bottom = 44.0
-mouse_filter = 2
-color = Color(0.28627, 0.20000, 0.19216, 1)
-
-[node name="DividerWest" type="ColorRect" parent="WaitingArea/AisleBench"]
-offset_left = 36.0
-offset_top = 8.0
-offset_right = 38.0
-offset_bottom = 31.0
-mouse_filter = 2
-color = Color(0.38431, 0.29412, 0.24314, 1)
-
-[node name="DividerEast" type="ColorRect" parent="WaitingArea/AisleBench"]
-offset_left = 70.0
-offset_top = 8.0
-offset_right = 72.0
-offset_bottom = 31.0
-mouse_filter = 2
-color = Color(0.38431, 0.29412, 0.24314, 1)
-
-[node name="LeftCase" type="Node2D" parent="WaitingArea"]
-position = Vector2(158, 248)
-
-[node name="Shadow" type="ColorRect" parent="WaitingArea/LeftCase"]
-offset_left = 2.0
-offset_top = 14.0
-offset_right = 31.0
-offset_bottom = 22.0
-mouse_filter = 2
-color = Color(0.38039, 0.29804, 0.24706, 0.38)
-
-[node name="Handle" type="ColorRect" parent="WaitingArea/LeftCase"]
-offset_left = 8.0
-offset_top = 0.0
-offset_right = 17.0
-offset_bottom = 4.0
-mouse_filter = 2
-color = Color(0.34510, 0.24314, 0.17647, 1)
-
-[node name="Case" type="ColorRect" parent="WaitingArea/LeftCase"]
-offset_left = 0.0
-offset_top = 3.0
-offset_right = 27.0
-offset_bottom = 20.0
-mouse_filter = 2
-color = Color(0.50980, 0.36471, 0.23922, 1)
-
-[node name="Top" type="ColorRect" parent="WaitingArea/LeftCase"]
-offset_left = 0.0
-offset_top = 3.0
-offset_right = 27.0
-offset_bottom = 6.0
-mouse_filter = 2
-color = Color(0.64706, 0.48627, 0.32157, 1)
-
-[node name="StrapWest" type="ColorRect" parent="WaitingArea/LeftCase"]
-offset_left = 4.0
-offset_top = 3.0
-offset_right = 6.0
-offset_bottom = 20.0
-mouse_filter = 2
-color = Color(0.32941, 0.25098, 0.19216, 1)
-
-[node name="StrapEast" type="ColorRect" parent="WaitingArea/LeftCase"]
-offset_left = 20.0
-offset_top = 3.0
-offset_right = 22.0
-offset_bottom = 20.0
-mouse_filter = 2
-color = Color(0.32941, 0.25098, 0.19216, 1)
-
-[node name="Clasp" type="ColorRect" parent="WaitingArea/LeftCase"]
-offset_left = 11.0
-offset_top = 6.0
-offset_right = 15.0
-offset_bottom = 9.0
-mouse_filter = 2
-color = Color(0.86667, 0.72941, 0.46667, 1)
-
-[node name="RightCase" type="Node2D" parent="WaitingArea"]
-position = Vector2(182, 257)
-
-[node name="Shadow" type="ColorRect" parent="WaitingArea/RightCase"]
-offset_left = 2.0
-offset_top = 14.0
-offset_right = 31.0
-offset_bottom = 22.0
-mouse_filter = 2
-color = Color(0.38039, 0.29804, 0.24706, 0.38)
-
-[node name="Handle" type="ColorRect" parent="WaitingArea/RightCase"]
-offset_left = 8.0
-offset_top = 0.0
-offset_right = 17.0
-offset_bottom = 4.0
-mouse_filter = 2
-color = Color(0.34510, 0.24314, 0.17647, 1)
-
-[node name="Case" type="ColorRect" parent="WaitingArea/RightCase"]
-offset_left = 0.0
-offset_top = 3.0
-offset_right = 27.0
-offset_bottom = 20.0
-mouse_filter = 2
-color = Color(0.50980, 0.36471, 0.23922, 1)
-
-[node name="Top" type="ColorRect" parent="WaitingArea/RightCase"]
-offset_left = 0.0
-offset_top = 3.0
-offset_right = 27.0
-offset_bottom = 6.0
-mouse_filter = 2
-color = Color(0.64706, 0.48627, 0.32157, 1)
-
-[node name="StrapWest" type="ColorRect" parent="WaitingArea/RightCase"]
-offset_left = 4.0
-offset_top = 3.0
-offset_right = 6.0
-offset_bottom = 20.0
-mouse_filter = 2
-color = Color(0.32941, 0.25098, 0.19216, 1)
-
-[node name="StrapEast" type="ColorRect" parent="WaitingArea/RightCase"]
-offset_left = 20.0
-offset_top = 3.0
-offset_right = 22.0
-offset_bottom = 20.0
-mouse_filter = 2
-color = Color(0.32941, 0.25098, 0.19216, 1)
-
-[node name="Clasp" type="ColorRect" parent="WaitingArea/RightCase"]
-offset_left = 11.0
-offset_top = 6.0
-offset_right = 15.0
-offset_bottom = 9.0
-mouse_filter = 2
-color = Color(0.86667, 0.72941, 0.46667, 1)
-
-[node name="Threshold" type="ColorRect" parent="."]
-offset_left = 286.0
-offset_top = 326.0
-offset_right = 354.0
-offset_bottom = 331.0
-mouse_filter = 2
-color = Color(0.41961, 0.37255, 0.34902, 1)
-
-[node name="ThresholdTrim" type="ColorRect" parent="."]
-offset_left = 286.0
-offset_top = 326.0
-offset_right = 354.0
-offset_bottom = 327.0
-mouse_filter = 2
-color = Color(0.64314, 0.58824, 0.49020, 1)
+color = Color(0.093, 0.118, 0.138, 1)
+
+[node name="RoomArt" type="Node2D" parent="."]
+
+
+[node name="Tower" type="Sprite2D" parent="RoomArt"]
+position = Vector2(245, 19)
+scale = Vector2(0.33333334, 0.33333334)
+texture = ExtResource("art_base")
+centered = false
+
+[node name="Gears" type="Sprite2D" parent="RoomArt"]
+position = Vector2(274, 53)
+scale = Vector2(0.33333334, 0.33333334)
+texture = ExtResource("art_gears")
+centered = false
+
+[node name="Railings" type="Sprite2D" parent="RoomArt"]
+position = Vector2(257, 108)
+scale = Vector2(0.33333334, 0.33333334)
+texture = ExtResource("art_railings")
+centered = false
 
 [node name="Interface" type="CanvasLayer" parent="."]
 
+[node name="TowerBell" parent="Interface" instance=ExtResource("hotspot")]
+unique_name_in_owner = true
+offset_left = 291.0
+offset_top = 149.0
+offset_right = 353.0
+offset_bottom = 219.0
+texture = ExtResource("art_bell")
+display_name = "敲钟"
+tooltip_text = "敲钟"
+script = ExtResource("bell_script")
+
+[node name="Motion" type="AnimatedSprite2D" parent="Interface/TowerBell"]
+visible = false
+scale = Vector2(0.33333334, 0.33333334)
+sprite_frames = ExtResource("ring")
+animation = &"ring"
+centered = false
+
+[node name="Rope" type="Sprite2D" parent="Interface"]
+position = Vector2(272, 148)
+scale = Vector2(0.33333334, 0.33333334)
+texture = ExtResource("art_rope")
+centered = false
+
 [node name="Researcher" parent="Interface" instance=ExtResource("4_actor")]
 unique_name_in_owner = true
-offset_left = 264.0
-offset_top = 183.0
-offset_right = 312.0
-offset_bottom = 231.0
-texture = SubResource("ResearcherIdle")
+offset_left = 271.0
+offset_top = 247.0
+offset_right = 319.0
+offset_bottom = 295.0
+texture = ExtResource("researcher")
 display_name = "差分机操作员"
+
 
 [node name="Escort" parent="Interface" instance=ExtResource("4_actor")]
 unique_name_in_owner = true
-offset_left = 327.0
-offset_top = 180.0
-offset_right = 375.0
-offset_bottom = 228.0
-texture = SubResource("EscortIdle")
+offset_left = 318.0
+offset_top = 246.0
+offset_right = 366.0
+offset_bottom = 294.0
+texture = ExtResource("escort")
 display_name = "警察"
+
 
 [node name="MechanicalMaiden" parent="Interface" instance=ExtResource("4_actor")]
 unique_name_in_owner = true
 visible = false
-offset_left = 297.0
-offset_top = 180.0
-offset_right = 345.0
-offset_bottom = 228.0
-texture = ExtResource("7_maiden")
+offset_left = 296.0
+offset_top = 251.0
+offset_right = 344.0
+offset_bottom = 299.0
+texture = ExtResource("maiden")
 display_name = "机械姬"
 
 [node name="FacilityHUD" parent="Interface" instance=ExtResource("3_hud")]
-facility_title = "空港站房"
-title_color = Color(0.93333, 0.85490, 0.70980, 1)
+facility_title = "钟楼 · 空港站房"
+title_color = Color(0.93333, 0.8549, 0.7098, 1)
 detail_color = Color(0.69412, 0.60392, 0.46275, 1)
-

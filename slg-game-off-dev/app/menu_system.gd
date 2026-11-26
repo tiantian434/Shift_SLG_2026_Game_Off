@@ -20,7 +20,12 @@ var _settings := GameSettings.new()
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
-	_settings.restore()
+	_settings.restore(get_tree().root)
+
+
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_WM_CLOSE_REQUEST and DisplayServer.get_name() != "headless":
+		_settings.save()
 
 
 func open_settings(source_menu: Control) -> void:
@@ -87,7 +92,8 @@ func _input(event: InputEvent) -> void:
 		_day_end_confirmation.hide()
 	elif _settings_menu != null:
 		get_viewport().set_input_as_handled()
-		_close_settings()
+		if not _settings_menu.close_resolution_list():
+			_close_settings()
 	elif _pause_menu != null:
 		var confirm_home: ConfirmationDialog = _pause_menu.get_node("%ConfirmHome")
 		if confirm_home.visible:
@@ -97,7 +103,10 @@ func _input(event: InputEvent) -> void:
 			return
 		get_viewport().set_input_as_handled()
 		_resume_game()
-	elif not get_tree().paused and SceneRouter.is_in_game():
+
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed(&"ui_cancel") and not get_tree().paused and SceneRouter.is_in_game():
 		get_viewport().set_input_as_handled()
 		open_pause()
 

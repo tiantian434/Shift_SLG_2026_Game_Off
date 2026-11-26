@@ -19,14 +19,7 @@ var _clickable := true
 
 func _ready() -> void:
 	name_tag.text = display_name
-	var sprite_image := texture.get_image() if texture else null
-	if sprite_image == null or sprite_image.is_empty():
-		push_warning("Sprite hotspot '%s' needs a readable texture." % name)
-		return
-
-	_hit_mask.create_from_image_alpha(sprite_image)
-	outline.texture = _make_outline()
-	_update_outline_size()
+	_rebuild_hotspot_mask()
 
 	mouse_entered.connect(_set_hovered.bind(true))
 	mouse_exited.connect(_set_hovered.bind(false))
@@ -34,6 +27,19 @@ func _ready() -> void:
 	focus_exited.connect(_update_highlight)
 	resized.connect(_update_outline_size)
 	visibility_changed.connect(_on_visibility_changed)
+
+
+func _rebuild_hotspot_mask() -> void:
+	var sprite_image := texture.get_image() if texture else null
+	if sprite_image == null or sprite_image.is_empty():
+		_hit_mask = BitMap.new()
+		outline.texture = null
+		push_warning("Sprite hotspot '%s' needs a readable texture." % name)
+		return
+
+	_hit_mask.create_from_image_alpha(sprite_image)
+	outline.texture = _make_outline(_hit_mask)
+	_update_outline_size()
 
 
 func set_clickable(clickable: bool) -> void:
@@ -66,21 +72,31 @@ func _gui_input(event: InputEvent) -> void:
 	activated.emit()
 
 
-func _make_outline() -> ImageTexture:
-	var mask_size := _hit_mask.get_size()
-	var image := Image.create_empty(mask_size.x + 2, mask_size.y + 2, false, Image.FORMAT_RGBA8)
-	# Draw a one-texel border behind the original sprite.
+func _make_outline(mask: BitMap) -> ImageTexture:
+	var mask_size := mask.get_size()
+	var padding := _outline_padding(mask_size)
+	var image_size := mask_size + padding * 2
+	var image := Image.create_empty(image_size.x, image_size.y, false, Image.FORMAT_RGBA8)
+	var stamp := padding * 2 + Vector2i.ONE
+	# Draw the selected border width behind the original sprite.
 	for y in range(mask_size.y):
 		for x in range(mask_size.x):
-			if _hit_mask.get_bit(x, y):
-				image.fill_rect(Rect2i(x, y, 3, 3), Color.WHITE)
+			if mask.get_bit(x, y):
+				image.fill_rect(Rect2i(Vector2i(x, y), stamp), Color.WHITE)
 	return ImageTexture.create_from_image(image)
 
 
+func _outline_padding(_mask_size: Vector2i) -> Vector2i:
+	return Vector2i.ONE
+
+
 func _update_outline_size() -> void:
-	var texel := size / Vector2(_hit_mask.get_size())
-	outline.position = -texel
-	outline.size = size + texel * 2.0
+	var mask_size := _hit_mask.get_size()
+	if mask_size == Vector2i.ZERO:
+		return
+	var border := size / Vector2(mask_size) * Vector2(_outline_padding(mask_size))
+	outline.position = -border
+	outline.size = size + border * 2.0
 
 
 func _set_hovered(hovered: bool) -> void:

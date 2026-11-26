@@ -1,0 +1,435 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://views/map/surface_port.gd" id="1_script"]
+[ext_resource type="Script" path="res://views/map/propeller.gd" id="2_propeller"]
+[ext_resource type="Script" path="res://views/map/projected_rotor.gd" id="3_rotor"]
+[ext_resource type="Shader" path="res://views/map/wing_tip.gdshader" id="4_wing_shader"]
+[ext_resource type="Texture2D" path="res://assets/art/map/prop_01.png" id="tex_17"]
+[ext_resource type="Texture2D" path="res://assets/art/map/prop_02.png" id="tex_18"]
+[ext_resource type="Texture2D" path="res://assets/art/map/prop_03.png" id="tex_19"]
+[ext_resource type="Texture2D" path="res://assets/art/map/prop_04.png" id="tex_20"]
+[ext_resource type="Texture2D" path="res://assets/art/map/prop_05.png" id="tex_21"]
+[ext_resource type="Texture2D" path="res://assets/art/map/prop_06.png" id="tex_22"]
+[ext_resource type="Texture2D" path="res://assets/art/map/prop_07.png" id="tex_23"]
+[ext_resource type="Texture2D" path="res://assets/art/map/prop_08.png" id="tex_24"]
+[ext_resource type="Texture2D" path="res://assets/art/map/prop_09.png" id="tex_25"]
+[ext_resource type="Texture2D" path="res://assets/art/map/prop_10.png" id="tex_26"]
+[ext_resource type="Texture2D" path="res://assets/art/map/prop_11.png" id="tex_27"]
+[ext_resource type="Texture2D" path="res://assets/art/map/prop_12.png" id="tex_28"]
+[ext_resource type="Texture2D" path="res://assets/art/map/prop_13.png" id="tex_29"]
+[ext_resource type="Texture2D" path="res://assets/art/map/prop_14.png" id="tex_30"]
+[ext_resource type="Texture2D" path="res://assets/art/map/prop_15.png" id="tex_31"]
+[ext_resource type="Texture2D" path="res://assets/art/map/prop_16.png" id="tex_32"]
+[ext_resource type="Texture2D" path="res://assets/art/map/pedestrian_01.png" id="tex_33"]
+[ext_resource type="Texture2D" path="res://assets/art/map/pedestrian_02.png" id="tex_34"]
+[ext_resource type="Texture2D" path="res://assets/art/map/pedestrian_03.png" id="tex_35"]
+[ext_resource type="Texture2D" path="res://assets/art/map/pedestrian_04.png" id="tex_36"]
+[ext_resource type="Texture2D" path="res://assets/art/map/pedestrian_05.png" id="tex_37"]
+[ext_resource type="Texture2D" path="res://assets/art/map/pedestrian_06.png" id="tex_38"]
+[ext_resource type="Texture2D" path="res://assets/art/map/pedestrian_07.png" id="tex_39"]
+[ext_resource type="Texture2D" path="res://assets/art/map/pedestrian_08.png" id="tex_40"]
+[ext_resource type="Texture2D" path="res://assets/art/map/airflow_frames.png" id="tex_41"]
+[ext_resource type="Texture2D" path="res://assets/art/map/airship.png" id="tex_42"]
+[ext_resource type="Texture2D" path="res://assets/art/map/mechanism_rear_motor.png" id="art_mechanism_rear_motor"]
+[ext_resource type="Texture2D" path="res://assets/art/map/island_fan_blade.png" id="art_island_blade"]
+[ext_resource type="Texture2D" path="res://assets/art/map/island_fan_hub.png" id="art_island_hub"]
+[ext_resource type="Texture2D" path="res://assets/art/map/mechanism_13.png" id="art_mechanism_13"]
+[ext_resource type="Texture2D" path="res://assets/art/map/mechanism_13_hub.png" id="art_mechanism_13_hub"]
+[ext_resource type="Texture2D" path="res://assets/art/map/mechanism_11.png" id="art_mechanism_11"]
+[ext_resource type="Texture2D" path="res://assets/art/map/mechanism_11_hub.png" id="art_mechanism_11_hub"]
+[ext_resource type="Texture2D" path="res://assets/art/map/mechanism_08.png" id="art_mechanism_08"]
+[ext_resource type="Texture2D" path="res://assets/art/map/mechanism_08_hub.png" id="art_mechanism_08_hub"]
+[ext_resource type="Texture2D" path="res://assets/art/map/platform.png" id="art_platform"]
+[ext_resource type="Texture2D" path="res://assets/art/map/mechanism_09.png" id="art_mechanism_09"]
+[ext_resource type="Texture2D" path="res://assets/art/map/mechanism_15.png" id="art_mechanism_15"]
+[ext_resource type="Texture2D" path="res://assets/art/map/mechanism_12.png" id="art_mechanism_12"]
+[ext_resource type="Texture2D" path="res://assets/art/map/mechanism_04.png" id="art_mechanism_04"]
+[ext_resource type="Texture2D" path="res://assets/art/map/mechanism_03.png" id="art_mechanism_03"]
+[ext_resource type="Texture2D" path="res://assets/art/map/mechanism_07.png" id="art_mechanism_07"]
+[ext_resource type="Texture2D" path="res://assets/art/map/mechanism_06.png" id="art_mechanism_06"]
+[ext_resource type="Texture2D" path="res://assets/art/map/mechanism_05.png" id="art_mechanism_05"]
+[ext_resource type="Texture2D" path="res://assets/art/map/airship_fan_blade.png" id="art_ship_blade"]
+[ext_resource type="Texture2D" path="res://assets/art/map/airship_fan_hub.png" id="art_ship_hub"]
+[ext_resource type="Texture2D" path="res://assets/art/map/airship_wing_far.png" id="art_wing_far"]
+[ext_resource type="Texture2D" path="res://assets/art/map/airship_wing_near.png" id="art_wing_near"]
+
+[sub_resource type="ShaderMaterial" id="FarWingMaterial"]
+resource_local_to_scene = true
+shader = ExtResource("4_wing_shader")
+shader_parameter/tip_on_left = true
+
+[sub_resource type="ShaderMaterial" id="NearWingMaterial"]
+resource_local_to_scene = true
+shader = ExtResource("4_wing_shader")
+
+[node name="SurfacePort" type="Node2D"]
+script = ExtResource("1_script")
+texture_filter = 1
+
+[node name="RearMachinery" type="Node2D" parent="."]
+
+[node name="RightMotor" type="Sprite2D" parent="RearMachinery"]
+position = Vector2(559, 144)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("art_mechanism_rear_motor")
+centered = false
+
+[node name="Part10" type="Node2D" parent="RearMachinery"]
+position = Vector2(626, 189)
+script = ExtResource("2_propeller")
+blade = ExtResource("art_island_blade")
+hub = ExtResource("art_island_hub")
+hub_size = Vector2(14, 14)
+hub_offset = Vector2(1.5, 0)
+plane_ratio = 0.76
+plane_tilt = -12.0
+turns_per_minute = -20.0
+start_degrees = 37.0
+
+[node name="Part14" type="Node2D" parent="RearMachinery"]
+position = Vector2(320, 237)
+script = ExtResource("2_propeller")
+blade = ExtResource("art_island_blade")
+hub = ExtResource("art_island_hub")
+hub_size = Vector2(14, 14)
+plane_ratio = 0.74
+turns_per_minute = 18.0
+start_degrees = 55.0
+
+[node name="Part13" type="Node2D" parent="RearMachinery"]
+position = Vector2(318, 239)
+script = ExtResource("3_rotor")
+axis_tilt_degrees = -70
+plane_ratio = 0.83
+turns_per_minute = -6
+
+[node name="Face" type="Sprite2D" parent="RearMachinery/Part13"]
+position = Vector2(-45, -52)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("art_mechanism_13")
+centered = false
+
+[node name="Bearing" type="Sprite2D" parent="RearMachinery/Part13"]
+position = Vector2(-17, -20.5)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("art_mechanism_13_hub")
+centered = false
+
+[node name="Part11" type="Node2D" parent="RearMachinery"]
+position = Vector2(494, 327)
+script = ExtResource("3_rotor")
+axis_tilt_degrees = -70
+plane_ratio = 0.83
+turns_per_minute = -6
+
+[node name="Face" type="Sprite2D" parent="RearMachinery/Part11"]
+position = Vector2(-45, -52)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("art_mechanism_11")
+centered = false
+
+[node name="Bearing" type="Sprite2D" parent="RearMachinery/Part11"]
+position = Vector2(-17, -20.5)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("art_mechanism_11_hub")
+centered = false
+
+[node name="Part08" type="Node2D" parent="RearMachinery"]
+position = Vector2(566, 287)
+script = ExtResource("3_rotor")
+axis_tilt_degrees = -70
+plane_ratio = 0.83
+turns_per_minute = 6
+
+[node name="Face" type="Sprite2D" parent="RearMachinery/Part08"]
+position = Vector2(-45, -52)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("art_mechanism_08")
+centered = false
+
+[node name="Bearing" type="Sprite2D" parent="RearMachinery/Part08"]
+position = Vector2(-17, -20.5)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("art_mechanism_08_hub")
+centered = false
+
+[node name="Platform" type="Sprite2D" parent="."]
+position = Vector2(285.8, 112)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("art_platform")
+centered = false
+
+[node name="FrontMachinery" type="Node2D" parent="."]
+
+[node name="Part09" type="Sprite2D" parent="FrontMachinery"]
+position = Vector2(438, 330)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("art_mechanism_09")
+centered = false
+
+[node name="Part15" type="Sprite2D" parent="FrontMachinery"]
+position = Vector2(540, 341)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("art_mechanism_15")
+centered = false
+
+[node name="Part12" type="Sprite2D" parent="FrontMachinery"]
+position = Vector2(308, 266)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("art_mechanism_12")
+centered = false
+
+[node name="Part04" type="Sprite2D" parent="FrontMachinery"]
+position = Vector2(378, 328)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("art_mechanism_04")
+centered = false
+
+[node name="Part03" type="Sprite2D" parent="FrontMachinery"]
+position = Vector2(365, 269)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("art_mechanism_03")
+centered = false
+
+[node name="Part07" type="Node2D" parent="FrontMachinery"]
+position = Vector2(610, 282)
+script = ExtResource("3_rotor")
+axis_tilt_degrees = -65
+plane_ratio = 0.9
+turns_per_minute = 10
+
+[node name="Face" type="Sprite2D" parent="FrontMachinery/Part07"]
+position = Vector2(-15, -15)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("art_mechanism_07")
+centered = false
+
+[node name="Part06" type="Node2D" parent="FrontMachinery"]
+position = Vector2(598, 233)
+script = ExtResource("3_rotor")
+axis_tilt_degrees = -82
+plane_ratio = 0.94
+turns_per_minute = -10
+
+[node name="Face" type="Sprite2D" parent="FrontMachinery/Part06"]
+position = Vector2(-19, -19)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("art_mechanism_06")
+centered = false
+
+[node name="Part05" type="Node2D" parent="FrontMachinery"]
+position = Vector2(593, 256)
+script = ExtResource("3_rotor")
+axis_tilt_degrees = -72
+plane_ratio = 0.87
+turns_per_minute = 8
+
+[node name="Face" type="Sprite2D" parent="FrontMachinery/Part05"]
+position = Vector2(-30, -34)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("art_mechanism_05")
+centered = false
+
+[node name="Part02" type="Node2D" parent="FrontMachinery"]
+position = Vector2(372, 313)
+script = ExtResource("2_propeller")
+blade = ExtResource("art_island_blade")
+hub = ExtResource("art_island_hub")
+hub_size = Vector2(16, 16)
+hub_offset = Vector2(-2, 1)
+turns_per_minute = 24.0
+
+[node name="Dressing" type="Node2D" parent="."]
+
+[node name="Prop01" type="Sprite2D" parent="Dressing"]
+position = Vector2(345.0, 166.0)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("tex_17")
+centered = false
+
+[node name="Prop02" type="Sprite2D" parent="Dressing"]
+position = Vector2(485.5, 143.0)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("tex_18")
+centered = false
+
+[node name="Prop03" type="Sprite2D" parent="Dressing"]
+position = Vector2(530.0, 191.5)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("tex_19")
+centered = false
+
+[node name="Prop04" type="Sprite2D" parent="Dressing"]
+position = Vector2(410.0, 195.5)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("tex_20")
+centered = false
+
+[node name="Prop05" type="Sprite2D" parent="Dressing"]
+position = Vector2(331.0, 200.5)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("tex_21")
+centered = false
+
+[node name="Prop06" type="Sprite2D" parent="Dressing"]
+position = Vector2(480.0, 194.0)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("tex_22")
+centered = false
+
+[node name="Prop07" type="Sprite2D" parent="Dressing"]
+position = Vector2(446.5, 145.0)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("tex_23")
+centered = false
+
+[node name="Prop08" type="Sprite2D" parent="Dressing"]
+position = Vector2(492.5, 201.5)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("tex_24")
+centered = false
+
+[node name="Prop09" type="Sprite2D" parent="Dressing"]
+position = Vector2(384.0, 217.0)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("tex_25")
+centered = false
+
+[node name="Prop10" type="Sprite2D" parent="Dressing"]
+position = Vector2(412.0, 159.0)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("tex_26")
+centered = false
+
+[node name="Prop11" type="Sprite2D" parent="Dressing"]
+position = Vector2(319.25, 181.0)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("tex_27")
+centered = false
+
+[node name="Prop12" type="Sprite2D" parent="Dressing"]
+position = Vector2(545.25, 180.5)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("tex_28")
+centered = false
+
+[node name="Prop13" type="Sprite2D" parent="Dressing"]
+position = Vector2(350.5, 216.5)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("tex_29")
+centered = false
+
+[node name="Prop14" type="Sprite2D" parent="Dressing"]
+position = Vector2(510.0, 139.0)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("tex_30")
+centered = false
+
+[node name="Prop15" type="Sprite2D" parent="Dressing"]
+position = Vector2(470.0, 209.0)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("tex_31")
+centered = false
+
+[node name="Prop16" type="Sprite2D" parent="Dressing"]
+position = Vector2(374.5, 153.5)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("tex_32")
+centered = false
+
+[node name="Pedestrians" type="Node2D" parent="."]
+
+[node name="Walker01" type="Sprite2D" parent="Pedestrians"]
+position = Vector2(399, 177.0)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("tex_33")
+metadata/walk_distance = 6.0
+
+[node name="Walker02" type="Sprite2D" parent="Pedestrians"]
+position = Vector2(432, 162.0)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("tex_34")
+metadata/walk_distance = 9.0
+
+[node name="Walker03" type="Sprite2D" parent="Pedestrians"]
+position = Vector2(487, 175.0)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("tex_35")
+metadata/walk_distance = 12.0
+
+[node name="Walker04" type="Sprite2D" parent="Pedestrians"]
+position = Vector2(504, 195.0)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("tex_36")
+metadata/walk_distance = 6.0
+
+[node name="Walker05" type="Sprite2D" parent="Pedestrians"]
+position = Vector2(372, 223.0)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("tex_37")
+metadata/walk_distance = 9.0
+
+[node name="Walker06" type="Sprite2D" parent="Pedestrians"]
+position = Vector2(399, 210.0)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("tex_38")
+metadata/walk_distance = 12.0
+
+[node name="Walker07" type="Sprite2D" parent="Pedestrians"]
+position = Vector2(456, 235.0)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("tex_39")
+metadata/walk_distance = 6.0
+
+[node name="Walker08" type="Sprite2D" parent="Pedestrians"]
+position = Vector2(542, 209.0)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("tex_40")
+metadata/walk_distance = 9.0
+
+[node name="Airship" type="Node2D" parent="."]
+position = Vector2(59, 174)
+scale = Vector2(0.239, 0.239)
+
+[node name="Airflow" type="Sprite2D" parent="Airship"]
+position = Vector2(680, 338)
+scale = Vector2(1.254, 1.254)
+texture = ExtResource("tex_41")
+centered = false
+hframes = 7
+vframes = 12
+
+[node name="FarWing" type="Node2D" parent="Airship"]
+position = Vector2(156, 484)
+
+[node name="Art" type="Sprite2D" parent="Airship/FarWing"]
+position = Vector2(-156, -89)
+texture = ExtResource("art_wing_far")
+centered = false
+material = SubResource("FarWingMaterial")
+
+[node name="Rotor" type="Node2D" parent="Airship"]
+position = Vector2(655, 498)
+script = ExtResource("2_propeller")
+blade = ExtResource("art_ship_blade")
+hub = ExtResource("art_ship_hub")
+hub_size = Vector2(37, 36)
+hub_offset = Vector2(-1, 0)
+radius = 79.0
+plane_ratio = 0.70
+plane_tilt = -8.0
+turns_per_minute = -40.0
+start_degrees = 16.0
+
+[node name="Hull" type="Sprite2D" parent="Airship"]
+texture = ExtResource("tex_42")
+centered = false
+
+[node name="NearWing" type="Node2D" parent="Airship"]
+position = Vector2(432, 598)
+
+[node name="Art" type="Sprite2D" parent="Airship/NearWing"]
+position = Vector2(-34, -50)
+texture = ExtResource("art_wing_near")
+centered = false
+material = SubResource("NearWingMaterial")

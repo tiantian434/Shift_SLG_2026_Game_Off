@@ -1,0 +1,9 @@
+[gd_resource type="AtlasTexture" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/art/characters/police_sheet.png" id="1_sheet"]
+
+[resource]
+atlas = ExtResource("1_sheet")
+region = Rect2(48, 0, 48, 48)
+filter_clip = true
+metadata/facing_rows = Vector2i(1, 0)

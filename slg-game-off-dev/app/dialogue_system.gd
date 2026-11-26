@@ -93,6 +93,8 @@ func _choose(index: int) -> void:
 
 
 func _handle_modal_input(event: InputEvent) -> bool:
+	if event.is_action_pressed(&"ui_cancel"):
+		return _box.dismiss_overlay()
 	if event.is_action_pressed(&"ui_accept"):
 		var focus := _box.get_viewport().gui_get_focus_owner()
 		if focus is BaseButton and _box.is_ancestor_of(focus) and not focus.disabled:

@@ -1,0 +1,16 @@
+[gd_resource type="AnimatedTexture" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/art/ui/continue-1.png" id="1_arrow"]
+[ext_resource type="Texture2D" path="res://assets/art/ui/continue-2.png" id="2_arrow"]
+[ext_resource type="Texture2D" path="res://assets/art/ui/continue-3.png" id="3_arrow"]
+
+[resource]
+frames = 4
+frame_0/texture = ExtResource("1_arrow")
+frame_0/duration = 0.28
+frame_1/texture = ExtResource("2_arrow")
+frame_1/duration = 0.14
+frame_2/texture = ExtResource("3_arrow")
+frame_2/duration = 0.28
+frame_3/texture = ExtResource("2_arrow")
+frame_3/duration = 0.14

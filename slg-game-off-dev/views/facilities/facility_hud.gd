@@ -26,9 +26,15 @@ var _inner_world := false
 func _ready() -> void:
 	super._ready()
 	$BackButton.show()
-	$EndDay.offset_top = -65.0
-	$EndDay.offset_bottom = -40.0
-	%QuestDrawer.offset_bottom = 285.0
+	$EndDay.offset_top = -96.0
+	$EndDay.offset_bottom = -44.0
+	%QuestDrawer.offset_bottom = 257.0
+	%Feedback.anchor_left = 1.0
+	%Feedback.anchor_right = 1.0
+	%Feedback.offset_left = -218.0
+	%Feedback.offset_top = 78.0
+	%Feedback.offset_right = -10.0
+	%Feedback.offset_bottom = 125.0
 	set_location(facility_title, _inner_world)
 	set_location_colors(title_color, detail_color)
 

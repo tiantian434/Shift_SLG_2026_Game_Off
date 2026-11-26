@@ -2,11 +2,11 @@
 
 [ext_resource type="Theme" path="res://views/hud/shift_theme.tres" id="1_theme"]
 [ext_resource type="Script" path="res://views/menus/home_menu.gd" id="2_script"]
-[ext_resource type="Texture2D" path="res://assets/ui/day_dial.png" id="3_dial"]
-[ext_resource type="Texture2D" path="res://assets/map/surface_map.png" id="4_surface"]
+[ext_resource type="Texture2D" path="res://assets/art/ui/dial-complete.png" id="3_dial"]
+[ext_resource type="Texture2D" path="res://assets/art/map/port_preview.png" id="4_surface"]
 [ext_resource type="Texture2D" path="res://assets/map/inner_map.png" id="5_inner"]
-[ext_resource type="Texture2D" path="res://assets/third_party/ninja_adventure/tileset_house.png" id="6_buildings"]
 [ext_resource type="Texture2D" path="res://assets/map/inner_buildings.png" id="7_inner_buildings"]
+[ext_resource type="FontFile" path="res://assets/art/ui/hy-pixel-title.ttf" id="8_title"]
 
 [sub_resource type="StyleBoxFlat" id="MenuFrame"]
 bg_color = Color(0.18, 0.126, 0.093, 1)
@@ -31,24 +31,9 @@ shadow_color = Color(0.076, 0.051, 0.039, 0.75)
 shadow_size = 4
 shadow_offset = Vector2(0, 3)
 
-[sub_resource type="AtlasTexture" id="SurfaceMapHalf"]
-atlas = ExtResource("4_surface")
-region = Rect2(0, 0, 320, 360)
-filter_clip = true
-
 [sub_resource type="AtlasTexture" id="InnerMapHalf"]
 atlas = ExtResource("5_inner")
 region = Rect2(320, 0, 320, 360)
-filter_clip = true
-
-[sub_resource type="AtlasTexture" id="Station"]
-atlas = ExtResource("6_buildings")
-region = Rect2(416, 0, 48, 48)
-filter_clip = true
-
-[sub_resource type="AtlasTexture" id="Restaurant"]
-atlas = ExtResource("6_buildings")
-region = Rect2(192, 0, 64, 48)
 filter_clip = true
 
 [sub_resource type="AtlasTexture" id="Workshop"]
@@ -60,10 +45,6 @@ filter_clip = true
 atlas = ExtResource("7_inner_buildings")
 region = Rect2(160, 0, 64, 48)
 filter_clip = true
-
-[sub_resource type="SystemFont" id="TitleFont"]
-font_names = PackedStringArray("Cinzel", "Noto Serif", "Georgia")
-font_weight = 700
 
 [node name="HomeMenu" type="Control"]
 layout_mode = 3
@@ -108,10 +89,10 @@ theme_override_styles/panel = SubResource("MenuFrame")
 
 [node name="Dial" type="TextureRect" parent="Layout/MenuFrame"]
 texture_filter = 1
-offset_left = 12.0
-offset_top = 7.0
-offset_right = 88.0
-offset_bottom = 83.0
+offset_left = 17.0
+offset_top = 12.0
+offset_right = 72.0
+offset_bottom = 67.0
 mouse_filter = 2
 texture = ExtResource("3_dial")
 expand_mode = 1
@@ -125,7 +106,7 @@ offset_bottom = 134.0
 theme_override_colors/font_color = Color(0.995, 0.884, 0.629, 1)
 theme_override_colors/font_shadow_color = Color(0.07, 0.049, 0.03, 1)
 theme_override_constants/shadow_offset_y = 3
-theme_override_fonts/font = SubResource("TitleFont")
+theme_override_fonts/font = ExtResource("8_title")
 theme_override_font_sizes/font_size = 53
 text = "SHIFT"
 vertical_alignment = 1
@@ -191,26 +172,9 @@ offset_top = 28.0
 offset_right = 188.0
 offset_bottom = 231.0
 mouse_filter = 2
-texture = SubResource("SurfaceMapHalf")
+texture = ExtResource("4_surface")
 expand_mode = 1
-
-[node name="Station" type="TextureRect" parent="Layout/WorldPreview/Surface"]
-offset_left = 69.0
-offset_top = 57.0
-offset_right = 123.0
-offset_bottom = 111.0
-mouse_filter = 2
-texture = SubResource("Station")
-expand_mode = 1
-
-[node name="Restaurant" type="TextureRect" parent="Layout/WorldPreview/Surface"]
-offset_left = 60.0
-offset_top = 137.0
-offset_right = 132.0
-offset_bottom = 191.0
-mouse_filter = 2
-texture = SubResource("Restaurant")
-expand_mode = 1
+stretch_mode = 6
 
 [node name="Inner" type="TextureRect" parent="Layout/WorldPreview"]
 offset_left = 188.0

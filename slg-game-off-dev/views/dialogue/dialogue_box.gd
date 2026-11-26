@@ -7,6 +7,7 @@ signal shift_confirmed
 signal close_requested
 
 const PlayerReply := preload("res://views/dialogue/player_reply.gd")
+const CONTINUE_ARROW := preload("res://views/dialogue/continue_arrow.tres")
 const CHARACTERS_PER_SECOND := 40.0
 
 var _npc_name: String
@@ -122,6 +123,19 @@ func request_advance() -> bool:
 	return true
 
 
+func dismiss_overlay() -> bool:
+	if _exit_prompt.visible:
+		_hide_exit_prompt()
+	elif _history_panel.visible:
+		_hide_history()
+	elif _shift_prompt.visible:
+		if not _confirm_shift.disabled:
+			dismiss_shift_prompt()
+	else:
+		return false
+	return true
+
+
 func _on_text_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		accept_event()
@@ -227,17 +241,17 @@ func _set_controls_disabled(disabled: bool) -> void:
 func _append_history(speaker_name: String, text: String) -> void:
 	if _history_log.get_total_character_count() > 0:
 		_history_log.add_text("\n\n")
-	_history_log.push_color(Color("#edc68a"))
+	_history_log.push_color(Color("#825223"))
 	_history_log.add_text(speaker_name)
 	_history_log.pop()
 	_history_log.add_text("\n" + text)
 
 
 func _layout_actions(has_choices: bool) -> void:
-	_action_scroll.offset_left = 252.0 if has_choices else 351.0
-	_action_scroll.offset_top = -259.0 if has_choices else -45.0
-	_action_scroll.offset_bottom = -163.0 if has_choices else -17.0
-	_line_scroll.offset_bottom = -12.0 if has_choices else -38.0
+	_action_scroll.offset_left = 252.0 if has_choices else 371.0
+	_action_scroll.offset_top = -296.0 if has_choices else -45.0
+	_action_scroll.offset_bottom = -195.0 if has_choices else -17.0
+	_line_scroll.offset_bottom = -20.0 if has_choices else -38.0
 	_action_scroll.scroll_vertical = 0
 
 
@@ -246,7 +260,10 @@ func _add_action(caption: String, callback: Callable, refusal := false) -> void:
 	button.text = caption
 	button.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	button.custom_minimum_size.y = 27.0
-	button.theme_type_variation = &"PaperButton"
+	button.theme_type_variation = &"DialogueAction"
+	if not _has_choices:
+		button.icon = CONTINUE_ARROW
+		button.icon_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 	if refusal:
 		button.add_theme_color_override(&"font_color", Color("#9f3029"))
 		button.add_theme_color_override(&"font_hover_color", Color("#ffb6a2"))

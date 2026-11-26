@@ -15,6 +15,8 @@ const DEFAULT_EXPANDED := {"offered": true, "active": true, "settled": false, "e
 static var _expanded := DEFAULT_EXPANDED.duplicate()
 static var _saved_scroll := 0
 
+var _opening: Tween
+
 @onready var _scroll: ScrollContainer = %TaskScroll
 @onready var _list: VBoxContainer = %TaskList
 @onready var _empty: Label = %EmptyTasks
@@ -27,13 +29,19 @@ func _ready() -> void:
 func open_drawer() -> void:
 	if visible:
 		return
+	modulate.a = 0.0
 	show()
+	_opening = create_tween()
+	_opening.tween_property(self, "modulate:a", 1.0, 0.16)
 	_restore_scroll.call_deferred(_saved_scroll)
 
 
 func close_drawer() -> void:
 	if visible:
 		_saved_scroll = _scroll.scroll_vertical
+	if _opening != null:
+		_opening.kill()
+		_opening = null
 	hide()
 
 
@@ -79,6 +87,7 @@ func _restore_scroll(position_to_restore: int) -> void:
 func _add_group(key: String, caption: String, entries: Array[Dictionary]) -> void:
 	var heading := Button.new()
 	heading.custom_minimum_size.y = 25.0
+	heading.theme_type_variation = &"TaskGroup"
 	heading.alignment = HORIZONTAL_ALIGNMENT_LEFT
 	heading.toggle_mode = true
 	heading.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND

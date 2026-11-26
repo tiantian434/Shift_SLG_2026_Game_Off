@@ -144,7 +144,10 @@ func _draw_ritual() -> void:
 		draw_circle(pointer, 4.5, WHITE)
 		draw_circle(pointer, 2.0, Color("#9fe9ee"))
 
-	draw_string(get_theme_default_font(), center + Vector2(-14, 4), "%d / %d" % [ritual_progress, Rules.RUNES], HORIZONTAL_ALIGNMENT_CENTER, 28.0, 12, VELLUM)
+	var font := get_theme_default_font()
+	var progress_text := "%d / %d" % [ritual_progress, Rules.RUNES]
+	var progress_width := font.get_string_size(progress_text, HORIZONTAL_ALIGNMENT_LEFT, -1, 12).x
+	draw_string(font, center + Vector2(-progress_width * 0.5, 4), progress_text, HORIZONTAL_ALIGNMENT_LEFT, -1, 12, VELLUM)
 
 
 func _phase_direction(phase: float) -> Vector2:

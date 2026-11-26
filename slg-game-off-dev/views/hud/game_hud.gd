@@ -35,8 +35,9 @@ func _ready() -> void:
 	$ShiftButton.pressed.connect(_request_shift)
 	$BackButton.pressed.connect(_request_back)
 	$EndDay.pressed.connect(MenuSystem.open_day_end)
-	_quest_toggle.pressed.connect(_open_tasks)
-	_quest_drawer.close_requested.connect(_quest_drawer.close_drawer)
+	_quest_toggle.pressed.connect(_toggle_tasks)
+	_quest_drawer.visibility_changed.connect(_refresh_task_button)
+	_quest_drawer.close_requested.connect(_close_tasks)
 	_quest_drawer.task_selected.connect(_open_task)
 	_feedback.pressed.connect(_open_tasks_from_feedback)
 	_feedback_timer.timeout.connect(_finish_feedback)
@@ -44,6 +45,7 @@ func _ready() -> void:
 	SceneRouter.world_changed.connect(_on_world_changed)
 	_refresh_progress()
 	_display_first_feedback()
+	_start_art_motion()
 
 
 func _exit_tree() -> void:
@@ -52,18 +54,20 @@ func _exit_tree() -> void:
 
 
 func _input(event: InputEvent) -> void:
-	if Engine.is_editor_hint() or not _quest_drawer.visible or not event.is_action_pressed(&"shift_world"):
+	if Engine.is_editor_hint() or not _quest_drawer.visible or not _can_navigate():
 		return
-	if _can_navigate():
+	if event.is_action_pressed(&"ui_cancel"):
+		get_viewport().set_input_as_handled()
+		_close_tasks()
+	elif event.is_action_pressed(&"shift_world"):
 		get_viewport().set_input_as_handled()
 		_request_shift()
 
 
 func set_location(place: String, inner: bool, show_weather := false) -> void:
 	_place_label.text = place
-	_world_label.text = "☾" if inner else "☀"
-	_world_label.tooltip_text = "里世界" if inner else "表世界"
-	_world_label.add_theme_color_override(&"font_color", Color("#d1b2f7") if inner else Color("#efc475"))
+	_world_label.text = "里世界" if inner else "表世界"
+	_world_label.add_theme_color_override(&"font_color", Color("#ead9ff") if inner else Color("#fff0c3"))
 	_show_weather = show_weather and not inner
 	_refresh_weather()
 
@@ -109,6 +113,20 @@ func _open_tasks() -> void:
 		_quest_drawer.open_drawer()
 
 
+func _toggle_tasks() -> void:
+	if not _can_navigate():
+		return
+	if _quest_drawer.visible:
+		_close_tasks()
+	else:
+		_open_tasks()
+
+
+func _close_tasks() -> void:
+	_quest_drawer.close_drawer()
+	_quest_toggle.grab_focus()
+
+
 func _open_task(task_id: StringName) -> void:
 	if not _can_navigate():
 		return
@@ -118,7 +136,7 @@ func _open_task(task_id: StringName) -> void:
 
 func _refresh_progress() -> void:
 	_day_label.text = "第 %d 天" % GameSession.day_number()
-	_gold_label.text = "金币  %d" % GameSession.gold_count()
+	_gold_label.text = str(GameSession.gold_count())
 	var entries: Array[Dictionary] = GameSession.task_entries()
 	_quest_drawer.set_entries(entries)
 	_pending_entries = entries.filter(
@@ -129,6 +147,25 @@ func _refresh_progress() -> void:
 		_announcement_scheduled = true
 		_announce_new_work.call_deferred()
 	_refresh_weather()
+
+
+func _start_art_motion() -> void:
+	var hand: TextureRect = $DayDial/DialHand
+	var swing := create_tween().set_loops().set_trans(Tween.TRANS_SINE)
+	swing.tween_property(hand, "rotation", -0.12, 1.2)
+	swing.tween_property(hand, "rotation", 0.1, 2.4)
+	swing.tween_property(hand, "rotation", 0.0, 1.2)
+
+	var pulse := create_tween().set_loops().set_trans(Tween.TRANS_SINE)
+	pulse.tween_property(_pending_dot, "modulate:a", 0.52, 0.66)
+	pulse.tween_property(_pending_dot, "modulate:a", 1.0, 0.66)
+
+
+func _refresh_task_button() -> void:
+	var open := _quest_drawer.visible
+	_quest_toggle.theme_type_variation = &"TaskBadgeOpen" if open else &"TaskBadge"
+	_quest_toggle.tooltip_text = "关闭任务班表" if open else "查看任务班表"
+	_feedback.visible = not open and not _feedback_queue.is_empty()
 
 
 func _on_world_changed(_world: int) -> void:
@@ -157,15 +194,15 @@ func _announce_new_work() -> void:
 			new_person = true
 	_pending_ids = current_pending
 	if new_person and new_event:
-		show_feedback("有访客等候接待，新的事件也已出现。", true)
+		show_feedback("有访客等候接待。\n也有新的事件可查看。", true)
 	elif new_person:
-		show_feedback("有访客等候接待。可查看任务班表。", true)
+		show_feedback("有访客等候接待。\n可查看任务班表。", true)
 	elif new_event:
 		show_feedback("有新的事件解锁了。", true)
 
 
 func _display_first_feedback() -> void:
-	_feedback.visible = not _feedback_queue.is_empty()
+	_feedback.visible = not _quest_drawer.visible and not _feedback_queue.is_empty()
 	if _feedback_queue.is_empty():
 		return
 	var first: Dictionary = _feedback_queue[0]

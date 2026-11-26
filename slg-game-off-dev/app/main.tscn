@@ -2,31 +2,16 @@
 
 [ext_resource type="Script" path="res://views/map/map_view.gd" id="1_map"]
 [ext_resource type="PackedScene" path="res://views/map/facility_hotspot.tscn" id="2_hotspot"]
-[ext_resource type="Texture2D" path="res://assets/third_party/ninja_adventure/tileset_house.png" id="3_buildings"]
-[ext_resource type="Texture2D" path="res://assets/map/surface_map.png" id="4_surface_map"]
+[ext_resource type="Texture2D" path="res://assets/art/map/shop_legacy.png" id="3_shop"]
+[ext_resource type="Texture2D" path="res://assets/art/map/sky.png" id="4_surface_map"]
 [ext_resource type="Texture2D" path="res://assets/map/inner_map.png" id="5_inner_map"]
 [ext_resource type="Texture2D" path="res://assets/map/inner_buildings.png" id="6_inner_buildings"]
 [ext_resource type="PackedScene" path="res://views/hud/game_hud.tscn" id="7_hud"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_station"]
-atlas = ExtResource("3_buildings")
-region = Rect2(416, 0, 48, 48)
-filter_clip = true
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_workshop"]
-atlas = ExtResource("3_buildings")
-region = Rect2(320, 0, 48, 48)
-filter_clip = true
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_restaurant"]
-atlas = ExtResource("3_buildings")
-region = Rect2(192, 0, 64, 48)
-filter_clip = true
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_shop"]
-atlas = ExtResource("3_buildings")
-region = Rect2(0, 0, 64, 48)
-filter_clip = true
+[ext_resource type="VideoStream" path="res://assets/art/map/sky.ogv" id="8_sky"]
+[ext_resource type="PackedScene" path="res://views/map/surface_port.tscn" id="9_port"]
+[ext_resource type="Texture2D" path="res://assets/art/map/clock.png" id="10_clock"]
+[ext_resource type="Texture2D" path="res://assets/art/map/workshop.png" id="11_workshop"]
+[ext_resource type="Texture2D" path="res://assets/art/map/restaurant.png" id="12_restaurant"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_inner_station"]
 atlas = ExtResource("6_inner_buildings")
@@ -79,6 +64,21 @@ mouse_filter = 2
 texture = ExtResource("4_surface_map")
 expand_mode = 1
 
+[node name="SurfaceSky" type="VideoStreamPlayer" parent="MapView"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture_filter = 2
+stream = ExtResource("8_sky")
+expand = true
+loop = true
+
+[node name="SurfacePort" parent="MapView" instance=ExtResource("9_port")]
+
 [node name="Facilities" type="Control" parent="MapView"]
 layout_mode = 1
 anchors_preset = 15
@@ -86,17 +86,32 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 
+[node name="Shop" parent="MapView/Facilities" instance=ExtResource("2_hotspot")]
+layout_mode = 0
+offset_left = 400.0
+offset_top = 244.0
+offset_right = 528.0
+offset_bottom = 340.0
+texture = ExtResource("3_shop")
+facility_id = &"shop"
+display_name = "商店"
+inner_display_name = "炼药工房"
+inner_texture = SubResource("AtlasTexture_inner_shop")
+surface_rect = Rect2(338.0, 89.5, 38.0, 28.5)
+
 [node name="Station" parent="MapView/Facilities" instance=ExtResource("2_hotspot")]
 layout_mode = 0
 offset_left = 123.0
 offset_top = 101.0
 offset_right = 219.0
 offset_bottom = 197.0
-texture = SubResource("AtlasTexture_station")
+texture = ExtResource("10_clock")
 facility_id = &"hub"
 display_name = "空港站房"
 inner_display_name = "驿站"
 inner_texture = SubResource("AtlasTexture_inner_station")
+surface_rect = Rect2(350.625, 85.833, 50.417, 111.667)
+surface_ground_inset = 3.5
 
 [node name="Workshop" parent="MapView/Facilities" instance=ExtResource("2_hotspot")]
 layout_mode = 0
@@ -104,11 +119,13 @@ offset_left = 416.0
 offset_top = 101.0
 offset_right = 512.0
 offset_bottom = 197.0
-texture = SubResource("AtlasTexture_workshop")
+texture = ExtResource("11_workshop")
 facility_id = &"workshop"
 display_name = "机修所"
 inner_display_name = "术式工坊"
 inner_texture = SubResource("AtlasTexture_inner_workshop")
+surface_rect = Rect2(259.167, 96.667, 83.333, 82.5)
+surface_ground_inset = 4.0
 
 [node name="Restaurant" parent="MapView/Facilities" instance=ExtResource("2_hotspot")]
 layout_mode = 0
@@ -116,23 +133,13 @@ offset_left = 107.0
 offset_top = 244.0
 offset_right = 235.0
 offset_bottom = 340.0
-texture = SubResource("AtlasTexture_restaurant")
+texture = ExtResource("12_restaurant")
 facility_id = &"restaurant"
 display_name = "餐馆"
 inner_display_name = "月灯食堂"
 inner_texture = SubResource("AtlasTexture_inner_restaurant")
-
-[node name="Shop" parent="MapView/Facilities" instance=ExtResource("2_hotspot")]
-layout_mode = 0
-offset_left = 400.0
-offset_top = 244.0
-offset_right = 528.0
-offset_bottom = 340.0
-texture = SubResource("AtlasTexture_shop")
-facility_id = &"shop"
-display_name = "商店"
-inner_display_name = "炼药工房"
-inner_texture = SubResource("AtlasTexture_inner_shop")
+surface_rect = Rect2(400.833, 99.583, 80.0, 57.083)
+surface_ground_inset = 2.0
 
 [node name="GameHUD" parent="MapView" instance=ExtResource("7_hud")]
 layout_mode = 1

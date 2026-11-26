@@ -69,7 +69,7 @@ theme_type_variation = &"PaperPanel"
 
 [node name="Contents" type="VBoxContainer" parent="Center/Panel"]
 layout_mode = 2
-theme_override_constants/separation = 12
+theme_override_constants/separation = 10
 
 [node name="Title" type="Label" parent="Center/Panel/Contents"]
 layout_mode = 2
@@ -127,6 +127,45 @@ theme_override_styles/hover = SubResource("PaperToggle")
 theme_override_styles/pressed = SubResource("PaperToggle")
 theme_override_styles/hover_pressed = SubResource("PaperToggle")
 text = "全屏显示"
+
+[node name="Display" type="VBoxContainer" parent="Center/Panel/Contents"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="WindowResolutionRow" type="HBoxContainer" parent="Center/Panel/Contents/Display"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="WindowResolutionLabel" type="Label" parent="Center/Panel/Contents/Display/WindowResolutionRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"InkLabel"
+text = "窗口分辨率"
+
+[node name="WindowResolution" type="OptionButton" parent="Center/Panel/Contents/Display/WindowResolutionRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(120, 28)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_type_variation = &"PaperButton"
+tooltip_text = "切换游戏窗口的像素尺寸"
+
+[node name="OutputResolution" type="Label" parent="Center/Panel/Contents/Display"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"InkLabel"
+theme_override_font_sizes/font_size = 11
+text = "当前窗口  1280 × 720"
+horizontal_alignment = 2
+
+[node name="DisplayHint" type="Label" parent="Center/Panel/Contents/Display"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_type_variation = &"InkLabel"
+theme_override_font_sizes/font_size = 11
+text = "内嵌窗口由 Godot 编辑器控制。关闭「下次运行时嵌入游戏」，重新运行后可在此切换分辨率。"
+autowrap_mode = 2
 
 [node name="Back" type="Button" parent="Center/Panel/Contents"]
 unique_name_in_owner = true

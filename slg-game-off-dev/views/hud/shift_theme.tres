@@ -1,5 +1,334 @@
 [gd_resource type="Theme" format=3]
 
+[ext_resource type="Texture2D" path="res://assets/art/ui/shift-idle.png" id="art_ShiftIdle"]
+[ext_resource type="Texture2D" path="res://assets/art/ui/shift-hover.png" id="art_ShiftHover"]
+[ext_resource type="Texture2D" path="res://assets/art/ui/tasks-idle.png" id="art_TasksIdle"]
+[ext_resource type="Texture2D" path="res://assets/art/ui/tasks-open.png" id="art_TasksOpen"]
+[ext_resource type="Texture2D" path="res://assets/art/ui/settings-idle.png" id="art_GearIdle"]
+[ext_resource type="Texture2D" path="res://assets/art/ui/settings-hover.png" id="art_GearHover"]
+[ext_resource type="Texture2D" path="res://assets/art/ui/end-day-idle.png" id="art_EndDayIdle"]
+[ext_resource type="Texture2D" path="res://assets/art/ui/end-day-hover.png" id="art_EndDayHover"]
+[ext_resource type="Texture2D" path="res://assets/art/ui/close-idle.png" id="art_CloseIdle"]
+[ext_resource type="Texture2D" path="res://assets/art/ui/close-hover.png" id="art_CloseHover"]
+[ext_resource type="Texture2D" path="res://assets/art/ui/history-idle.png" id="art_HistoryIdle"]
+[ext_resource type="Texture2D" path="res://assets/art/ui/history-hover.png" id="art_HistoryHover"]
+[ext_resource type="Texture2D" path="res://assets/art/ui/dialogue-close.png" id="art_DialogueClose"]
+[ext_resource type="Texture2D" path="res://assets/art/ui/dialogue-button-idle.png" id="art_DialogueActionIdle"]
+[ext_resource type="Texture2D" path="res://assets/art/ui/dialogue-button-hover.png" id="art_DialogueActionHover"]
+[ext_resource type="Texture2D" path="res://assets/art/ui/dialogue-button-dim.png" id="art_DialogueActionDim"]
+[ext_resource type="Texture2D" path="res://assets/art/ui/dialogue-button-paper.png" id="art_DialogueActionLight"]
+[ext_resource type="Texture2D" path="res://assets/art/ui/chip-idle.png" id="art_GroupIdle"]
+[ext_resource type="Texture2D" path="res://assets/art/ui/chip-hover.png" id="art_GroupHover"]
+[ext_resource type="Texture2D" path="res://assets/art/ui/chip-active.png" id="art_NoticeIdle"]
+[ext_resource type="Texture2D" path="res://assets/art/ui/chip-active-hover.png" id="art_NoticeHover"]
+[ext_resource type="Texture2D" path="res://assets/art/ui/location-plate.png" id="art_LocationPlate"]
+[ext_resource type="Texture2D" path="res://assets/art/ui/gold-plate.png" id="art_GoldPlate"]
+[ext_resource type="Texture2D" path="res://assets/art/ui/task-paper.png" id="art_TaskPaper"]
+[ext_resource type="Texture2D" path="res://assets/art/ui/task-entry.png" id="art_TaskCard"]
+[ext_resource type="Texture2D" path="res://assets/art/ui/dialogue-paper.png" id="art_DialoguePaper"]
+[ext_resource type="FontFile" path="res://assets/art/ui/hy-pixel-ui.ttf" id="UIFont"]
+[ext_resource type="FontFile" path="res://assets/art/ui/hy-pixel-hud.ttf" id="HUDFont"]
+[ext_resource type="FontFile" path="res://assets/art/ui/aa-dream-display.ttf" id="DisplayFont"]
+[ext_resource type="FontFile" path="res://assets/art/ui/aa-dotted-date.ttf" id="DateFont"]
+
+[sub_resource type="StyleBoxTexture" id="ShiftIdle"]
+texture = ExtResource("art_ShiftIdle")
+texture_margin_left = 0.0
+texture_margin_top = 0.0
+texture_margin_right = 0.0
+texture_margin_bottom = 0.0
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+
+[sub_resource type="StyleBoxTexture" id="ShiftHover"]
+texture = ExtResource("art_ShiftHover")
+texture_margin_left = 0.0
+texture_margin_top = 0.0
+texture_margin_right = 0.0
+texture_margin_bottom = 0.0
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+
+[sub_resource type="StyleBoxTexture" id="TasksIdle"]
+texture = ExtResource("art_TasksIdle")
+texture_margin_left = 0.0
+texture_margin_top = 0.0
+texture_margin_right = 0.0
+texture_margin_bottom = 0.0
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+
+[sub_resource type="StyleBoxTexture" id="TasksOpen"]
+texture = ExtResource("art_TasksOpen")
+texture_margin_left = 0.0
+texture_margin_top = 0.0
+texture_margin_right = 0.0
+texture_margin_bottom = 0.0
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+
+[sub_resource type="StyleBoxTexture" id="GearIdle"]
+texture = ExtResource("art_GearIdle")
+texture_margin_left = 0.0
+texture_margin_top = 0.0
+texture_margin_right = 0.0
+texture_margin_bottom = 0.0
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+
+[sub_resource type="StyleBoxTexture" id="GearHover"]
+texture = ExtResource("art_GearHover")
+texture_margin_left = 0.0
+texture_margin_top = 0.0
+texture_margin_right = 0.0
+texture_margin_bottom = 0.0
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+
+[sub_resource type="StyleBoxTexture" id="EndDayIdle"]
+texture = ExtResource("art_EndDayIdle")
+texture_margin_left = 0.0
+texture_margin_top = 0.0
+texture_margin_right = 0.0
+texture_margin_bottom = 0.0
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+
+[sub_resource type="StyleBoxTexture" id="EndDayHover"]
+texture = ExtResource("art_EndDayHover")
+texture_margin_left = 0.0
+texture_margin_top = 0.0
+texture_margin_right = 0.0
+texture_margin_bottom = 0.0
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+
+[sub_resource type="StyleBoxTexture" id="CloseIdle"]
+texture = ExtResource("art_CloseIdle")
+texture_margin_left = 0.0
+texture_margin_top = 0.0
+texture_margin_right = 0.0
+texture_margin_bottom = 0.0
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+
+[sub_resource type="StyleBoxTexture" id="CloseHover"]
+texture = ExtResource("art_CloseHover")
+texture_margin_left = 0.0
+texture_margin_top = 0.0
+texture_margin_right = 0.0
+texture_margin_bottom = 0.0
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+
+[sub_resource type="StyleBoxTexture" id="HistoryIdle"]
+texture = ExtResource("art_HistoryIdle")
+texture_margin_left = 0.0
+texture_margin_top = 0.0
+texture_margin_right = 0.0
+texture_margin_bottom = 0.0
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+
+[sub_resource type="StyleBoxTexture" id="HistoryHover"]
+texture = ExtResource("art_HistoryHover")
+texture_margin_left = 0.0
+texture_margin_top = 0.0
+texture_margin_right = 0.0
+texture_margin_bottom = 0.0
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+
+[sub_resource type="StyleBoxTexture" id="DialogueClose"]
+texture = ExtResource("art_DialogueClose")
+texture_margin_left = 0.0
+texture_margin_top = 0.0
+texture_margin_right = 0.0
+texture_margin_bottom = 0.0
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+
+[sub_resource type="StyleBoxTexture" id="DialogueCloseHover"]
+texture = ExtResource("art_DialogueClose")
+texture_margin_left = 0.0
+texture_margin_top = 0.0
+texture_margin_right = 0.0
+texture_margin_bottom = 0.0
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+modulate_color = Color(1.16, 1.12, 1.08, 1)
+
+[sub_resource type="StyleBoxTexture" id="DialogueActionIdle"]
+texture = ExtResource("art_DialogueActionIdle")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+content_margin_left = 9.0
+content_margin_top = 4.0
+content_margin_right = 9.0
+content_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxTexture" id="DialogueActionHover"]
+texture = ExtResource("art_DialogueActionHover")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+content_margin_left = 9.0
+content_margin_top = 4.0
+content_margin_right = 9.0
+content_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxTexture" id="DialogueActionDim"]
+texture = ExtResource("art_DialogueActionDim")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+content_margin_left = 9.0
+content_margin_top = 4.0
+content_margin_right = 9.0
+content_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxTexture" id="DialogueActionLight"]
+texture = ExtResource("art_DialogueActionLight")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+content_margin_left = 9.0
+content_margin_top = 4.0
+content_margin_right = 9.0
+content_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxTexture" id="GroupIdle"]
+texture = ExtResource("art_GroupIdle")
+texture_margin_left = 7.0
+texture_margin_top = 7.0
+texture_margin_right = 14.0
+texture_margin_bottom = 5.0
+content_margin_left = 11.0
+content_margin_top = 6.0
+content_margin_right = 15.0
+content_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxTexture" id="GroupHover"]
+texture = ExtResource("art_GroupHover")
+texture_margin_left = 7.0
+texture_margin_top = 7.0
+texture_margin_right = 14.0
+texture_margin_bottom = 5.0
+content_margin_left = 11.0
+content_margin_top = 6.0
+content_margin_right = 15.0
+content_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxTexture" id="NoticeIdle"]
+texture = ExtResource("art_NoticeIdle")
+texture_margin_left = 7.0
+texture_margin_top = 7.0
+texture_margin_right = 14.0
+texture_margin_bottom = 5.0
+content_margin_left = 11.0
+content_margin_top = 6.0
+content_margin_right = 15.0
+content_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxTexture" id="NoticeHover"]
+texture = ExtResource("art_NoticeHover")
+texture_margin_left = 7.0
+texture_margin_top = 7.0
+texture_margin_right = 14.0
+texture_margin_bottom = 5.0
+content_margin_left = 11.0
+content_margin_top = 6.0
+content_margin_right = 15.0
+content_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxTexture" id="LocationPlate"]
+texture = ExtResource("art_LocationPlate")
+texture_margin_left = 0.0
+texture_margin_top = 0.0
+texture_margin_right = 0.0
+texture_margin_bottom = 0.0
+content_margin_left = 48.0
+content_margin_top = 12.0
+content_margin_right = 10.0
+content_margin_bottom = 11.0
+
+[sub_resource type="StyleBoxTexture" id="GoldPlate"]
+texture = ExtResource("art_GoldPlate")
+texture_margin_left = 0.0
+texture_margin_top = 0.0
+texture_margin_right = 0.0
+texture_margin_bottom = 0.0
+content_margin_left = 39.0
+content_margin_top = 7.0
+content_margin_right = 6.0
+content_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxTexture" id="TaskPaper"]
+texture = ExtResource("art_TaskPaper")
+texture_margin_left = 28.0
+texture_margin_top = 25.0
+texture_margin_right = 28.0
+texture_margin_bottom = 29.0
+content_margin_left = 15.0
+content_margin_top = 18.0
+content_margin_right = 17.0
+content_margin_bottom = 22.0
+
+[sub_resource type="StyleBoxTexture" id="TaskCard"]
+texture = ExtResource("art_TaskCard")
+texture_margin_left = 29.0
+texture_margin_top = 8.0
+texture_margin_right = 7.0
+texture_margin_bottom = 7.0
+content_margin_left = 34.0
+content_margin_top = 5.0
+content_margin_right = 9.0
+content_margin_bottom = 7.0
+
+[sub_resource type="StyleBoxTexture" id="DialoguePaper"]
+texture = ExtResource("art_DialoguePaper")
+texture_margin_left = 23.0
+texture_margin_top = 28.0
+texture_margin_right = 34.0
+texture_margin_bottom = 33.0
+content_margin_left = 28.0
+content_margin_top = 27.0
+content_margin_right = 24.0
+content_margin_bottom = 20.0
+
 [sub_resource type="StyleBoxFlat" id="BrassPanel"]
 content_margin_left = 10.0
 content_margin_top = 8.0
@@ -142,6 +471,7 @@ color = Color(0.509, 0.349, 0.197, 0.64)
 thickness = 1
 
 [resource]
+default_font = ExtResource("UIFont")
 default_font_size = 13
 Button/colors/font_color = Color(0.99, 0.897, 0.723, 1)
 Button/colors/font_disabled_color = Color(0.61, 0.533, 0.438, 1)
@@ -171,3 +501,89 @@ VScrollBar/styles/grabber_pressed = SubResource("ScrollHandleHover")
 HSeparator/styles/separator = SubResource("PaperRule")
 VBoxContainer/constants/separation = 6
 HBoxContainer/constants/separation = 6
+ShiftBadge/base_type = &"Button"
+ShiftBadge/styles/normal = SubResource("ShiftIdle")
+ShiftBadge/styles/hover = SubResource("ShiftHover")
+ShiftBadge/styles/pressed = SubResource("ShiftHover")
+ShiftBadge/styles/hover_pressed = SubResource("ShiftHover")
+ShiftBadge/styles/disabled = SubResource("ShiftIdle")
+TaskBadge/base_type = &"Button"
+TaskBadge/styles/normal = SubResource("TasksIdle")
+TaskBadge/styles/hover = SubResource("TasksOpen")
+TaskBadge/styles/pressed = SubResource("TasksOpen")
+TaskBadge/styles/hover_pressed = SubResource("TasksOpen")
+TaskBadge/styles/disabled = SubResource("TasksIdle")
+TaskBadgeOpen/base_type = &"Button"
+TaskBadgeOpen/styles/normal = SubResource("TasksOpen")
+TaskBadgeOpen/styles/hover = SubResource("TasksIdle")
+TaskBadgeOpen/styles/pressed = SubResource("TasksIdle")
+TaskBadgeOpen/styles/hover_pressed = SubResource("TasksIdle")
+TaskBadgeOpen/styles/disabled = SubResource("TasksOpen")
+GearBadge/base_type = &"Button"
+GearBadge/styles/normal = SubResource("GearIdle")
+GearBadge/styles/hover = SubResource("GearHover")
+GearBadge/styles/pressed = SubResource("GearHover")
+GearBadge/styles/hover_pressed = SubResource("GearHover")
+GearBadge/styles/disabled = SubResource("GearIdle")
+EndDayBadge/base_type = &"Button"
+EndDayBadge/styles/normal = SubResource("EndDayIdle")
+EndDayBadge/styles/hover = SubResource("EndDayHover")
+EndDayBadge/styles/pressed = SubResource("EndDayHover")
+EndDayBadge/styles/hover_pressed = SubResource("EndDayHover")
+EndDayBadge/styles/disabled = SubResource("EndDayIdle")
+CloseBadge/base_type = &"Button"
+CloseBadge/styles/normal = SubResource("CloseIdle")
+CloseBadge/styles/hover = SubResource("CloseHover")
+CloseBadge/styles/pressed = SubResource("CloseHover")
+CloseBadge/styles/hover_pressed = SubResource("CloseHover")
+CloseBadge/styles/disabled = SubResource("CloseIdle")
+HistoryBadge/base_type = &"Button"
+HistoryBadge/styles/normal = SubResource("HistoryIdle")
+HistoryBadge/styles/hover = SubResource("HistoryHover")
+HistoryBadge/styles/pressed = SubResource("HistoryHover")
+HistoryBadge/styles/hover_pressed = SubResource("HistoryHover")
+HistoryBadge/styles/disabled = SubResource("HistoryIdle")
+DialogueCloseBadge/base_type = &"Button"
+DialogueCloseBadge/styles/normal = SubResource("DialogueClose")
+DialogueCloseBadge/styles/hover = SubResource("DialogueCloseHover")
+DialogueCloseBadge/styles/pressed = SubResource("DialogueCloseHover")
+DialogueCloseBadge/styles/hover_pressed = SubResource("DialogueCloseHover")
+DialogueCloseBadge/styles/disabled = SubResource("DialogueClose")
+TaskGroup/base_type = &"Button"
+TaskGroup/styles/normal = SubResource("GroupIdle")
+TaskGroup/styles/hover = SubResource("GroupHover")
+TaskGroup/styles/pressed = SubResource("GroupHover")
+TaskGroup/styles/hover_pressed = SubResource("GroupIdle")
+TaskGroup/colors/font_color = Color(0.99, 0.942, 0.816, 1)
+NoticeBadge/base_type = &"Button"
+NoticeBadge/styles/normal = SubResource("NoticeIdle")
+NoticeBadge/styles/hover = SubResource("NoticeHover")
+NoticeBadge/styles/pressed = SubResource("NoticeHover")
+DialogueAction/base_type = &"Button"
+DialogueAction/styles/normal = SubResource("DialogueActionLight")
+DialogueAction/styles/hover = SubResource("DialogueActionHover")
+DialogueAction/styles/pressed = SubResource("DialogueActionIdle")
+DialogueAction/styles/disabled = SubResource("DialogueActionDim")
+DialogueAction/colors/font_color = Color(0.208, 0.114, 0.075, 1)
+DialogueAction/colors/font_hover_color = Color(0.208, 0.114, 0.075, 1)
+DialogueAction/colors/font_pressed_color = Color(0.208, 0.114, 0.075, 1)
+DialogueAction/colors/font_focus_color = Color(0.208, 0.114, 0.075, 1)
+DialogueAction/colors/font_disabled_color = Color(0.359, 0.282, 0.203, 1)
+LocationPlate/base_type = &"PanelContainer"
+LocationPlate/styles/panel = SubResource("LocationPlate")
+GoldPlate/base_type = &"PanelContainer"
+GoldPlate/styles/panel = SubResource("GoldPlate")
+TaskPaper/base_type = &"PanelContainer"
+TaskPaper/styles/panel = SubResource("TaskPaper")
+TaskCard/base_type = &"PanelContainer"
+TaskCard/styles/panel = SubResource("TaskCard")
+DialoguePaper/base_type = &"PanelContainer"
+DialoguePaper/styles/panel = SubResource("DialoguePaper")
+DialogueBackdrop/base_type = &"Panel"
+DialogueBackdrop/styles/panel = SubResource("DialoguePaper")
+DisplayLabel/base_type = &"Label"
+DisplayLabel/fonts/font = ExtResource("DisplayFont")
+DateLabel/base_type = &"Label"
+DateLabel/fonts/font = ExtResource("DateFont")
+HUDLabel/base_type = &"Label"
+HUDLabel/fonts/font = ExtResource("HUDFont")

@@ -1,22 +1,5 @@
 [gd_scene format=3]
 
-[sub_resource type="StyleBoxFlat" id="Card"]
-content_margin_left = 7.0
-content_margin_top = 5.0
-content_margin_right = 7.0
-content_margin_bottom = 6.0
-bg_color = Color(0.949, 0.865, 0.702, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0.69, 0.539, 0.365, 1)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-anti_aliasing = false
-
 [sub_resource type="StyleBoxEmpty" id="HitNormal"]
 
 [sub_resource type="StyleBoxFlat" id="HitHover"]
@@ -34,7 +17,7 @@ anti_aliasing = false
 
 [node name="TaskDrawerEntry" type="PanelContainer"]
 mouse_filter = 2
-theme_override_styles/panel = SubResource("Card")
+theme_type_variation = &"TaskCard"
 
 [node name="Lines" type="VBoxContainer" parent="."]
 layout_mode = 2

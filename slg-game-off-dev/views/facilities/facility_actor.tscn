@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b1l1hc5iynheo"]
 
-[ext_resource type="Script" uid="uid://5erbd4ypn1ni" path="res://views/interactions/sprite_hotspot.gd" id="1_hotspot"]
+[ext_resource type="Script" path="res://views/facilities/facility_actor.gd" id="1_hotspot"]
 
 [node name="FacilityActor" type="TextureRect" unique_id=723605869]
 texture_filter = 1

@@ -15,7 +15,7 @@
         "zh_CN": "机械姬"
       },
       "portraits": {
-        "surface": "res://assets/chapter2/mechanical_face.png"
+        "surface": "res://assets/art/characters/mechanical_surface_portrait.png"
       }
     }
   },

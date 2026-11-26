@@ -21,8 +21,8 @@
         ]
       },
       "portraits": {
-        "surface": "res://assets/chapter1/police_face.png",
-        "inner": "res://assets/chapter1/detective_face.png"
+        "surface": "res://assets/art/characters/police_portrait.png",
+        "inner": "res://assets/art/characters/detective_portrait.png"
       }
     },
     "researcher": {
@@ -40,8 +40,8 @@
         ]
       },
       "portraits": {
-        "surface": "res://assets/chapter1/operator_face.png",
-        "inner": "res://assets/chapter1/apprentice_face.png"
+        "surface": "res://assets/art/characters/operator_portrait.png",
+        "inner": "res://assets/art/characters/apprentice_portrait.png"
       }
     },
     "narrator": {

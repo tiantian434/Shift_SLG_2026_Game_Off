@@ -4,13 +4,8 @@
 [ext_resource type="TileSet" path="res://assets/tilesets/station_floors.tres" id="2_floors"]
 [ext_resource type="PackedScene" path="res://views/facilities/facility_hud.tscn" id="3_hud"]
 [ext_resource type="PackedScene" path="res://views/facilities/facility_actor.tscn" id="4_actor"]
-[ext_resource type="Texture2D" path="res://assets/chapter1/apprentice_sprite.png" id="5_researcher"]
+[ext_resource type="Texture2D" path="res://assets/chapter1/apprentice_sprite.tres" id="5_researcher"]
 [ext_resource type="Texture2D" path="res://assets/chapter1/detective_sprite.png" id="6_escort"]
-
-[sub_resource type="AtlasTexture" id="ResearcherIdle"]
-atlas = ExtResource("5_researcher")
-region = Rect2(0, 0, 16, 16)
-filter_clip = true
 
 [sub_resource type="AtlasTexture" id="EscortIdle"]
 atlas = ExtResource("6_escort")
@@ -496,7 +491,7 @@ offset_left = 264.0
 offset_top = 246.0
 offset_right = 312.0
 offset_bottom = 294.0
-texture = SubResource("ResearcherIdle")
+texture = ExtResource("5_researcher")
 display_name = "术式学徒"
 
 [node name="Escort" parent="Interface" instance=ExtResource("4_actor")]

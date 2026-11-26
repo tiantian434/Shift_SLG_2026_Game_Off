@@ -10,12 +10,20 @@
         "zh_CN": "旁白"
       }
     },
+    "automaton_cloaked": {
+      "name": {
+        "zh_CN": "机械姬（人造人）"
+      },
+      "portraits": {
+        "inner": "res://assets/art/characters/mechanical_inner_cloak_portrait.png"
+      }
+    },
     "automaton": {
       "name": {
         "zh_CN": "机械姬（人造人）"
       },
       "portraits": {
-        "inner": "res://assets/chapter2/mechanical_face.png"
+        "inner": "res://assets/art/characters/mechanical_inner_portrait.png"
       }
     }
   },
@@ -55,7 +63,7 @@
           "zh_CN": "……是你？"
         },
         {
-          "speaker_id": "automaton",
+          "speaker_id": "automaton_cloaked",
           "zh_CN": "您好。请问有什么需要帮助的吗？"
         },
         {
